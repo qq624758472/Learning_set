@@ -1,0 +1,11 @@
+umount -vl /home/pi/work/mnt/disk1
+umount -vl /home/pi/work/mnt/disk2
+umount -vl /home/pi/work/mnt/disk3
+umount -vl /home/pi/work/mnt/disk4
+umount -vl /home/pi/work/mnt/disk5
+umount -vl /home/pi/work/mnt/disk6
+umount -vl /home/pi/work/mnt/disk7
+umount -vl /home/pi/work/mnt/disk8
+umount -vl /home/pi/work/mnt/disk9
+umount -vl /home/pi/work/mnt/disk10
+umount -vl /media/root/*
