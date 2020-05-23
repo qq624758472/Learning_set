@@ -1,18 +1,65 @@
 #include "common.h"
-#include "tree.h"
+//#include "tree.h"
 #include "Leetcode.h"
 
 /*
-	ÕâÊÇÊý¾Ý½á¹¹ºÍËã·¨Éè¼ÆµÄËùÓÐÁ·ÊÖÏîÄ¿¼¯ºÏ¡£
+	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ï¡ï¿½
 */
 #define DEBUG
 
 int main()
 {
 
-#ifdef DEBUG
+#ifdef DEBUG1
 	reverse(1256);
 #endif
-	
+
+#ifdef DEBUG
+	ListNode *l1 = NULL;
+	ListNode *l2 = NULL;
+	ListNode *p = NULL,*q = NULL;
+	int tmp1[3] = {5};
+	int tmp2[3] = {5};
+	for (int i = 0; i < 4; i++)
+	{
+		if (l1 == NULL)
+		{
+			l1 = (ListNode *)malloc(sizeof(ListNode));
+			l1->val = tmp1[i];
+			l2 = (ListNode *)malloc(sizeof(ListNode));
+			l2->val = tmp2[i];
+			p=l1;
+			q=l2;
+		}
+		else
+		{
+			p->next = (ListNode *)malloc(sizeof(ListNode));
+			p->next->val = tmp1[i];
+			q->next = (ListNode *)malloc(sizeof(ListNode));
+			q->next->val = tmp2[i];
+			p=p->next;
+			q=q->next;
+		}		
+	}
+	printf("l1:\n");
+	printf_list(l1);
+	printf("l2:\n");
+	printf_list(l2);
+	printf("\n");
+	p = addTwoNumbers(l1,l2);
+	printf("new:\n");
+	printf_list(p);
+#endif
+
 	getchar();
+}
+
+void printf_list(ListNode *l1)
+{
+	ListNode * p = l1;
+	while(p!=NULL)
+	{
+		printf(" %d ",p->val);
+		p=p->next;
+	}
 }
