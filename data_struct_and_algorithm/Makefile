@@ -1,7 +1,7 @@
 CC=g++
 prom = main
-deps = Leetcode.h
-obj = main.o  Leetcode.o
+deps = Leetcode.h Data_struct.h
+obj = main.o  Leetcode.o Data_struct.o
 
 $(prom): $(obj)
 	$(CC) -g -o  $(prom) $(obj) -g
