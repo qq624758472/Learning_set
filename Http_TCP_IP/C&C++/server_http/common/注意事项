@@ -1,0 +1,15 @@
+libevent2库的安装：
+    ./autogen.sh
+    ./configure –prefix=/usr 
+    make
+    make install
+
+部署环境需要的库：
+除了官方的库之外还需要安装：
+pip install pillow moviepy  psutil simplejson
+apt-get install python-mysqldb mysql-server openssl libevent2(需要从源码安装)
+安装libevent2库时，先得安装openssl库。   libevent库必须拿安装包安装，apt-get install 找不到该库。
+apt-get install ntfs-3g   没有这个挂载出来的NTFS分区为只读
+
+HDMI功能需要的： 需要安装两个软件 mplayer eog   并且需要设置成开机自启动。
+				libvdpau库
