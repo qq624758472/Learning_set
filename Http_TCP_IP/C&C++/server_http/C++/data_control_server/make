@@ -1,0 +1,1 @@
+g++ server.cpp -I/usr/include -L/usr/lib/  -levent -lpthread -o server
