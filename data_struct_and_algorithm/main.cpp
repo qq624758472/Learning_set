@@ -1,10 +1,10 @@
 #include "common.h"
-//#include "tree.h"
+#include "Data_struct.h"
 #include "Leetcode.h"
+#include <iostream>
 
-/*
-	�������ݽṹ���㷨��Ƶ�����������Ŀ���ϡ�
-*/
+using namespace std;
+
 #define DEBUG
 
 int main()
@@ -14,7 +14,7 @@ int main()
 	reverse(1256);
 #endif
 
-#ifdef DEBUG
+#ifdef DEBUG2
 	ListNode *l1 = NULL;
 	ListNode *l2 = NULL;
 	ListNode *p = NULL,*q = NULL;
@@ -49,6 +49,11 @@ int main()
 	p = addTwoNumbers(l1,l2);
 	printf("new:\n");
 	printf_list(p);
+#endif
+
+#ifdef DEBUG
+    // DirectInsert tmp;
+    DirectInsert *pComm = new DirectInsert();
 #endif
 
 	getchar();

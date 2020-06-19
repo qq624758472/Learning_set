@@ -1,6 +1,12 @@
-#ifndef TREE
-#define TREE
+#ifndef Data_struct
+#define Data_struct
 #include "common.h"
+
+typedef struct _listNode
+{
+    int val;
+    struct _listNode *next;
+} listNode;
 
 /*
 根据一棵树的前序遍历与中序遍历构造二叉树。
@@ -33,8 +39,30 @@
  *     struct TreeNode *right;
  * };
  */
-struct TreeNode *buildTree(int *preorder, int preorderSize, int *inorder, int inorderSize)
-{
-}
+struct TreeNode *buildTree(int *preorder, int preorderSize, int *inorder, int inorderSize);
 
+/*
+  直接插入排序算法
+*/
+class DirectInsert
+{
+public:
+    int L[10] = {0};
+
+    DirectInsert();
+    ~DirectInsert();
+
+    /*
+    直接插入排序
+    */
+    listNode *directInsert_list(listNode *L);
+
+    /*
+    直接插入排序：L是10个无序数组。   L[0]
+    */
+    int *directInsert_int(int L[10]);
+};
+
+//生成一个随机数
+int GetRandomNumber();
 #endif
