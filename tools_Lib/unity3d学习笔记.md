@@ -4,7 +4,7 @@
 
 ### 1.Scene
 
-![](C:\Users\hao\Desktop\u3d学习笔记\1.PNG)
+![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.PNG?raw=true)
 
 **顶点的吸附**：
 
