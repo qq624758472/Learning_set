@@ -79,13 +79,13 @@ Shader定义了该材质可以设置什么功能，Material定义了给Shader的
 
 基于光学物理公式创建的着色器.
 
-![](/home/hao/Desktop/u3d/1.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/1.jpg?raw=true)
 
 
 
 ## 摄像机:
 
-![](/home/hao/Desktop/u3d/2.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/2.jpg?raw=true)
 
 clear flags: 处理屏幕的空白部分,(没物体的都叫空白部分).
 
@@ -93,7 +93,7 @@ clear flags: 处理屏幕的空白部分,(没物体的都叫空白部分).
 
 使用方法:
 
-![](/home/hao/Desktop/u3d/3.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/3.jpg?raw=true)
 
 种类:    1.6sided : 6张图片拼成的天空盒.
 
@@ -153,7 +153,7 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 
 远距离时精细的模型会变模糊.
 
-![](/home/hao/Desktop/u3d/4.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/4.jpg?raw=true)
 
 
 
@@ -165,7 +165,7 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 
 烘焙的步骤:
 
-![](/home/hao/Desktop/u3d/5.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/5.jpg?raw=true)
 
 
 
@@ -195,19 +195,19 @@ Range(0,100):让某个变量在0~100之间.
 
 ## p115:
 
-![](/home/hao/Desktop/u3d/6.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/6.jpg?raw=true)
 
 Awake:不管脚本是否启动,都会执行. 
 
 FixdUpdate():每个固定时间执行一次,
 
-![](/home/hao/Desktop/u3d/7.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/7.jpg?raw=true)
 
 Update():每次渲染帧时执行一次. 执行间隔不固定.
 
 ## p116:
 
-![](/home/hao/Desktop/u3d/8.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/8.jpg?raw=true)
 
 
 
@@ -229,13 +229,13 @@ getComponent<name> 可以查找所有组件.
 
 ## p122: Transform
 
-![](/home/hao/Desktop/u3d/9.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/9.jpg?raw=true)
 
-![](/home/hao/Desktop/u3d/11.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/11.jpg?raw=true)
 
 rotate:
 
-![](/home/hao/Desktop/u3d/12.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/12.jpg?raw=true)
 
 rotateAround:环绕旋转
 
@@ -309,7 +309,7 @@ GameObject[] allEnemy = GameObject.FindGameObjcetWithTag("Enemy");
 GameObject playerGo = GameObject.FindWithTag("Player");
 ```
 
-![](/home/hao/Desktop/u3d/13.jpg)
+![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/13.jpg?raw=true)
 
 Object:
 
