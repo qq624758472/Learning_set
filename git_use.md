@@ -1,4 +1,4 @@
-#git命令使用总结
+# git命令使用总结
 ## git使用方法
 
 1. git clone 代码地址
@@ -30,6 +30,6 @@
 
 ## 如何给github 打tag
 1.git查看tag的命令是：git tag\
-2.创建Tag 是直接加名字就ok了，格式： git tag 名字 –m "注释"
+2.创建Tag 是直接加名字就ok了，格式： git tag 名字 –m "注释".
 3.推送到远端 git push origin tag名
 
