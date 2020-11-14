@@ -4,7 +4,7 @@
 
 ### 1.Scene
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\1.PNG)
 
 **顶点的吸附**：
 
@@ -14,11 +14,11 @@
 
 **物体轴向**：切换物体自身坐标和世界坐标的。
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\2.PNG)
 
 **视图**：在Scene主界面点击切换。
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\3.PNG)
 
 
 
@@ -26,15 +26,15 @@
 
 ### 2.游戏对象：
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\4.PNG)
 
 #### 1.组件：
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\5.PNG)
 
 #### 2.材质：
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\6.PNG)
 
 材质给有mesh renderer的物体才能直接拖过去赋予材质。
 
@@ -51,7 +51,7 @@
 
 材质的属性：
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\7.PNG)
 
 材质就是物体的质地，指色彩，纹理，光滑度，透明度，反射率，发光度等。实际就是Shader的实例。
 
@@ -59,7 +59,7 @@ Shader着色器： 专门用来渲染3D图形的技术，可以使纹理以某�
 
 Texture纹理：附加到物体表面的贴图。
 
-![](https://github.com/qwe624758472/picture_bed/blob/master/u3d%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.PNG?raw=true)
+![](..\picture_bed\u3d学习笔记\8.PNG)
 
 
 
@@ -79,13 +79,13 @@ Shader定义了该材质可以设置什么功能，Material定义了给Shader的
 
 基于光学物理公式创建的着色器.
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/1.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\1.jpg)
 
 
 
 ## 摄像机:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/2.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\2.jpg)
 
 clear flags: 处理屏幕的空白部分,(没物体的都叫空白部分).
 
@@ -93,7 +93,7 @@ clear flags: 处理屏幕的空白部分,(没物体的都叫空白部分).
 
 使用方法:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/3.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\3.jpg)
 
 种类:    1.6sided : 6张图片拼成的天空盒.
 
@@ -153,7 +153,7 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 
 远距离时精细的模型会变模糊.
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/4.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\4.jpg)
 
 
 
@@ -165,7 +165,7 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 
 烘焙的步骤:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/5.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\5.jpg)
 
 
 
@@ -195,19 +195,19 @@ Range(0,100):让某个变量在0~100之间.
 
 ## p115:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/6.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\6.jpg)
 
 Awake:不管脚本是否启动,都会执行. 
 
 FixdUpdate():每个固定时间执行一次,
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/7.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\7.jpg)
 
 Update():每次渲染帧时执行一次. 执行间隔不固定.
 
 ## p116:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/8.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\8.jpg)
 
 
 
@@ -229,13 +229,13 @@ getComponent<name> 可以查找所有组件.
 
 ## p122: Transform
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/9.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\9.jpg)
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/11.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\11.jpg)
 
 rotate:
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/12.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\12.jpg)
 
 rotateAround:环绕旋转
 
@@ -309,7 +309,7 @@ GameObject[] allEnemy = GameObject.FindGameObjcetWithTag("Enemy");
 GameObject playerGo = GameObject.FindWithTag("Player");
 ```
 
-![](https://github.com/qwe624758472/Learning_set/blob/master/tools_Lib/unity3d/u3d_picture/13.jpg?raw=true)
+![](..\picture_bed\u3d学习笔记\13.jpg)
 
 Object:
 
