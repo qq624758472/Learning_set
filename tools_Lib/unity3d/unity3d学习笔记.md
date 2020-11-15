@@ -316,7 +316,7 @@ Object:
 ```c#
 name//游戏物体名称
 
-Destroy//删除游戏对象,组件或资源
+Destroy//删除游戏对象,组件或资源    必须Destroy(this.gameObject)只用this不能删除
 
 DestroyImmediate//立即删除游戏obj,慎用 .
 
