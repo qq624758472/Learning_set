@@ -348,8 +348,8 @@ Object.FindObjectOfType<MeshRenderer>(); //找一个.
 
 
 
-
-
+地形碰撞器和任务刚体+碰撞器  组合会将人物碰撞倾斜， 需要锁定Y轴旋转，可以防止人物倾斜。
+https://jingyan.baidu.com/article/b24f6c82e5a0f6c7bee5da5a.html
 
 
 
