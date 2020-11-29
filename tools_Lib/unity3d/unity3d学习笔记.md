@@ -301,7 +301,7 @@ GameObject lightGo = new GameObject();
 Light light = lightGO.AddComponent<Light>(); //给物体添加组件.  
 
 //在场景中,根据名称查找物体(不建议使用)静态方法.
-GameObject,Find("游戏对象名称");
+GameObject.Find("游戏对象名称");
 
 //获取所有使用该标签的物体
 GameObject[] allEnemy = GameObject.FindGameObjcetWithTag("Enemy");
@@ -352,6 +352,12 @@ Object.FindObjectOfType<MeshRenderer>(); //找一个.
 https://jingyan.baidu.com/article/b24f6c82e5a0f6c7bee5da5a.html
 
 
+
+
+
+unity3d射线详解
+
+https://www.jianshu.com/p/38f8e3f74e67
 
 
 
