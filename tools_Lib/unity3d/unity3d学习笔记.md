@@ -328,6 +328,114 @@ Object.FindObjectOfType<MeshRenderer>(); //找一个.
 
 ## p126:常用类总结
 
+## p127:课后作业讲解
+
+## p128:Time类
+
+deltaTime:
+
+![](../all_picture/u3d学习笔记/14.jpg)
+
+```c#
+public void Update()
+{
+    //每渲染一帧,旋转1度. 
+    //帧多, 1秒旋转速度快.  根据Update的渲染更新速率,旋转速度也不同.
+    //帧少,           慢
+	this.transform.Totate(0,1,0);
+}
+
+speed = 100;
+public void Update()
+{
+    //每渲染一帧,旋转1度.     
+	this.transform.Totate(0,speed * Time.deltaTime,0); 
+    //当 旋转速度 * 每帧消耗时间, 可以保证旋转速度不受机器性能 , 和渲染影响. 
+}
+
+//固定0.02秒执行一次,与渲染无关.
+public void FixedUpdate()
+{
+    
+}
+
+//游戏运行时间
+Time.time;
+
+//游戏时间放慢
+Time.timeScale = 0;  //暂停游戏
+Time.timeScale = 1;  //恢复游戏
+
+//游戏暂停,个别物体不受影响. 
+Time.unscaledDeltaTime = 0;  
+```
+
+
+
+## p129: canvas上计时器实例
+
+
+
+## p133:预制体
+
+![](../all_picture/u3d学习笔记/15.png)
+
+## p135 Animonation
+
+![](../all_picture/u3d学习笔记/16.png)
+
+![](../all_picture/u3d学习笔记/17.jpg)
+
+
+
+
+
+## p137:英雄无敌工程
+
+策划
+
+需求分析
+
+编码
+
+<img src="../all_picture/u3d学习笔记/18.png" style="zoom:67%;" />
+
+
+
+## p148: 英雄无敌工程
+
+
+
+## p149-p185: 三维数学
+
+## p149:Input()类
+
+## P150:镜头的拉远和拉近
+
+
+
+## p186-227: 用户图形界面
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
