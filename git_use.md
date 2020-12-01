@@ -33,3 +33,6 @@
 2.创建Tag 是直接加名字就ok了，格式： git tag 名字 –m "注释"
 3.推送到远端 git push origin tag名
 
+## git配置默认账号和密码
+git config --global user.name "youname"设置密码
+git config --global user.email "aa@qq.com"设置邮箱
