@@ -408,6 +408,20 @@ Time.unscaledDeltaTime = 0;
 
 ## p149-p185: 三维数学
 
+
+
+## p153: 虚拟按键
+
+<img src="../all_picture/u3d学习笔记/19.jpg"/>
+
+
+
+
+
+
+
+
+
 ## p149:Input()类
 
 ## p150: 摄像机的拉近和拉远
