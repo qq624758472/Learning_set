@@ -98,7 +98,7 @@ git命令使用教程
 
 ### 15. LICENSE
 
-符合**apache2.0**协议
+符合LGPL-2.1 License协议
 
 ### 16. Makefile
 
