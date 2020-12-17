@@ -4,6 +4,7 @@
 #include "p_class.h"
 #include "template.h"
 #include "cppYuFa.h"
+#include "exam.h"
 using namespace std;
 
 /*
@@ -18,7 +19,7 @@ using namespace std;
 
 #define DEBUG
 
-int main()
+int main(int argc,char *argv[])
 {
     //1.文件操作类
 #ifdef DEBUG1
@@ -121,9 +122,157 @@ int main()
 #endif
 #endif
 
-#ifdef DEBUG
-    //
+//实现一个desktop文件解析工具
+#ifdef DEBUG13
+    //if
+    if(argc < 3)
+    {
+        cout << "arg error" << endl;    
+        return 1;
+    }
+
+
+//define 
+    int status = 1;
+    vector<string> arg;
+    string path; 
+    FileOperation file(path);
+
+//init
+    for(int i=1;i<argc; i++)
+    {
+        arg.push_back(argv[i]);
+    }
+
+
+//pro
+    //查看主函数参数
+    vector<string>::iterator v = arg.begin();
+    while(v != arg.end())
+    {
+#ifdef DEBUG_EXAM
+        cout << "arg is: "<< *v << endl;
 #endif
+        if(*v == "-d")
+        {
+            v++;
+            path = *v;
+#ifdef DEBUG_EXAM
+            cout << "path is:" << path << endl;
+#endif
+            file.updatePath(path);
+            if(!file.isExist()) //文件是否存在
+            {
+                status = 1;
+                cout << "文件不存在" << endl;
+                goto error;
+            }
+
+            //判断文件内容格式是否正确.
+            if(!file.isFormat()) 
+            {
+                status = 1;
+                cout << "文件格式不正确" << endl;
+                goto error;
+            }
+        }
+
+        if(*v == "-n") //获取应用程序名称
+        {
+            if(!file.isPathInit())
+            {
+                cout << "请将-d参数放到最前" << endl;
+                status = 1;
+                goto error;
+            }
+            //将应用程序名称打印出来
+            {
+                vector<string>::iterator v = file.name.begin();
+                while(v != file.name.end())
+                {
+                    cout <<  *v << endl;
+                    v++;
+                }
+            }
+        }
+
+        if(*v == "-i") //获取应用程序的图标
+        {
+            if(!file.isPathInit())
+            {
+                cout << "请将-d参数放到最前" << endl;
+                status = 1;
+                goto error;
+            }
+            //将图标打印出来
+            {
+                vector<string>::iterator v = file.icon.begin();
+                while(v != file.icon.end())
+                {
+                    cout << *v << endl;
+                    v++;
+                }
+            }
+        }
+
+        if(*v == "-e") //执行应用程序
+        {
+            if(!file.isPathInit())
+            {
+                cout << "请将-d参数放到最前" << endl;
+                status = 1;
+                goto error;
+            }
+            //取出-e后边的所有参数,遇到-d 或 -i 或 -n 后结束.  
+            string runArg, runExec, cmd, target = "%f"; //保存所有-e的参数
+            v++;
+            while (v != arg.end())
+            {
+                if (*v == "-d" || *v == "-i" || *v == "-n")
+                {
+                    v--;   
+                    break;
+                }
+                //runArg.push_back(*v);
+                runArg += *v;
+                runArg += " ";
+                v++;
+            }          
+            {
+                vector<string>::iterator v = file.exec.begin();
+                while (v != file.exec.end())
+                {
+                    runExec = *v;
+                    repalce_all_ditinct(runExec,target,runArg);
+                    cmd =runExec;
+#ifdef DEBUG_EXAM
+                    cout << "cmd:" << cmd << endl;
+#endif
+                    system(cmd.c_str());//执行程序
+                    v++;
+                }
+            }            
+        }
+
+        if(v != arg.end()) v++;
+    }
+
+    
+
+success:
+    return status;
+error:
+#ifdef DEBUG_EXAM
+    cout << "error exit" << endl;
+#endif
+    return status;
+#endif
+
+#ifdef DEBUG
+
+#endif
+
+
     getchar();
     return 0;
 }
