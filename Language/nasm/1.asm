@@ -12,9 +12,9 @@ section .text
 		mov ebx, 0
 		int 80h
 		
-	section .data
-		string:	db 'hello world',0Ah
-		length: equ 13
+section .data
+	string:	db 'hello world',0Ah
+	length: equ 13
 		
-	section .bss
-		var:resb 1
+section .bss
+	var:resb 1
