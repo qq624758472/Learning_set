@@ -1,7 +1,7 @@
 #include "common.h"
 #include "pipe.h"
 
-#define DEBUG
+#define DEBUG1
 
 int main()
 {
