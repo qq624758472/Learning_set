@@ -14,6 +14,7 @@
         A = A;        \
     } while (0)
 
+
 enum _SHATYPE
 {
     SHATYPE_ERROR = -1,

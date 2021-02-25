@@ -23,5 +23,7 @@ int main(int argc, char *argv[])
 
         printf("\n===============\n%s\n", skey);
     }
+
+    test();
     return 0;
 }

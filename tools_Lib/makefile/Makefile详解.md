@@ -1269,13 +1269,41 @@ vpath %   blish
 
 ## 14.增量编译
 
-Makefile通过依赖关系来进行判断是否需要进行增量编译。
+依赖实例：
+
+```makefile
+target:dependencies
+<TAB>system command1	#语句前用<tab>识别为命令。
+<TAB>system command..
+```
 
 
 
+当某个依赖的源文件更新后，就只编译这个源文件，称为增量编译。
+
+在Linux中，通过控制Makefile实现增量编译的效果。
+
+Makefile中使用　“依赖dependencies“　来实现增量编译。
+
+依赖是一个文件列表，当有文件更新时，执行这条规则。
+
+根据文件的修改时间来判断是否要更新。
+
+比如某个依赖文件的时间比目标文件的时间要新就编译。
+
+makefile会递归检查依赖，并判断文件的时间。
 
 
 
+时间比较：
+target(T1):dependencies(T2)
+1.若target文件不存在，则T1为0
+2.若dependencies为空，则T2为0
+
+Makefile比较T2与T1
+if(T1==0)执行
+else if(T2>T1)执行
+else "已是最新，不执行规则"
 
 
 
