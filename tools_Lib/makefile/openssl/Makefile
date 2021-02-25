@@ -3,7 +3,11 @@ include openssl.mk
 
 
 target=3.o
+#target_base=lib
 
+target_dir=../lib/
+
+.PHONY : clean lib
 
 #下面两种方式都可以生成.o文件。
 
@@ -14,6 +18,18 @@ $(target):%.o:%.c
 	cp $@ ../
 
 
+lib:$(target_share) $(target_static)
+	@cp $(target_static) $(target_dir)/$(target_base)$(target_static)
+	@cp $(target_share) $(target_dir)/$(target_base)$(target_share)
+
+$(target_share):%.so:%.c
+	$(cc) -fPIC -shared $< -o $@
+$(target_static):%.a:%.c
+	#$(ar) -rc $@ -o $<
+	$(cc) -c $< -o $@
+
+#ar -rc libxxx.a xxx.c
+
 #自动生成依赖
 #通过自动生成依赖，生成3.o: 3.c ../common.h
 #然后隐式规则运行cc -c -o 3.o 3.c进行编译
@@ -23,7 +39,7 @@ $(target):%.o:%.c
 # 	$(cc) -MM $< > $@
 
 
-.PHONY : clean
+
 clean:
 	-rm $(target:.o=.d)
-	-rm $(target)
+	-rm $(target) $(target_static) $(target_share)

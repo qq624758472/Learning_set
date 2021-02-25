@@ -1,0 +1,8 @@
+1.默认编译: 
+make
+2.编译成动态链接库
+make isShare IS_LIB_TYPE=isShare
+3.编译成静态链接库
+make isStatic  IS_LIB_TYPE=isStatic
+4.使用动态库和静态库混合链接
+make isMix IS_LIB_TYPE=isMix
