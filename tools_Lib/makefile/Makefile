@@ -54,6 +54,8 @@ $(object_static_lib):%.a:%.c
 	$(ar) -rs $@ $(<:.c=.o)
 	@cp $@ $(target_dir)/$(target_base)$@
 
+#ar链接错误时，使用ar -x ***.a　　来解包。查看包中是否为.o文件。
+
 
 #条件编译参数
 ifeq ($(IS_LIB_TYPE),isMix)
