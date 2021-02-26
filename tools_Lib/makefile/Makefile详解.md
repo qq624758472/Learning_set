@@ -24,6 +24,14 @@
 
 2.prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。
 
+```makefile
+#例子：
+main: openssl $(object12) call1 $(obj_base)
+	$(cc) $(objects) -o main $(arg) $(arg_base)
+```
+
+
+
 
 
 ## 2.make是如何工作的？
@@ -52,6 +60,22 @@ cc是Unix系统的C Compiler，而baigcc则是GNU Compiler Collection，GNU编�
 而linux下的cc就是gcc的软连接。
 
 ![](../all_picture/内核笔记/71.png)
+
+
+
+```makefile
+#例子：
+#显式规则
+1.o:1.c
+	$(cc) -c 1.c -o 1.o $(arg_base)
+2.o:2.c
+	$(cc) -c 2.c -o 2.o $(arg_base)
+
+
+#隐式规则, 甚至可以不写。
+1.o:1.c
+2.o:2.c
+```
 
 
 
@@ -470,6 +494,11 @@ include<filename>
 
 
 
+```makefile
+#例子：
+include ./openssl/openssl.mk
+```
+
 
 
 ## 6.变量
@@ -485,6 +514,7 @@ include<filename>
 1.普通变量
 
 ```makefile
+#例子：
 foo = c
 prog.o : prog.$(foo)
 $(foo)$(foo) -$(foo) prog.$(foo)
@@ -500,6 +530,7 @@ cc -c prog.c
 前面的变量不能使用后面的变量，只能使用前面已定义好了的变量。
 
 ```makefile
+#例子：
 x := foo
 y := $(x) bar
 x := later
@@ -512,6 +543,7 @@ x := later
 3.变量值的替换
 
 ```makefile
+#例子：
 foo := a.o b.o c.o
 bar := $(foo:.o=.c)
 ```
@@ -519,6 +551,7 @@ bar := $(foo:.o=.c)
 另一种格式是以“静态模式”定义的：
 
 ```makefile
+#例子：
 foo := a.o b.o c.o
 bar := $(foo:%.o=%.c)
 ```
@@ -526,6 +559,7 @@ bar := $(foo:%.o=%.c)
 4.变量的嵌套
 
 ```makefile
+#例子：
 x = y
 y = z
 a := $($(x))
@@ -539,6 +573,7 @@ a := $($(x))
 我们可以使用“+=”操作符给变量追加值
 
 ```makefile
+#例子：
 objects = main.o foo.o bar.o utils.o
 objects += another.o
 ```
@@ -562,6 +597,7 @@ override VARIABLE = VALUE
 下面的这个示例展示了define的用法：
 
 ```makefile
+#例子：
 define two-lines
 echo foo			#因为不是tab建开头,makefile不认为是命令
 echo $(bar)
@@ -574,6 +610,15 @@ endef
 
 ​	因此，如果我们在环境变量中设置了“CFLAGS”环境变量，那么我们就可以在所有的Makefile中使用这个变量了。这对于我们使用统一的编译参数有比较大的好处。如果Makefile中定义了CFLAGS，那么则会使用Makefile中的这个变量，如果没有定义则使用系统环境变量的值，很像“全局变量”和“局部变量”的特性。   当make嵌套调用时，上层Makefile中定义的变量会以系统环境变量的方式传递到下层的Makefile中。当然，默认情况下，只有通过命令行设置的变量会被传递。而定义在文件中的变量，如果要向下层 Makefile传递，则需要使用exprot关键字来声明。
 
+```makefile
+#例子：
+#没啥作用就是为了显示环境变量
+ENV:
+	echo $(PATH)
+```
+
+
+
 9.目标变量
 
 ​	前面我们所讲的在Makefile中定义的变量都是“全局变量”，在整个文件，我们都可以访问这些变量。当然，“自动化变量”除外，如“$<”等这种类量的自动化变量就属于“规则型变量”，这种变量的值依赖于规则的目标和依赖目标的定义。
@@ -581,6 +626,7 @@ endef
 ​	当然，我样同样可以为某个目标设置局部变量，这种变量被称为“Target-specific Variable”，它可以和“全局变量”同名，因为它的作用范围只在这条规则以及连带规则中，所以其值也只在作用范围内有效。而不会影响规则链以外的全局变量的值。
 
 ```makefile
+#例子：
 prog : CFLAGS = -g
 prog : prog.o foo.o bar.o
 $(CC) $(CFLAGS) prog.o foo.o bar.o
