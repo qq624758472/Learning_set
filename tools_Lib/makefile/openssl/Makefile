@@ -25,8 +25,8 @@ lib:$(target_share) $(target_static)
 $(target_share):%.so:%.c
 	$(cc) -fPIC -shared $< -o $@
 $(target_static):%.a:%.c
-	#$(ar) -rc $@ -o $<
-	$(cc) -c $< -o $@
+	$(cc) -c $< -o $(@:.a=.o)
+	$(ar) -rc $@ -o $(<:.c=.o)
 
 #ar -rc libxxx.a xxx.c
 

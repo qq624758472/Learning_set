@@ -46,22 +46,13 @@ isStatic:openssl_lib $(object_static_lib) $(obj_base)
 
 
 
-# $(object_share_lib):%.so:%.c
-# 	$(cc) -fPIC -shared $< -o $@
-# 	@cp $@ $(target_dir)/$(target_base)$@
-# $(object_static_lib):%.a:%.c
-# 	$(cc) -c $< -o $(@:.a=.o) $(arg_base)
-# 	$(ar) -rs $@ $<
-# 	@cp $@ $(target_dir)/$(target_base)$@
-
-
 $(object_share_lib):%.so:%.c
 	$(cc) -fPIC -shared $< -o $@
 	@cp $@ $(target_dir)/$(target_base)$@
 $(object_static_lib):%.a:%.c
-	$(cc) -c $< -o $@ $(arg_base)
+	$(cc) -c $< -o $(@:.a=.o) $(arg_base)
+	$(ar) -rs $@ $(<:.c=.o)
 	@cp $@ $(target_dir)/$(target_base)$@
-
 
 
 #条件编译参数
@@ -75,7 +66,9 @@ arg += -L$(target_dir) -l1
 arg += -L$(target_dir) -l3
 else ifeq ($(IS_LIB_TYPE),isStatic)
 #2.使用静态链接
+#arg += $(object_static_lib)
 arg += $(object_static_lib)
+#arg += -static
 else
 #不进行操作
 endif
