@@ -15,6 +15,8 @@
 2. git commit -m '删除了target'        # 提交,添加操作说明
 3. git push
 
+git commit -a #将删除的文件提交。
+git push      #远程代码仓库就删除文件了。
 ##  遇到的一些问题
 1. 解决 The file will have its original line endings in your working directory
 
