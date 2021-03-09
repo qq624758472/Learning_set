@@ -17,32 +17,38 @@ int Pipe::pipe_use()
 {
     char buf[8] = "";
     char buf1[8] = "";
-    if(pipe(this->fifoFd)<0){
+    if (pipe(this->fifoFd) < 0)
+    {
         cout << "pipe error!" << endl;
         return -1;
     }
     int pid = fork();
-    if(pid < 0){
-        cout <<"fork error !" << endl;
+    if (pid < 0)
+    {
+        cout << "fork error !" << endl;
         return -1;
     }
-    else if(pid > 0){ //返回子进程id. 
-        while(1){
-            memset(buf,0,8);
-            read(this->fifoFd[0],buf , 7);  //若没有数据，就阻塞了。 
+    else if (pid > 0)
+    { //返回子进程id.
+        while (1)
+        {
+            memset(buf, 0, 8);
+            read(this->fifoFd[0], buf, 7); //若没有数据，就阻塞了。
             cout << "read1: " << buf << endl;
 
-            write(this->fifoFd[1],"2222222",strlen("22222222222"));
+            write(this->fifoFd[1], "2222222", strlen("22222222222"));
             sleep(1);
         }
     }
-    else{  //=0 是子进程
-        while(1){
-            write(this->fifoFd[1],"1111111111",strlen("1111111111"));
+    else
+    { //=0 是子进程
+        while (1)
+        {
+            write(this->fifoFd[1], "1111111111", strlen("1111111111"));
             //write(this->fifoFd[1],"2222222222",strlen("2222222222"));
 
-            memset(buf1,0,8);
-            read(this->fifoFd[0],buf , 7);
+            memset(buf1, 0, 8);
+            read(this->fifoFd[0], buf, 7);
             cout << "read2: " << buf << endl;
             sleep(1);
         }
@@ -67,12 +73,12 @@ int Pipe::pipe_name_use()
     char buffer[PIPE_BUF + 1];
     int bytes_read = 0;
 
-    if(access(fifo_name, F_OK) == -1)
+    if (access(fifo_name, F_OK) == -1)
     {
-        printf ("Create the fifo pipe.\n");
+        printf("Create the fifo pipe.\n");
         res = mkfifo(fifo_name, 0777);
 
-        if(res != 0)
+        if (res != 0)
         {
             fprintf(stderr, "Could not create fifo %s\n", fifo_name);
             exit(EXIT_FAILURE);
@@ -83,24 +89,23 @@ int Pipe::pipe_name_use()
     pipe_fd = open(fifo_name, open_mode);
     printf("Process %d result %d\n", getpid(), pipe_fd);
 
-    if(pipe_fd != -1)
+    if (pipe_fd != -1)
     {
         bytes_read = 0;
         data_fd = open("Data.txt", O_RDONLY);
         if (data_fd == -1)
         {
             close(pipe_fd);
-            fprintf (stderr, "Open file[Data.txt] failed\n");
+            fprintf(stderr, "Open file[Data.txt] failed\n");
             return -1;
         }
 
         bytes_read = read(data_fd, buffer, PIPE_BUF);
         buffer[bytes_read] = '\0';
-        while(bytes_read > 0)
+        while (bytes_read > 0)
         {
-
             res = write(pipe_fd, buffer, bytes_read);
-            if(res == -1)
+            if (res == -1)
             {
                 fprintf(stderr, "Write error on pipe\n");
                 exit(EXIT_FAILURE);
@@ -118,5 +123,177 @@ int Pipe::pipe_name_use()
         exit(EXIT_FAILURE);
 
     printf("Process %d finished\n", getpid());
+    exit(EXIT_SUCCESS);
+}
+
+
+
+
+
+
+int Pipe::pipe_name_client()
+{
+    const char *fifo_name = "/tmp/my_fifo";
+    int pipe_fd = -1;
+    int data_fd = -1;
+    int res = 0;
+    int open_mode = O_RDONLY;
+    char buffer[PIPE_BUF + 1];
+    int bytes_read = 0;
+    int bytes_write = 0;
+
+    memset(buffer, '\0', sizeof(buffer));
+
+    printf("Process %d opening FIFO O_RDONLY\n", getpid());
+    pipe_fd = open(fifo_name, open_mode);
+    data_fd = open("DataFormFIFO.txt", O_WRONLY | O_CREAT, 0644);
+
+    if (data_fd == -1)
+    {
+        fprintf(stderr, "Open file[DataFormFIFO.txt] failed\n");
+        close(pipe_fd);
+        return -1;
+    }
+
+    printf("Process %d result %d\n", getpid(), pipe_fd);
+    if (pipe_fd != -1)
+    {
+        do
+        {
+            res = read(pipe_fd, buffer, PIPE_BUF);
+            bytes_write = write(data_fd, buffer, res);
+            bytes_read += res;
+        } while (res > 0);
+
+        close(pipe_fd);
+        close(data_fd);
+    }
+    else
+        exit(EXIT_FAILURE);
+
+    printf("Process %d finished, %d bytes read\n", getpid(), bytes_read);
+    exit(EXIT_SUCCESS);
+}
+
+
+//加密管道数据
+int Pipe::en_pipe_name_use()
+{
+    char *key = "uos";
+    const char *fifo_name = "/tmp/my_fifo";
+    int pipe_fd = -1;
+    int data_fd = -1;
+    int res = 0;
+    const int open_mode = O_WRONLY;
+    int bytes_sent = 0;
+    char buffer[PIPE_BUF + 1];
+    int bytes_read = 0;
+
+    if (access(fifo_name, F_OK) == -1)
+        printf("Create the fifo pipe.\n");
+    else
+        remove(fifo_name);
+    
+    res = mkfifo(fifo_name, 0600);
+    if (res != 0)
+    {
+        fprintf(stderr, "Could not create fifo %s\n", fifo_name);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Process %d opening FIFO O_WRONLY\n", getpid());
+    pipe_fd = open(fifo_name, open_mode);
+    printf("Process %d result %d\n", getpid(), pipe_fd);
+
+    if (pipe_fd != -1)
+    {
+        bytes_read = 0;
+        data_fd = open("Data.txt", O_RDONLY);
+        if (data_fd == -1)
+        {
+            close(pipe_fd);
+            fprintf(stderr, "Open file[Data.txt] failed\n");
+            return -1;
+        }
+
+        bytes_read = read(data_fd, buffer, PIPE_BUF);
+        buffer[bytes_read] = '\0';
+
+        //加密管道数据
+        for(int i=0;i<bytes_read;i++)
+        {
+            for(int j=0;j<strlen(key);j++) buffer[i] += key[j];            
+        }
+
+        while (bytes_read > 0)
+        {
+            res = write(pipe_fd, buffer, bytes_read);
+            if (res == -1)
+            {
+                fprintf(stderr, "Write error on pipe\n");
+                exit(EXIT_FAILURE);
+            }
+
+            bytes_sent += res;
+            bytes_read = read(data_fd, buffer, PIPE_BUF);
+            buffer[bytes_read] = '\0';
+        }
+
+        close(pipe_fd);
+        close(data_fd);
+    }
+    else
+        exit(EXIT_FAILURE);
+
+    printf("Process %d finished\n", getpid());
+    exit(EXIT_SUCCESS);
+}
+//解密管道数据
+int Pipe::de_pipe_name_client()
+{
+    char *key = "uos";
+    const char *fifo_name = "/tmp/my_fifo";
+    int pipe_fd = -1;
+    int data_fd = -1;
+    int res = 0;
+    int open_mode = O_RDONLY;
+    char buffer[PIPE_BUF + 1];
+    int bytes_read = 0;
+    int bytes_write = 0;
+
+    memset(buffer, '\0', sizeof(buffer));
+
+    printf("Process %d opening FIFO O_RDONLY\n", getpid());
+    pipe_fd = open(fifo_name, open_mode);
+    data_fd = open("/tmp/DataFormFIFO.txt", O_WRONLY | O_CREAT, 0644);
+
+    if (data_fd == -1)
+    {
+        fprintf(stderr, "Open file[DataFormFIFO.txt] failed\n");
+        close(pipe_fd);
+        return -1;
+    }
+
+    printf("Process %d result %d\n", getpid(), pipe_fd);
+    if (pipe_fd != -1)
+    {
+        do
+        {
+            res = read(pipe_fd, buffer, PIPE_BUF);
+            //解密管道数据
+            for(int i=0;i<res;i++) 
+                for(int j=0;j<strlen(key);j++)
+                    buffer[i] -= key[j];
+            bytes_write = write(data_fd, buffer, res);
+            bytes_read += res;
+        } while (res > 0);
+
+        close(pipe_fd);
+        close(data_fd);
+    }
+    else
+        exit(EXIT_FAILURE);
+
+    printf("Process %d finished, %d bytes read\n", getpid(), bytes_read);
     exit(EXIT_SUCCESS);
 }
