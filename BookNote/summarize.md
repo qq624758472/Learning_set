@@ -2,6 +2,12 @@
 
 [TOC]
 
+# ===================
+
+# 哲学
+
+​	佛教认为，没有任何人和神的精心策划，因缘和合的时候，一切就会出现，不需要任何神和鬼的干预。一切都是因缘的结果，一切都是自己掌控，来世的去向与境遇，都是自己创造的，不受任何鬼神的摆布，自己的未来自己决定，自己的命运自己创造。佛陀反反复复地讲，“我为汝说解脱法，解脱依己当精进。”佛陀从来没有自命为救世主，一切都靠自己。运气好不好、身体好不好，都是靠自己。
+
 
 
 # ===================
@@ -66,9 +72,1241 @@ systemctl get-default  //获取当前的默认target
 systemctl set-default multi-user.target
 设置当前的target,可选值有graphical.target,multi-user.target，multi_user.target就是开机不进入图形界面的多用户模式。
 
+## 6.多核和多处理器的区别：
+
+多核：每个cpu共用一套cache和mmu
+
+多处理器：每个cpu有自己的一套cache和mmu
+
+# ===================
+
+# 操作系统（李治军）
+
+课程地址:https://www.icourse163.org/learn/HIT-1002531008?tid=1450346461&from=study#/learn/content?type=detail&id=1214728532&cid=1218670721
+
 
 
 # ===================
+
+
+
+# X86汇编从实模式到保护模式
+
+
+
+Intel 8086 在实模式下可以访问 1MB 的内存空间，地址范围为 0x00000 到 0xFFFFF。
+
+出于各方面的考虑，计算机系统的设计者将这 1MB 的内存空间从物理上分为几个部分。
+8086 有 20 根地址线，但并非全都用来访问 DRAM，也就是内存条。事实上，这些地址
+线经过分配，大部分用于访问 DRAM，剩余的部分给了只读存储器 ROM 和外围的板卡.
+
+1.0x00000-0x9FFFF:DRAM(动态随机访问存储器):
+
+2.0xA0000-0xEFFFF:   分给外围设备
+
+3.0xF0000-0xFFFFF:ROM(只读存储器),占据内存顶端的64k空间. 固化了开机时要执行的指令
+
+
+0xB8000～0xBFFFF : 分给显卡的.
+
+8086加电或复位时,cs=0xffff,ip=0x0000,位于rom处,开始执行bios程序. 
+
+物理地址为0xFFFF0, 到最后结束也只有16个字节.所以一般为一个jmp指令.
+
+处理器取指令执行的自然顺序是从内存的低地址向高地址推进.
+
+
+
+# ===================
+
+
+
+# 深入linux内核架构
+
+## Linux进程管理子系统
+
+### 一、进程的表现形式
+
+#### 1.进程生命周期
+
+运行：该进程此刻正在执行。
+
+等待：进程能够运行，但没有得到许可，因为CPU分配给另一个进程。调度器可以在下一次
+任务切换时选择该进程。
+
+睡眠：进程正在睡眠无法运行，因为它在等待一个外部事件。调度器无法在下一次任务切换
+时选择该进程。
+
+![](/home/hao/my_work/Learning_set/tools_Lib/all_picture/note/1.jpg)
+
+
+
+#### 2.进程表示
+
+include/linux/sched.h中有结构体struct task_struct;表示了进程的所有信息。
+
+```c
+struct task_struct { 
+    volatile long state; /* -1表示不可运行，0表示可运行，>0表示停止 */ 
+    void *stack; 
+    atomic_t usage; 
+    unsigned long flags; /* 每进程标志，下文定义 */ 
+    unsigned long ptrace; 
+    int lock_depth; /* 大内核锁深度 */ 
+    int prio, static_prio, normal_prio; 
+    struct list_head run_list; 
+    const struct sched_class *sched_class; 
+    struct sched_entity se; 
+    unsigned short ioprio; 
+    unsigned long policy; 
+    cpumask_t cpus_allowed; 
+    unsigned int time_slice; 
+    #if defined(CONFIG_SCHEDSTATS) || defined(CONFIG_TASK_DELAY_ACCT) 
+    struct sched_info sched_info; 
+    #endif 
+    struct list_head tasks; 
+    /* 
+    * ptrace_list/ptrace_children链表是ptrace能够看到的当前进程的子进程列表。
+    */ 
+    struct list_head ptrace_children; 
+    struct list_head ptrace_list; 
+    struct mm_struct *mm, *active_mm; 
+    /* 进程状态 */ 
+    struct linux_binfmt *binfmt; 
+    long exit_state; 
+    int exit_code, exit_signal; 
+    int pdeath_signal; /* 在父进程终止时发送的信号 */ 
+    unsigned int personality; 
+    unsigned did_exec:1; 
+    pid_t pid; 
+    pid_t tgid; 
+    /* 
+    * 分别是指向（原）父进程、最年轻的子进程、年幼的兄弟进程、年长的兄弟进程的指针。
+    *（p->father可以替换为p->parent->pid）
+    */ 
+    struct task_struct *real_parent; /* 真正的父进程（在被调试的情况下） */ 
+    struct task_struct *parent; /* 父进程 */ 
+    /* 
+    * children/sibling链表外加当前调试的进程，构成了当前进程的所有子进程
+    */ 
+    struct list_head children; /* 子进程链表 */ 
+    struct list_head sibling; /* 连接到父进程的子进程链表 */ 
+    struct task_struct *group_leader; /* 线程组组长 */ 
+    /* PID与PID散列表的联系。 */ 
+    struct pid_link pids[PIDTYPE_MAX]; 
+    struct list_head thread_group; 
+    struct completion *vfork_done; /* 用于vfork() */ 
+    int __user *set_child_tid; /* CLONE_CHILD_SETTID */ 
+    int __user *clear_child_tid; /* CLONE_CHILD_CLEARTID */ 
+    unsigned long rt_priority; 
+    cputime_t utime, stime, utimescaled, stimescaled; 
+    unsigned long nvcsw, nivcsw; /* 上下文切换计数 */ 
+    struct timespec start_time; /* 单调时间 */ 
+    struct timespec real_start_time; /* 启动以来的时间 */ 
+    /* 内存管理器失效和页交换信息，这个有一点争论。它既可以看作是特定于内存管理器的，
+    也可以看作是特定于线程的 */ 
+    unsigned long min_flt, maj_flt; 
+    cputime_t it_prof_expires, it_virt_expires; 
+    unsigned long long it_sched_expires; 
+    struct list_head cpu_timers[3]; 
+    /* 进程身份凭据 */ 
+    uid_t uid,euid,suid,fsuid; 
+    gid_t gid,egid,sgid,fsgid; 
+    struct group_info *group_info; 
+    kernel_cap_t cap_effective, cap_inheritable, cap_permitted; 
+    unsigned keep_capabilities:1; 
+    struct user_struct *user; 
+    char comm[TASK_COMM_LEN]; /* 除去路径后的可执行文件名称
+     -用[gs]et_task_comm访问（其中用task_lock()锁定它）
+     -通常由flush_old_exec初始化 */ 
+    /* 文件系统信息 */ 
+    int link_count, total_link_count; 
+    /* ipc相关 */ 
+    struct sysv_sem sysvsem; 
+    /* 当前进程特定于CPU的状态信息 */ 
+    struct thread_struct thread; 
+    /* 文件系统信息 */ 
+    struct fs_struct *fs; 
+    /* 打开文件信息 */ 
+    struct files_struct *files; 
+    /* 命名空间 */ 
+    struct nsproxy *nsproxy; 
+    /* 信号处理程序 */ 
+    struct signal_struct *signal; 
+    struct sighand_struct *sighand; 
+    sigset_t blocked, real_blocked; 
+    sigset_t saved_sigmask; /* 用TIF_RESTORE_SIGMASK恢复 */ 
+    struct sigpending pending; 
+    unsigned long sas_ss_sp; 
+    size_t sas_ss_size; 
+    int (*notifier)(void *priv); 
+    void *notifier_data; 
+    sigset_t *notifier_mask; 
+    #ifdef CONFIG_SECURITY 
+    void *security; 
+    #endif 
+    /* 线程组跟踪 */ 
+    u32 parent_exec_id; 
+    u32 self_exec_id; 
+    /* 日志文件系统信息 */ 
+    void *journal_info; 
+    /* 虚拟内存状态 */ 
+    struct reclaim_state *reclaim_state; 
+    struct backing_dev_info *backing_dev_info; 
+    struct io_context *io_context; 
+    unsigned long ptrace_message; 
+    siginfo_t *last_siginfo; /* 由ptrace使用。*/ 
+    ... 
+};
+```
+
+
+
+进程限制：
+
+```sh
+RLIMIT_CPU #按毫秒计算的最大CPU时间
+RLIMIT_FSIZE #允许的最大文件长度
+RLIMIT_DATA #数据段的最大长度
+RLIMIT_STACK #（用户状态）栈的最大长度
+RLIMIT_CORE #内存转储文件的最大长度
+RLIMIT_RSS #常驻内存的最大尺寸。换句话说，进程使用页帧的最大数目。目前未使用
+RLIMIT_NPROC #与进程真正UID关联的用户可以拥有的进程的最大数目
+RLIMIT_NOFILE #打开文件的最大数目
+RLIMIT_MEMLOCK #不可换出页的最大数目
+RLIMIT_AS #进程占用的虚拟地址空间的最大尺寸
+RLIMIT_LOCKS #文件锁的最大数目
+RLIMIT_SIGPENDING #待决信号的最大数目
+RLIMIT_MSGQUEUE #信息队列的最大数目
+RLIMIT_NICE #非实时进程的优先级（nice level）
+RLIMIT_RTPRIO #最大的实时优先级
+```
+
+
+
+##### 命名空间：
+
+概念：就是c++命名空间的意思，隔离资源。
+
+创建：
+
+1.用fork或者clone系统调用创建新进程时，有特定的选项可以控制使用使用新命名空间或者使用父命名空间。
+
+2.unshare系统调用将进程的某些部分与父进程分离，包括命名空间。
+
+
+
+进程类中命名空间结构体：
+
+```c
+struct nsproxy {
+	atomic_t count;
+	struct uts_namespace *uts_ns;
+	struct ipc_namespace *ipc_ns;
+	struct mnt_namespace *mnt_ns;
+	struct pid_namespace *pid_ns;
+	struct net 	     *net_ns;
+};
+```
+
+* UTS命名空间：
+* ipc命名空间：
+* mnt命名空间：
+* pid命名空间：
+* net命名空间：
+
+
+
+##### 进程id号：
+
+​	UNIX进程总是会分配一个号码用于在其命名空间中唯一地标识它们。该号码被称作进程ID号，
+简称PID。用fork或clone产生的每个进程都由内核自动地分配了一个新的唯一的PID值。
+
+
+
+#### 3.进程的系统调用
+
+fork->sys_fork     }
+
+vfork->sys_vfork  }---->do_fork
+
+clone->sys_clone }
+
+```c
+//arch/x86/kernel/process_32.c 
+asmlinkage int sys_clone(struct pt_regs regs) 
+{ 
+	unsigned long clone_flags; 
+	unsigned long newsp; 
+	int __user *parent_tidptr, *child_tidptr; 
+	clone_flags = regs.ebx; 
+	newsp = regs.ecx; 
+	parent_tidptr = (int __user *)regs.edx; 
+	child_tidptr = (int __user *)regs.edi; 
+	if (!newsp) 
+		newsp = regs.esp; 
+	return do_fork(clone_flags, newsp, &regs, 0, parent_tidptr, child_tidptr); 
+}
+
+asmlinkage int sys_fork(long r10, long r11, long r12, long r13, long mof, long srp,struct pt_regs *regs)
+{
+    //SIGCHLD:子进程结束后，发送SIGCHLD信号给父进程。
+	return do_fork(SIGCHLD, rdusp(), regs, 0, NULL, NULL);
+}
+
+//kernel/fork.c 
+long do_fork(unsigned long clone_flags, 
+	unsigned long stack_start,
+	struct pt_regs *regs, 
+	unsigned long stack_size, 
+	int __user *parent_tidptr, 
+	int __user *child_tidptr)
+```
+
+* clone_flags是一个标志集合，用来指定控制复制过程的一些属性。最低字节指定了在子进程
+  终止时被发给父进程的信号号码。其余的高位字节保存了各种常数，下文会分别讨论。
+* stack_start是用户状态下栈的起始地址。
+* regs是一个指向寄存器集合的指针，其中以原始形式保存了调用参数。该参数使用的数据类
+  型是特定于体系结构的struct pt_regs，其中按照系统调用执行时寄存器在内核栈上的存储
+  顺序，保存了所有的寄存器（更详细的信息，请参考附录A）。
+* stack_size是用户状态下栈的大小。该参数通常是不必要的，设置为0
+* parent_tidptr和child_tidptr是指向用户空间中地址的两个指针，分别指向父子进程的
+  PID。NPTL（Native Posix Threads Library）库的线程实现需要这两个参数。我将在下文讨论
+  其语义。
+
+
+
+核心功能流程：
+
+1.检查标志
+
+2.dup_task_struct
+
+3.检查资源限制
+
+4.初始化task_struct
+
+5.sched_fork
+
+6.复制/共享进程的各个部分。
+
+* copy_semundo:
+* copy_files:
+* copy_fs:
+* copy_sighand:
+* copy_signal:
+* copy_mm:
+* copy_namespaces:
+* copy_thread:
+
+7.设置各个进程id，进程关系，等等。
+
+
+
+
+
+
+
+
+
+
+
+# ===================
+
+
+
+# Linux设备驱动程序
+
+## 1.最简单的字符设备驱动
+
+### 1.需要先创建设备节点
+
+```sh
+mknod /dev/xxx c 111 0
+```
+
+创建一个名字为xxx的字符设备， c表示字符设备，  主设备号是111， 此设备号是0。
+
+### 2. 驱动程序
+
+```c
+#include <linux/fs.h>
+#include <linux/init.h>
+#include <linux/module.h>
+
+static int first_drv_open(struct inode *inodep, struct file *filep)
+{
+    printk("open\n");
+    return 0;
+}
+
+static ssize_t first_drv_write(struct file *filep, const char __user *buf,size_t len, loff_t *ppos)
+{
+    printk("write\n");
+    return 0;
+}
+
+static const struct file_operations first_drv_file_operation = {
+    .owner = THIS_MODULE,
+    .open = first_drv_open,
+    .write = first_drv_write,
+};
+
+static int __init first_drv_init(void)
+{
+    register_chrdev(111,"first_drv", &first_drv_file_operation);
+    printk("first_drv_init\n");
+    return 0;
+}
+
+static void __exit first_drv_exit(void)
+{
+    //注册字符设备 主设备号是111.从设备号因为我们驱动程序没指定所以，默认是0.
+    unregister_chrdev(111,"first_drv_exit"); 
+    printk("first_drv_exit\n");
+}
+
+module_init(first_drv_init);
+module_exit(first_drv_exit);
+MODULE_LICENSE("GPL");
+```
+
+### 3. 应用程序，调用驱动程序
+
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main(void)
+{
+    char buf[10];
+    /* 以可读可写方式打开/dev/目录下的xxx设备,open的返回值是一个文件描述符 */
+    int fd = open("/dev/xxx", O_RDWR);    
+    if(fd < 0)        /* 文件描述符小于0表示打开文件失败 */
+    {   
+        printf("open /dev/xxx fail\n");
+        return -1; 
+    }   
+ 
+    /* 该文件中写入5个字节,写入的内容是buf中的前五个字节 */
+    write(fd, buf, 5); 
+    
+    return 0;
+}
+```
+
+### 4.测试效果
+
+测试效果需要使用sudo dmesg来查看. 如下图所示:![](/home/hao/my_work/Learning_set/tools_Lib/all_picture/LINUX设备驱动程序/1.png)
+
+## 2.
+
+
+
+# ===================
+
+# Linux内核设计的艺术
+
+intel8086系列的cpu可以分别在16位实模式和32位保护模式下运行。为了兼容intel将所有80x86系列cpu都设计为上电既进入16位实模式状态运行。并将cs值置为：0xffff    ip值置为：0x0000.这样cs:ip指向0xffff0
+
+Intel 8086 在16位实模式下可以访问 1MB 的内存空间，地址范围为 0x00000 到 0xFFFFF。
+
+16位实模式下，有20位地址总线，所有可以访问1mb的地址空间。
+
+出于各方面的考虑，计算机系统的设计者将这 1MB 的内存空间从物理上分为几个部分。
+8086 有 20 根地址线，但并非全都用来访问 DRAM，也就是内存条。事实上，这些地址
+线经过分配，大部分用于访问 DRAM，剩余的部分给了只读存储器 ROM 和外围的板卡.
+
+1.0x00000-0x9FFFF:DRAM(动态随机访问存储器):
+
+2.0xA0000-0xEFFFF:   分给外围设备
+
+3.0xF0000-0xFFFFF: ROM(只读存储器),占据内存顶端的64k空间. 固化了开机时要执行的指令
+
+
+0xB8000～0xBFFFF : 分给显卡的.
+
+8086加电或复位时,cs=0xffff,ip=0x0000,位于rom处,开始执行bios程序. 
+
+物理地址为0xFFFF0, 到最后结束也只有16个字节.所以一般为一个jmp指令.
+
+处理器取指令执行的自然顺序是从内存的低地址向高地址推进.
+
+
+
+
+
+## 1.linux0.11启动流程分析
+
+### 1.1 初始化阶段/boot/中的汇编代码
+
+1.bios入口地址为0xffff0，bios的第一条指令就设计在这个位置上。
+
+2.bios检测显卡内存，并在内存中建立中断向量表和中断服务程序。
+
+中断向量表：0x00000~0x003ff，1kb的内存空间。并在紧挨着他的位置用256字节构建bios数据区：0x00400~0x004ff，在大约56kb以后的位置(0x0x0e2ce)，加载了8kb左右的与中断向量表相对应的中断服务程序。
+
+3.bios调用0x19中断服务程序(启动加载服务程序)将启动盘的第一个扇区512b读入到内存0x7c00处。这个512b的程序就是启动扇区。就是linux0.11代码中bootsect.s汇编而成的。
+
+4.在bootsect.s中,start.执行将0x7c00处的代码(也就是自己)复制到0x9000处.   然后跳转到新地址中的go标记继续执行.
+
+```asm
+; 刘十三
+; 1.将要加载的setup程序的扇区数(SETUPLEN),和被加载到的位置(SETUPSEG)
+; 启动扇区被bios加载的位置(BOOTSEG),和将要移动到的新位置(INITSEG)
+; 内核被加载的位置(SYSSEG),内核的末尾位置(ENDSEG)
+; 根文件系统设备号(ROOT_DEV)
+entry start
+start:
+	mov	ax,#BOOTSEG
+	mov	ds,ax
+	mov	ax,#INITSEG
+	mov	es,ax
+	mov	cx,#256
+	sub	si,si
+	sub	di,di
+	rep
+	movw				
+	; 从start到这行, bootsect将自身从内存0x7c00处拷贝到0x9000处.
+```
+
+5.初始化栈寄存器，就可使用push和pop操作， 压栈方向从高地址到低地址。
+
+```assembly
+;  刘十三:
+;  2.对DS(数据段寄存器) ES(附加段寄存器) SS(栈基址寄存器) 设置成0x9000, 并将sp(栈顶指针)指向0xff00处.
+;  对这几个寄存器的设置,就可以在后边使用push和pop操作。
+go:	mov	ax,cs
+	mov	ds,ax
+	mov	es,ax
+;  put stack at 0x9ff00.
+	mov	ss,ax
+	mov	sp,#0xFF00		;  arbitrary value >>512
+```
+
+6.调用0x13中断，将软盘从第2扇区开始的4个扇区（2~5扇区），既setup.s对应的程序加载到0x90200处，紧挨着启动扇区。
+
+```assembly
+load_setup:
+	mov	dx,#0x0000		;  drive 0, head 0
+	mov	cx,#0x0002		;  sector 2, track 0
+	mov	bx,#0x0200		;  address = 512, in INITSEG
+	mov	ax,#0x0200+SETUPLEN	;  service 2, nr of sectors
+	int	0x13			;  read it
+	jnc	ok_load_setup		;  ok - continue
+	mov	dx,#0x0000
+	mov	ax,#0x0000		;  reset the diskette
+	int	0x13
+	j	load_setup
+```
+
+7.调用0x13中断，将system模块加载到内存。
+
+​	system模块有240个扇区，然后跳转到0x90200处执行。
+
+8.setup.s开始运行，提取内核运行需要的机器系统数据。
+
+从0x41和0x46的中断向量函数中获取硬盘参数表1和硬盘参数表2并分别放在0x9000:0x0080和0x9000:0x0090处。  大约占用内存0x90000~0x901fc. 覆盖了原来的bootsect程序，只剩余2字节未被覆盖。 后续main函数执行时，需要用到这里边的机器系统数据。
+
+9.
+
+
+
+未完待续，汇编太多，看不下去了。
+
+
+
+### 1.2 从main到怠速状态
+
+
+
+### 系统调用
+
+1.系统调用号:  对应相应的系统调用。
+
+
+
+# ===================
+
+
+
+# 嵌入式开发（JZ2440开发版）
+
+教程地址：https://www.bilibili.com/video/BV1EW411L7RE?p=13
+
+1.线的链接和驱动的安装
+
+2.eop烧写裸版
+
+
+
+
+
+# ===================
+
+
+
+# 鸿蒙app开发总结
+
+鸿蒙官方开发文档:https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ability-page-lifecycle-0000000000029840
+
+## 1.鸿蒙app开发环境搭建
+
+
+
+## 2.Ability
+
+ Ability是应用所具备能力的抽象，也是应用程序的重要组成部分。一个应用可以具备多种能力（即可以包含多个Ability），HarmonyOS支持应用以Ability为单位进行部署。 
+
+FA（Feature Ability）： FA支持[Page Ability](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ability-page-concept-0000000000033573)
+
+​	Page模板是FA唯一支持的模板，用于提供与用户交互的能力。一个Page实例可以包含一组相关页面，每个页面用一个AbilitySlice实例表示。 
+
+PA（Particle Ability）： PA支持[Service Ability](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ability-service-concept-0000000000044457)和[Data Ability](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ability-data-concept-0000000000043058) 
+
+- Service模板：用于提供后台运行任务的能力。
+- Data模板：用于对外部提供统一的数据访问抽象。
+
+### 2.1 Page Ability
+
+
+
+# ===================
+
+
+
+# Golang从入门到进阶实战
+
+## 1.基本语法(基本数据)
+
+### 1.1变量定义
+
+#### 1.1.1 标准格式 
+
+Go 量声明格式为： 
+
+var  	变量名	   变量类型 
+
+变量声明 关键字 var 开头，后置变量类型，行尾无须分号。
+
+```go
+ var a 
+ var b string 
+ var c [] float32 
+ var d func() bool 
+ var e struct{ 
+ x int 
+ }
+```
+
+#### 1.1.2 批量格式 
+
+```go
+var ( 
+a int 
+b string 
+c [] float32 
+d func () bool 
+e struct { 
+x int 
+}
+)
+```
+
+
+### 1.2变量赋值
+
+#### 1.2.1 标准格式
+
+var 变量名类型＝表达式
+例如：游戏中，玩家的血量初始值为 100 。可以这样写：
+
+```go
+var hp int = 100
+```
+
+#### 1.2.2 编译器推导类型的格式
+
+var hp = 100 
+等号右边的部分在编译原理里被称做“右值”。
+下面是编译器根据右值推导变量类型完成初始化的例子
+
+```go
+ var attack = 40 
+ 
+ var defence = 20 
+ 
+ var damageRate float32 = 0 . 17 
+ 
+ var damage= float32 (attack-defence) * damageRate 
+ 
+ fmt.Println(damage)
+```
+
+#### 1.2.3 短变量声明并初始化
+
+var 的变量声 明还有 种更为精简的写法，例如： 
+
+hp := 100  
+
+这是 Go 语言的推导声明写法，编译器会自动根据右值类型推断出左值的对应类型。
+
+#### 1.2.4 匿名变量
+
+在使用多重赋值时，如果不需要在左值中接收变量 可以使用匿名变量。 
+
+```go
+ func GetData() (int ，int) { 
+ 	return 100 , 200 
+ } 
+ 
+ a , _: = GetData() 
+ 
+ _, b : = GetData() 
+ 
+ fmt . Println(a , b)
+```
+
+### 1.3数据类型
+
+Go 语言中有丰富的数据类型，除了基本的整型、浮点型、布尔型 字符串外，还有 
+
+切片、结构体 函数、 map 通道（ channel ）等。 Go 语言的基本类型和其他语言大同小异，切片类型有着指针的便利性，但 比指针更为安全 很多高级语言都配有切片进行安全和高效率的内 存操作。 
+
+结构体是 Go 语言基 的复杂类型之一，后面会用单独的一章进行讲解。 
+
+函数也是 Go 语言的 种数据类型，可 对函数类型 变量进行赋值和获取，函数特 
+
+性较多，将被放在独立章节讲解 。
+
+map和切片是开发中常见的数据容器类型。
+
+通道与并发息息相关 读者会在第 章了解通道的细节。
+
+1. 整型。
+2. 浮点型。
+3. 布尔
+4. 字符串
+5. 字符
+6. 切片-能动态分配的空间
+
+切片是一个拥有相同类型元素的可变长度的序列 切片的声明方式如下： T是切片元素类型，可以使整型，浮点，切片，map，函数等。
+
+```go
+var name [] T 
+```
+
+```go
+ a := make([]int , 3) 
+ 
+ a [O] = 1 
+ a [1] = 2 
+ a [3] = 3
+```
+
+解释：1.创建类型为Int，容量为3的切片。
+
+2. 给3个切片赋值。 
+
+### 1.4数据类型转换
+
+Go 语言使用类型前置加括号的方式进行类型转换 一般格式如下 ：
+
+T（表达式）
+
+代表要转换的类型。表达式包括变量、复杂算子和函数返回值等。
+
+注意：类型转换 ，需要考虑两种类型的关系和范围，是否会发生数值截断等 。
+
+
+
+### 1.5指针
+
+指针概念在 Go 语言中被拆分为两个核 概念 
+
+1.类型指针，允许对这个指针类型的数据进行修改。传递数据使用指针，而无须拷贝数据。类型指针不能进行偏移和运算。 
+
+2.切片，由指向起始元素的原始指针、元素数量和容量组成。
+
+ptr : = &v   
+
+v的类型为 T, 
+
+其中V代表被取地址的变量，被取地址V使用ptr变量进行接收， prt的类型就为"*T"， 
+
+称做T的指针类型,"*"代表指针。
+
+#### 1.5.1使用指针变量获取命令行的输入信息
+
+#### 1.5.2创建指针的另外一种方法new()
+
+	Go 还提供了另外 种方法来创建指针变 ，格式如下： 
+
+new(类型 )
+
+一般这样写： 
+
+str := new(string)  
+
+*str = "ninja"  
+
+fmt.Println(*str)  
+
+new （）函数可以创建一个对应类型的指针，创建过程会分配内存。被创建的指针指向的值为默认值。
+
+
+
+### 1.6变量的声明周期
+
+#### 1.6.1 栈空间
+
+#### 1.6.2 堆空间
+
+
+
+### 1.7 字符串
+
+#### 1.7.1 保存格式
+
+字符串一般utf-8保存， 一个汉字占用3个字符。
+
+#### 1.7.2 遍历字符
+
+以ascii打印字符。
+
+```go
+theme ：＝"狙击 start"
+for i := O; i < len(theme) ; i++ { 
+    fmt . Printf ("ascii %c %d\n ”， theme [i] , theme[i])
+}
+```
+
+打印汉字的时候就乱码。
+
+以unicode打印字符。 
+
+```go
+theme := "狙击 start"
+
+for _,s := range theme{
+
+	fmt.Printf("Unicode: %c %d\n",s,s)
+
+} 
+```
+
+就会以正常汉字打印了。
+
+#### 1.7.3 **总结：** 
+
+**• ASCII 字符串遍历直接使用下标** 
+
+**• Unicode 字符串遍历用 for range** 
+
+#### 1.7.4 字符串拼接
+
+```go
+hammer "吃我一锤"
+sickle "死吧”
+//声明字节缓
+var stringBuilder bytes.Buffer 
+//把字符串写入缓冲
+stringBuilder.WriteString(hammer) 
+stringBuilder.WriteString(sickle) 
+//将缓冲 字符串形式输出
+fmt.Println(stringBuilder.String())
+```
+
+#### 1.7.5 格式化
+
+预留
+
+#### 1.7.6 base64 ini文件读取写入操作等
+
+#### 1.7.7 别名
+
+
+
+## **2.容器：存储和组织数据的方式**
+
+本章将以实用为目的，详细介绍数组、切片、映射，以及列表的增加、删除、修改和遍 
+
+历的使用方法
+
+### 2.1 数组-固定大小的连续空间
+
+#### 2.1.1 声明: 
+
+*var 数组变量名［元素数量］T*
+
+· 数组变量名 数组声明及使用时的变量名。 
+
+· 元素数量 数组的元素数量。可以是一个表达式，但最终通过编译期计算的结果必须是整型数值。也就是说，元素数量不能含有到运行时才能确认大小的数值 
+
+· T 可以是任意基本类型，包括 为数组本身。但类型为数组本身时，可以实现多维数组。
+
+```go
+var team [3]string  //将 team 明为包含3个元素的字符串数组。
+```
+
+#### 2.1.2 **初始化**
+
+定义时初始化：
+
+```go
+var team [3]string{"hammer","soldier","mum"}
+```
+
+遍历初始化：
+
+```go
+var team [3]string
+team[0] = "hammer"
+team[1] = "soldier" 
+team[2] = "mum" 
+
+for k,v := range team { 
+	fmt.Println(k , v) 
+}
+```
+
+### 2.2 切片(slice)-动态分配大小的连续空间
+
+### 2.3 映射(map)-建立食物关联的容器（无序的）
+
+1. 一般用法
+
+```go
+//使用时， 需要手动使用 make创建。如果不创建使用map类型，会触发岩机错误。
+scene := make(map[string]int)  
+//向map中加入映射关系，写法和数组一样，key可以是除函数外的任意类型。
+scene ["route"] = 66 
+//查找map中的值。
+fmt.Println(scene["route"])
+//查找一个不存在的值，会返回ValueType的默认值
+v := scene["route2"] 
+fmt.Println(v)
+```
+
+2. 判断值是否在map中有固定用法：
+
+```go
+v,ok := scene ["route"]
+```
+
+在默认获取键值的基础上，多取了一个变量 ok 可以判断键 route 是否存在于 map 中。
+
+3. 声明时填充内容的方式：
+
+```go
+m := map[string]string{
+	"W":"forward", 
+	"A":"left", 
+	"D":"right", 
+	"S":"backward",
+}
+```
+
+这种情况可以不是用make。 
+
+4. 遍历map。  
+
+可是使用for range 
+
+
+
+5. 需要在多进程或者多线程中使用的map——sync.Map
+
+### 2.4 列表（list)-可以快速增删的非连续性空间的容器
+
+1. 双链表支持从队列前方或后方插入元素，分 对应的方法是 PushFront和PushBack。
+2. 初始化列表（定义）
+
+通过container/list 包的New方法初始化list 
+
+```go
+变量名 := list.New()
+```
+
+通过声明初始化list 
+
+```go
+var 变量名 list.List
+```
+
+3. 添加元素
+
+```go
+//创建一个列表示例
+l := list.New()
+//将fist字符串插入到列表尾部，此时列表是空的，插入后只有一个元素。
+l.PushBack("fist")
+//将67放入列表，67将被放在fist的前面。
+l.PushFront(67)
+```
+
+4. 还有很多方法后边研究。
+
+## 3.流程控制
+
+
+
+## 4.函数
+
+### 4.1 声明形式
+
+```go
+func 函数名（参数列表）（返回参数列表）｛
+	函数体
+}
+
+func foo ( a int, b string ) int
+//参数类型简写， 返回int类型
+func add (a,b int ）int { 
+	return a + b 
+}
+
+//返回多个值
+func swap(x, y string) (string, string) {
+   return y, x
+}        
+```
+
+### 4.2 函数变量
+
+Go 语言中， 函数也是一种类型，可以和其他类型一样被保存在变量中。下面的代码定义了一个函数变量f,并将一个个函数名 fire()赋给函数变量f，这样调用函数变量f时，实际调用的就是fire()函数，代码如下：
+
+```go
+package main 
+
+import (
+	"fmt"
+)
+
+func fire() { 
+	fmt.Println("fire") 
+} 
+
+func main() { 
+	var f func() 
+	f = fire 
+	f () 
+}
+```
+
+### 4.3 匿名函数
+
+定义: 匿名函数就是没有名字的普通函数定义. 
+
+```go
+func (参数列表) (返回参数列表){
+	函数体
+}
+```
+
+4.3.1 在定义时直接调用匿名函数
+
+```go
+func(data init) { 
+	fmt.Println (”hello”, data) 
+} (100)
+```
+
+4.3.2 将匿名函数赋值给变量
+
+```go
+//将匿名函数体保存到f()中
+f := func(data int){
+    fmt.Println("hello",data)
+}
+//使用f()调用
+f(100)
+```
+
+4.3.3 匿名函数作为回调函数
+
+```go
+//对切片进行遍历操作,遍历中访问每个元素的操作使用匿名函数来实现
+
+//遍历切片的每个元素,通过给定函数进行元素访问
+func visit(list []int, f func(int)){
+    for _,v := range list{
+        f(v)
+    }
+}
+
+func main() {
+    //使用匿名函数打印切片内容
+    visit([]int{1,2,3,4}, func(v int){
+        fmt.Println(v)
+    })
+}
+```
+
+4.3.4 使用匿名函数实现操作封装
+
+
+
+### 5.函数类型实现接口
+
+
+
+### 6.闭包
+
+闭包＝函数＋引用环境
+
+### 7.可变参数
+
+```go
+//v 为可变参数变量, 类型为[]T, 也就是拥有多个T元素的T类型切片.
+//T为可变参数类型,当T为interface{}时,传入的可以是任意类型.
+func 函数名 (固定参数列表, v ... T) (返回参数列表){
+    函数体
+}
+```
+
+7.1 所有参数都是可变参数:
+
+```go
+//打印函数定义如下:
+func Println(a ... interface{}) (n int, err error){
+    //略
+}
+
+//调用时,参数可以是任意类型.
+fmt.Println(5,"hello". &struct{a int}{1}, true)
+```
+
+7.2 部分参数为可变参数
+
+```go
+func Printf(format string, a ...interface{}) (n int, err error){
+    //略
+}
+
+//调用时,第一个参数必须为string
+fmt.Printf("pure string\n")
+fmt.Printf("value: %v %f\n",true, math.Pi)
+```
+
+
+
+### 8.延迟执行语句
+
+​	Go 言的 defe 语句会将其后面跟随的语句进行延迟处理。在 defer 归属的函数即将返回时，将延迟处理的语句按 defer 的逆序进行执行，也就是说，先被 defer 的语句最后被执行，最后被 defer 的语旬，最先被执行。
+
+（内心独白：好鸡肋的作用，按c语言编程习惯，这个就是个无用的东西．）
+
+8.1使用延迟语句在函数退出时释放资源.
+
+### 9.处理运行时发生的错误
+
+### 10.宕机(panic)
+
+10.1 手动触发宕机
+
+```go
+func main(){
+    panic("crash")
+}
+//代码运行崩溃并输出如下:
+panci: crash
+goroutine 1 [running]:
+main.main()
+main.go:5 +0x6b
+```
+
+10.2 在运行依赖的必备资源时主动触发宕机
+
+10.3 在宕机时触发延迟执行语句
+
+```go
+func main(){
+    defer fmt.Println("宕机后要做的事情1")
+    defer fmt.Println("宕机后要做的事情2")
+    panic("宕机")
+}
+```
+
+### 11.宕机恢复
+
+
+
+
+
+
+
+## 5.结构体
+
+定义: 一个复合类型.  没有类等面向对象的概念.
+
+```go
+type 类型名 struct{
+    字段1   字段1的类型
+    字段2   字段2的类型
+    ...
+}
+```
+
+#### 5.1 实例化结构体
+
+```go
+var test T
+```
+
+T为结构体类型.  test为结构体的实例.
+
+5.1.1 创建指针类型的结构体
+
+
+
+
+
+# ===================
+
+# 系统调用
+
+## 1.Linux的系统调用
+
+​	对于现代操作系统，系统调用是一种内核与用户空间通讯的普遍手段，Linux系统也不例外。
+
+​	但是Linux系统的系统调用相比很多Unix和windows等系统具有一些独特之处，无处不体现出Linux的设计精髓——简洁和高效。
+​	Linux系统调用很多地方继承了Unix的系统调用（但不是全部），但Linux相比传统Unix的系统调用做了很多扬弃，它省去了许多Unix系统冗余的系统调用，仅仅保留了最基本和最有用的系统调用，所以Linux全部系统调用只有400个左右（而有些操作系统系统调用多达1000个以上）。
+​	这些系统调用按照功能逻辑大致可分为“进程控制”、“文件系统控制”、“系统控制”、“存储管理”、“网络管理”、“socket控制”、“用户管理”、“进程间通信”等几类，详细情况可参阅文章系统调用列表
+如果你想详细看看系统调用的说明，可以使用man 2 syscalls 命令查看，或干脆到 <内核源码目录>/include/asm-i386/unistd.h源文件中找到它们的源本。
+
+## 2.系统调用的功能：
+
+* 控制硬件——系统调用往往作为硬件资源和用户空间的抽象接口，比如读写文件时用到的write/read调用。
+* 设置系统状态或读取内核数据——因为系统调用是用户空间和内核的唯一通讯手段，所以用户设置系统状态，比如开/关某项内核服务（设置某个内核变量），或读取内核数据都必须通过系统调用。比如getpgid、getpriority、setpriority、sethostname
+* 进程管理——一系统调用接口是用来保证系统中进程能以多任务在虚拟内存环境下得以运行。比如 fork、clone、execve、exit等
+
+## 3.系统调用的实现
+
+
+
+
+
+# ===================
+
+
+
+
+
+# 网络子系统
+
+<img src="/home/hao/my_work/Learning_set/tools_Lib/all_picture/网络子系统/1.png"  />
+
+
+
+
+
+# ===================
+
+
 
 # Linux系统层次结构
 
@@ -1068,7 +2306,7 @@ X86使用的qemu和arm不同，x86使用的是qemu-system-x86_64
 
 ### 3.龙芯(Loogson)
 
-因为QEMU不能虚拟出龙芯架构，也暂时没有龙芯机器，所以暂时没有调试方案，后期有龙芯机器可参考X86调试方法来调试龙芯机器。
+暂时没有龙芯机器，所以暂时没有调试方案，后期有龙芯机器可参考X86调试方法来调试龙芯机器。
 
 ## 二、其他调试方法
 
@@ -1279,96 +2517,53 @@ bytes  bytes   bytes    secs.    10^6bits/sec
 
 # ===================
 
-# 
+# UOS上使用KVM安装一个linux系统
 
-# LINUX设备驱动程序
+## 1.KVM安装虚拟机的使用
 
-## 1.最简单的字符设备驱动
+### 一、安装
 
-### 1.需要先创建设备节点
+安装命令：
 
-```sh
-mknod /dev/xxx c 111 0
+```shell
+sudo apt -y install libvirt0 libvirt-daemon qemu virt-manager bridge-utils libvirt-clients python-libvirt qemu-efi uml-utilities virtinst qemu-system
 ```
 
-创建一个名字为xxx的字符设备， c表示字符设备，  主设备号是111， 此设备号是0。
+### 二、打开
 
-### 2. 驱动程序
+![](../tools_Lib/all_picture/UOS上KVM的使用/1.png)
 
-```c
-#include <linux/fs.h>
-#include <linux/init.h>
-#include <linux/module.h>
+### 三、网络设置
 
-static int first_drv_open(struct inode *inodep, struct file *filep)
-{
-    printk("open\n");
-    return 0;
-}
+编辑->连接详情->虚拟网络
 
-static ssize_t first_drv_write(struct file *filep, const char __user *buf,size_t len, loff_t *ppos)
-{
-    printk("write\n");
-    return 0;
-}
+![](../tools_Lib/all_picture/UOS上KVM的使用/2.png)default 是KVM安装时默认创建的虚拟网络
 
-static const struct file_operations first_drv_file_operation = {
-    .owner = THIS_MODULE,
-    .open = first_drv_open,
-    .write = first_drv_write,
-};
+![](../tools_Lib/all_picture/UOS上KVM的使用/3.png)
 
-static int __init first_drv_init(void)
-{
-    register_chrdev(111,"first_drv", &first_drv_file_operation);
-    printk("first_drv_init\n");
-    return 0;
-}
+![4](../tools_Lib/all_picture/UOS上KVM的使用/4.png)
 
-static void __exit first_drv_exit(void)
-{
-    //注册字符设备 主设备号是111.从设备号因为我们驱动程序没指定所以，默认是0.
-    unregister_chrdev(111,"first_drv_exit"); 
-    printk("first_drv_exit\n");
-}
+![5](../tools_Lib/all_picture/UOS上KVM的使用/5.png)
 
-module_init(first_drv_init);
-module_exit(first_drv_exit);
-MODULE_LICENSE("GPL");
-```
+![6](../tools_Lib/all_picture/UOS上KVM的使用/6.png)
 
-### 3. 应用程序，调用驱动程序
+![7](../tools_Lib/all_picture/UOS上KVM的使用/7.png)
 
-```c
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
+![8](../tools_Lib/all_picture/UOS上KVM的使用/8.png)
 
-int main(void)
-{
-    char buf[10];
-    /* 以可读可写方式打开/dev/目录下的xxx设备,open的返回值是一个文件描述符 */
-    int fd = open("/dev/xxx", O_RDWR);    
-    if(fd < 0)        /* 文件描述符小于0表示打开文件失败 */
-    {   
-        printf("open /dev/xxx fail\n");
-        return -1; 
-    }   
- 
-    /* 该文件中写入5个字节,写入的内容是buf中的前五个字节 */
-    write(fd, buf, 5); 
-    
-    return 0;
-}
-```
+在步骤4中的网络模式：
 
-### 4.测试效果
+* 隔离的虚拟网络->Host Only：
 
-测试效果需要使用sudo dmesg来查看. 如下图所示:![](../tools_Lib/all_picture/LINUX设备驱动程序/1.png)
+* 转发到物理网络：
+  * 目的：默认即可，通过本主机网卡转发
+  * 模式：NAT、路由、Open
 
-## 2.
+* SR-IOV ：技术是一种基于硬件的虚拟化解决方案，可提高性能和可伸缩性
+
+### 四、安装虚拟机
+
+新建->加载iso镜像文件->分配资源。 等，和vm差不多，不过多介绍。
 
 
 
@@ -2510,6 +3705,10 @@ void init_mouse_cursor8(char *mouse, char bc)
 ### 5.GDT和IDT初始化.
 
 有分段,分页和中断的概念,自己百度吧.
+
+![img](../tools_Lib/all_picture/内核笔记/77.png)
+
+
 
 **GDT**(全局段号记录表):
 
@@ -4150,7 +5349,7 @@ RUN?=docker run --rm \
 
 # ===================
 
-# git
+# Git
 
 ## 前提
 
@@ -4291,6 +5490,79 @@ git checkout 分支名
 ```
 
 ### 三、更新、修改与提交代码
+
+
+
+
+
+### 四、fork别人的仓库，并创建自己分支
+
+1.下载代码
+
+```sh
+git clone [仓库url] 
+```
+
+2.创建自己分支
+
+创建自己的分支branch可以灵活的编辑、修改代码，同时不会破坏原来的master分支。
+
+```shell
+git branch [your branch]
+git checkout [your branch] #切换到自己的分支 
+#也可以修改本地分支的名称
+git branch -m [old_name] [new_name]
+```
+
+3.添加自己的远程仓库地址
+
+url表示远程仓库的地址，有两种url可以选择：
+git@github.com:facebookresearch/maskrcnn-benchmark.git (配置好本地秘钥后可以直接push)
+https://github.com/facebookresearch/maskrcnn-benchmark.git (每次push需要输入账号和密码)
+shortname可以是远程url的名称,默认是origin,可以自己定义名称
+
+```sh
+git remote add upstream "git 地址"
+```
+
+4.给自己修改提交
+
+```sh
+git add -u #-u表示只增加文件修改，不添加新创建的文件
+git commit -m "本次提交的描述"
+```
+
+5.推送到自己的仓库
+
+```sh
+git remote -v # 查看远程link
+git push [自己的仓库url名] [分支名] #例如git push origin master 或者git push [my_repo_url] new_branch
+```
+
+6.推送到官方仓库
+
+```sh
+#如果没有官方的url地址，需要增加上游地址，这里命名为upstream
+git remote add upstream git@github.com:facebookresearch/maskrcnn-benchmark.git
+# 合并官方仓库分支和本地自己修改的分支
+git fetch origin
+git merge origin/master
+# 推送到官方仓库master分支
+git push upstream master 
+```
+
+7.与上游保持一致
+
+```sh
+# 获取上游更新
+git fetch upstream
+git checkout master
+# merge
+git merge upstream/master
+
+# 推送到自己的仓库
+git push origin master
+```
 
 
 
