@@ -328,3 +328,25 @@ nr = (clone_flags & CLONE_NEWPID) ?
 
 
 
+##### 启动新程序：
+
+![](../tools_Lib/all_picture/内核笔记/78.png)
+
+```c
+//kernel/exec.c 
+int do_execve(char * filename, 
+char __user *__user *argv, 
+char __user *__user *envp, 
+struct pt_regs * regs)
+```
+
+
+
+##### 退出程序：
+
+进程必须用exit系统调用终止。这使得内核有机会将该进程使用的资源释放回系统。
+
+该调用的入口点是sys_exit函数，需要一个错误码作为其参数，以便退出进程。
+
+其定义是体系结构无关的，见kernel/exit.c。我们对其实现没什么兴趣，因为它很快将工作委托给do_exit。
+简而言之，该函数的实现就是将各个引用计数器减1，如果引用计数器归0而没有进程再使用对应的结构，那么将相应的内存区域返还给内存管理模块。
