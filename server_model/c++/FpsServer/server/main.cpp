@@ -34,5 +34,5 @@ int main(int argc, char *argv[])
 #endif
     MyDB db;
     db.initDb("127.0.0.1","root","000000","test");
-    db.execSql("select * from test");
+    db.execSql("select * from player");
 }

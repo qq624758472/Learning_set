@@ -43,13 +43,12 @@ bool MyDB::execSql(string sql)
         result = mysql_use_result(conn);
         if (result)
         {
-            int num_fields = mysql_num_fields(result);
+            int num_fields = mysql_num_fields(result);//
             int num_rows = mysql_field_count(conn);
             for (int i = 0; i < num_rows; i++)
             {
                 row = mysql_fetch_row(result);
-                if (row < 0)
-                    break;
+                if (row < 0 || row ==NULL) break;
                 for (int j = 0; j < num_fields; j++)
                 {
                     cout << row[j] << "\t";

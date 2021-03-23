@@ -2,7 +2,7 @@ CC=g++
 prom = main
 deps = ServerConnect.h MyDB.h
 obj = main.o ServerConnect.o MyDB.o
-ARG := -lmysqlclient
+ARG := -lmysqlclient -g
 
 $(prom): $(obj)
 	$(CC) -o $(prom) $(obj) $(ARG)
