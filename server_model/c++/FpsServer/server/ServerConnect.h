@@ -1,4 +1,7 @@
 
+#ifndef _SERVERCONNECT_H_
+#define _SERVERCONNECT_H_
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +20,8 @@
 using namespace std;
 
 
+#define MAXPEOPLE 10
+
 //该结构体保存的位置。
 typedef struct _playerLocation
 {
@@ -25,7 +30,7 @@ typedef struct _playerLocation
 }playerLocation;
 
 
-ClientInfo[];
+
 
 class ServerConnect
 {
@@ -44,3 +49,4 @@ public:
     int max_fd(int a[], int n);
 };
 
+#endif
