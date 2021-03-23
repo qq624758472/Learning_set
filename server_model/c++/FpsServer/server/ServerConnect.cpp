@@ -17,6 +17,8 @@
 #include "ServerConnect.h"
 using namespace std;
 
+extern _playerLocation ClientInfo[MAXPEOPLE];
+
 ServerConnect::ServerConnect()
 {
 }

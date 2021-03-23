@@ -14,12 +14,25 @@
 #include <sys/select.h>
 #include <pthread.h>
 #include "ServerConnect.h"
+#include "MyDB.h"
 using namespace std;
+
+
+_playerLocation ClientInfo[MAXPEOPLE];
 
 int main(int argc, char *argv[])
 {
+    //init
+    memset(&ClientInfo,0,sizeof(ClientInfo));
+
+
+#if 0
     ServerConnect serverConnect;
     serverConnect.port = 4399;
     serverConnect.N = 4;
     serverConnect.ServerSocketInit();
+#endif
+    MyDB db;
+    db.initDb("127.0.0.1","root","000000","test");
+    db.execSql("select * from test");
 }
