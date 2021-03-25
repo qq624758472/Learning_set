@@ -367,7 +367,7 @@ struct pt_regs * regs)
 
 完全公平调度器只考虑进程的等待时间，即进程在就绪队列（run-queue）中已经等待了多长时间。对CPU时间需求最严格的进程被调度执行。
 
-![img](/home/hao/my_work/Learning_set/BookNote/pic/1.png)
+![img](./pic/1.png)
 
 
 
@@ -385,7 +385,7 @@ struct pt_regs * regs)
 
 程序主动放弃cpu。					}
 
-![](/home/hao/my_work/Learning_set/BookNote/pic/2.png)
+![](./pic/2.png)
 
 调度器类用来进行选择下来是哪一个进程执行。（根据调度策略来决定：完全公平调度、实时调度、空闲时调度空闲进程）
 
