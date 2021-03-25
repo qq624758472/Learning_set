@@ -24,10 +24,10 @@
             ]
         },
         {
-            "name": "g++ - 生成和调试活动文件",
+            "name": "FpsServer DEBUG",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/server_model/c++/FpsServer/server/main",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
