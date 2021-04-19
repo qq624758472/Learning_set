@@ -25,7 +25,7 @@ void init_pic(void)
 }
 
 void inthandler21(int *esp)
-/* PS/2キーボードからの割り込み */
+/* PS/2来自??的中断 */
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
 	boxfill8(binfo->vram, binfo->scrnx, COL8_000000, 0, 0, 32 * 8 - 1, 15);
