@@ -13,3 +13,10 @@ Linux0.12内核代码中文注释 + 在高版本GCC 5.4.0 + Ubuntu 16.04
 运行环境下载地址:
 http://oldlinux.org/Linux.old/bochs/linux-0.12-080324.zip
 
+
+
+运行命令:
+qemu-system-i386 -fda xxx.img   
+表示文件当做镜像
+qemu-system-i386 -hda xxx.img
+表示一个软盘镜像
