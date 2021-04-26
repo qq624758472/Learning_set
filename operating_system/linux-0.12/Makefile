@@ -44,7 +44,7 @@ Image: boot/bootsect boot/setup tools/system
 	@tools/build.sh boot/bootsect boot/setup tools/kernel Kernel_Image $(ROOT_DEV) $(SWAP_DEV)
 	@rm system.tmp
 	@rm tools/kernel -f
-	@cp Kernel_Image ../linux-0.12-080324
+	@mv Kernel_Image ./linux-0.12-080324
 	@sync
 
 boot/bootsect: boot/bootsect.S
