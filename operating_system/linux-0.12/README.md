@@ -20,3 +20,6 @@ qemu-system-i386 -fda xxx.img
 表示文件当做镜像
 qemu-system-i386 -hda xxx.img
 表示一个软盘镜像
+
+
+编译之前安装了nasm编译器，还有其他啥东西，忘了，如果make时报啥错，就安装哪个编译器吧。

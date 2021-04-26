@@ -93,7 +93,7 @@ kernel/chr_drv/chr_drv.a:
 	@make -C kernel/chr_drv
 
 clean:
-	@rm -f Kernel_Image System.map System_s.map system.S tmp_make core boot/bootsect boot/setup
+	@rm -f linux-0.12-080324 Kernel_Image System.map System_s.map system.S tmp_make core boot/bootsect boot/setup
 	@rm -f init/*.o tools/system boot/*.o typescript* info bochsout.txt
 	@for i in mm fs kernel lib boot; do make clean -C $$i; done
 
