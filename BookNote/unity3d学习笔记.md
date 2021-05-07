@@ -334,7 +334,7 @@ Object.FindObjectOfType<MeshRenderer>(); //找一个.
 
 deltaTime:
 
-![](../all_picture/u3d学习笔记/14.jpg)
+![](./unity3d/14.jpg)
 
 ```c#
 public void Update()
@@ -378,13 +378,13 @@ Time.unscaledDeltaTime = 0;
 
 ## p133:预制体
 
-![](../all_picture/u3d学习笔记/15.png)
+![](./unity3d/15.png)
 
 ## p135 Animonation
 
-![](../all_picture/u3d学习笔记/16.png)
+![](./unity3d/16.png)
 
-![](../all_picture/u3d学习笔记/17.jpg)
+![](./unity3d/17.jpg)
 
 
 
@@ -398,7 +398,7 @@ Time.unscaledDeltaTime = 0;
 
 编码
 
-<img src="../all_picture/u3d学习笔记/18.png" style="zoom:67%;" />
+<img src="./unity3d/18.png" style="zoom:67%;" />
 
 
 
@@ -412,7 +412,7 @@ Time.unscaledDeltaTime = 0;
 
 ## p153: 虚拟按键
 
-<img src="../all_picture/u3d学习笔记/19.jpg"/>
+<img src="./unity3d/19.jpg"/>
 
 
 
