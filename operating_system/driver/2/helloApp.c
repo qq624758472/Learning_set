@@ -15,7 +15,7 @@ int main(void)
     int fd = open("/dev/xxx", O_RDWR);    
     if(fd < 0)        /* 文件描述符小于0表示打开文件失败 */
     {   
-        printf("open /dev/xxx fail\n");
+        perror("open /dev/xxx fail\n");
         return -1; 
     }   
  
