@@ -14,7 +14,7 @@ ssh-keygen -t rsa -C "your_email@youremail.com"
 
 
 
-## git命令总结
+## git命令
 
 ### 1.命令集合
 
@@ -54,37 +54,150 @@ $ git am --resolved
 git reset --hard HEAD^ 回退到上个版本
 git reset --hard HEAD~3 回退到前3次提交之前，以此类推，回退到n次提交之前
 git reset --hard commit_id 退到/进到，指定commit的哈希码（这次提交之前或之后的提交都会回滚）
+
+
 ```
 
-### 2.参考博客
+### 2、下载代码
 
-git命令同步和提交代码
+```sh
+git clone 代码库地址
+```
 
-https://blog.csdn.net/u012302552/article/details/78975593
+下载指定分支的某个版本代码：
 
-path命令详细介绍：
+```shell
+git clone -b 分支名 代码库地址
+```
 
-https://www.cnblogs.com/ArsenalfanInECNU/p/8931377.html
+### 3、查看代码分支
 
-git冲突解决：
+查看所有分支（结果列表中前面标*号的表示当前使用分支）
 
-https://www.cnblogs.com/peterpanzsy/p/3791179.html
+```shell
+git branch -a
+```
 
-git回滚代码：
+查看当前使用分支
 
-https://blog.csdn.net/xinzhifu1/article/details/92770108
+```shell
+git branch
+```
+
+切换分支
+
+```shell
+git checkout 分支名
+```
+
+### 4、更新、修改与提交代码
 
 
 
 
 
+### 5、fork别人的仓库，并创建自己分支
+
+#### 1.下载代码
+
+```sh
+git clone [仓库url] 
+```
+
+#### 2.创建自己分支
+
+创建自己的分支branch可以灵活的编辑、修改代码，同时不会破坏原来的master分支。
+
+```shell
+git branch [your branch]
+git checkout [your branch] #切换到自己的分支 
+#也可以修改本地分支的名称
+git branch -m [old_name] [new_name]
+```
+
+#### 3.添加自己的远程仓库地址
+
+url表示远程仓库的地址，有两种url可以选择：
+git@github.com:facebookresearch/maskrcnn-benchmark.git (配置好本地秘钥后可以直接push)
+https://github.com/facebookresearch/maskrcnn-benchmark.git (每次push需要输入账号和密码)
+shortname可以是远程url的名称,默认是origin,可以自己定义名称
+
+```sh
+git remote add upstream "git 地址"
+```
+
+#### 4.给自己修改提交
+
+```sh
+git add -u #-u表示只增加文件修改，不添加新创建的文件
+git commit -m "本次提交的描述"
+```
+
+#### 5.推送到自己的仓库
+
+```sh
+git remote -v # 查看远程link
+git push [自己的仓库url名] [分支名] #例如git push origin master 或者git push [my_repo_url] new_branch
+```
+
+#### 6.推送到官方仓库
+
+```sh
+#如果没有官方的url地址，需要增加上游地址，这里命名为upstream
+git remote add upstream git@github.com:facebookresearch/maskrcnn-benchmark.git
+# 合并官方仓库分支和本地自己修改的分支
+git fetch origin
+git merge origin/master
+# 推送到官方仓库master分支
+git push upstream master 
+```
+
+#### 7.与上游保持一致
+
+```sh
+# 获取上游更新
+git fetch upstream
+git checkout master
+# merge
+git merge upstream/master
+
+# 推送到自己的仓库
+git push origin master
+```
+
+#### 8.查看提交者
+
+```sh
+git blame -L 56,59 ./uosdeviceb/uoshwID.c
+```
+
+#### 9.git中忽略文件权限的改变
+
+```sh
+文件权限变更git也会检测到并提交。
+git config core.filemode false  		# 当前版本库
+git config --global core.fileMode false # 所有版本库
+```
+
+#### 10.从已有的分支创建新的分支
+
+```sh
+git checkout -b dev
+```
+
+
+
+### 6.切换到某个tag
+
+```
+git checkout tag_name
+```
 
 
 
 
 
-
-### CVE内核patch检查更新方法
+## CVE内核patch检查更新方法
 
 1. 再这个网站输入patch号，可以查找patch信息。 
 
@@ -105,113 +218,6 @@ https://blog.csdn.net/xinzhifu1/article/details/92770108
    ```
 
    生成一个patch文件。
-
-### 一、下载代码
-
-```sh
-git clone 代码库地址
-```
-
-下载指定分支的某个版本代码：
-
-```shell
-git clone -b 分支名 代码库地址
-```
-
-### 二、查看代码分支
-
-查看所有分支（结果列表中前面标*号的表示当前使用分支）
-
-```shell
-git branch -a
-```
-
-查看当前使用分支
-
-```shell
-git branch
-```
-
-切换分支
-
-```shell
-git checkout 分支名
-```
-
-### 三、更新、修改与提交代码
-
-
-
-
-
-### 四、fork别人的仓库，并创建自己分支
-
-1.下载代码
-
-```sh
-git clone [仓库url] 
-```
-
-2.创建自己分支
-
-创建自己的分支branch可以灵活的编辑、修改代码，同时不会破坏原来的master分支。
-
-```shell
-git branch [your branch]
-git checkout [your branch] #切换到自己的分支 
-#也可以修改本地分支的名称
-git branch -m [old_name] [new_name]
-```
-
-3.添加自己的远程仓库地址
-
-url表示远程仓库的地址，有两种url可以选择：
-git@github.com:facebookresearch/maskrcnn-benchmark.git (配置好本地秘钥后可以直接push)
-https://github.com/facebookresearch/maskrcnn-benchmark.git (每次push需要输入账号和密码)
-shortname可以是远程url的名称,默认是origin,可以自己定义名称
-
-```sh
-git remote add upstream "git 地址"
-```
-
-4.给自己修改提交
-
-```sh
-git add -u #-u表示只增加文件修改，不添加新创建的文件
-git commit -m "本次提交的描述"
-```
-
-5.推送到自己的仓库
-
-```sh
-git remote -v # 查看远程link
-git push [自己的仓库url名] [分支名] #例如git push origin master 或者git push [my_repo_url] new_branch
-```
-
-6.推送到官方仓库
-
-```sh
-#如果没有官方的url地址，需要增加上游地址，这里命名为upstream
-git remote add upstream git@github.com:facebookresearch/maskrcnn-benchmark.git
-# 合并官方仓库分支和本地自己修改的分支
-git fetch origin
-git merge origin/master
-# 推送到官方仓库master分支
-git push upstream master 
-```
-
-7.与上游保持一致
-
-```sh
-# 获取上游更新
-git fetch upstream
-git checkout master
-# merge
-git merge upstream/master
-
-# 推送到自己的仓库
-git push origin master
-```
 
 
 

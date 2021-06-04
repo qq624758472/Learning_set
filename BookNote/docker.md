@@ -367,6 +367,9 @@ docker start 06e09e14660b
 docker exec -it 06e09e14660b bash
 docker inspect 06e09e14660b
 firefox 172.17.0.2
+
+#挂载文件夹命令
+docker run -it -v /home/dock/Downloads:/usr/Downloads:ro ubuntu64 /bin/bash
 ```
 
 **docker拉镜像特别慢，解决方法，配置加速**
