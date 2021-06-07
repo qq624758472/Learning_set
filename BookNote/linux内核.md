@@ -459,7 +459,7 @@ struct pt_regs * regs)
 
 ![](./pic/fs_1.png)
 
-自举块:  mbr
+自举块（引导块）:  mbr
 
 
 
@@ -483,6 +483,7 @@ struct pt_regs * regs)
 
 
 
+![](./pic/fs_2.jpg)
 
 
 
@@ -490,6 +491,13 @@ struct pt_regs * regs)
 
 
 
+
+
+
+
+内存缓冲区：
+
+![](./pic/fs_3.png)
 
 
 
