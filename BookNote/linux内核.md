@@ -488,6 +488,10 @@ struct pt_regs * regs)
 
 
 
+
+
+
+
 ### 链接(link):
 
 ​	用于建立文件系统对象之间的联系,这不符合经典的树状模型.
@@ -511,6 +515,41 @@ struct pt_regs * regs)
 
 
 
+
+```c
+/**
+ * inode_hashtable: 表的初始化,文件在/fs/inode.c
+*/
+void __init inode_init(void)：
+```
+
+
+
+
+
+
+
+## 块缓存
+
+​	文件系统以块的方式来组织文件，一般为2扇区，4扇区。
+
+​	文件系统的组织方式，要求提供一种块缓存机制来暂存文件的内容，因此内核提供了buffer_head管理结构来管理块缓存。
+
+#### buffer_head
+
+​	buffer_head本身并没有保存文件内容，文件内容实际还是在page cache中.
+
+​	buffer_head是个管理结构，它只是标识文件块的序号以及文件块缓存的地址。
+
+​	buffer_head提供对底层硬件设备（块设备）的映射。
+
+
+
+#### address_space
+
+​	内核通过address_space来管理page cache。这个结构提供一个radix tree成员。
+
+​	文件内容缓存页保存在这个radix tree里面。
 
 
 
@@ -637,6 +676,44 @@ block:块设备，他们独立于所链接的总线。
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 进程
+
+ rest_init函数中，创建1号进程。
+
+ 第一处pid = kernel_thread(kernel_init, NULL, CLONE_FS);即会创建1号进程init 
+
+ 第二处pid = kernel_thread(kthreadd, NULL, CLONE_FS | CLONE_FILES);即会创建2号进程kthreadd 
+
+
+
+
+
+ kernel_init 功能：查找文件系统提供的init进程。
+
+```
+if (!try_to_run_init_process("/sbin/init") ||
+
+!try_to_run_init_process("/etc/init") ||
+
+!try_to_run_init_process("/bin/init") ||
+
+!try_to_run_init_process("/bin/sh"))
+```
+
+kthreadd功能： 不断从全局链表kthread_create_list中获取一个节点，然后执行节点中的函数，这样就可以做到管理调度其它内核线程的功能 
 
 
 
