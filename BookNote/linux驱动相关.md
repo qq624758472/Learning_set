@@ -473,3 +473,211 @@ static struct usb_driver usb_mouse_driver = {
 module_usb_driver(usb_mouse_driver);
 ```
 
+
+
+
+
+
+
+# 块设备驱动程序
+
+## 注册
+
+### 1.注册块设备驱动
+
+```c
+//注册块设备驱动程序: 
+int register_blkdev(unsigned int major, const char *name);
+//major: 该设备使用的主设备号.  为0时,内核分派一个新的主设备号给设备,并返回.   <0:报错
+//name:	该设备使用的名字.   内核在/proc/devices中显示名字.
+
+
+//注销块设备驱动程序:
+int unregister_blkdev(unsigned int major, const char *name);
+//参数必须和注册时相匹配.  否则返回:-EINVAL
+```
+
+### 2.注册磁盘
+
+* 注册磁盘时需要的数据结构
+
+**块设备操作**
+
+使用block_device_operations结构告诉系统对他们的操作接口.
+
+成员有:
+
+```c
+//设备被打开或者关闭时调用.
+int (*open)(struct inode *inode, struct file *filp);
+int (*release)(struct inode *inode, struct file *filp);
+
+//实现ioctl系统调用的函数.
+int (*ioctl)(struct inode *inode, struct file *filp, unsigned int cmd, unsigned long arg);
+
+//检查用户是否更换了驱动器内的介质. 非零值:更换了.  只适用于可移动介质.其他情况,忽略该函数
+int (*media_changed)(struct gendisk *gd);
+    
+//介质被更换时,调用该函数做出响应,它告诉驱动程序完成必要的工作,以便适用新的介质.  返回值被忽略.
+int (*revalidate_disk)(struct gendisk *gd);
+
+//一个指向拥有该结构体的模块指针,通常初始化为THIS_MODULE
+struct module *owner;
+```
+
+块设备驱动没有read和write函数,都是由request函数处理的.
+
+
+
+**gendisk结构:**
+
+内核适用该结构来表示一个独立的磁盘设备.
+
+还用来表示分区.
+
+该结构中的许多成员必须由驱动程序进行初始化.
+
+```c
+struct gendisk {
+	/* major, first_minor and minors are input parameters only,
+	 * don't use directly.  Use disk_devt() and disk_max_parts().
+	 */
+	int major;			/* major number of driver */
+	int first_minor;
+	int minors;                     /* maximum number of minors, =1 for
+                                         * disks that can't be partitioned. */
+
+	char disk_name[DISK_NAME_LEN];	/* name of major driver */
+	char *(*devnode)(struct gendisk *gd, umode_t *mode);
+
+	unsigned int events;		/* supported events */
+	unsigned int async_events;	/* async events, subset of all */
+
+	/* Array of pointers to partitions indexed by partno.
+	 * Protected with matching bdev lock but stat and other
+	 * non-critical accesses use RCU.  Always access through
+	 * helpers.
+	 */
+	struct disk_part_tbl __rcu *part_tbl;
+	struct hd_struct part0;
+
+	const struct block_device_operations *fops;
+	struct request_queue *queue;
+	void *private_data;
+
+	int flags;
+	struct rw_semaphore lookup_sem;
+	struct kobject *slave_dir;
+
+	struct timer_rand_state *random;
+	atomic_t sync_io;		/* RAID */
+	struct disk_events *ev;
+#ifdef  CONFIG_BLK_DEV_INTEGRITY
+	struct kobject integrity_kobj;
+#endif	/* CONFIG_BLK_DEV_INTEGRITY */
+	int node_id;
+	struct badblocks *bb;
+	struct lockdep_map lockdep_map;
+};
+```
+
+gendisk是动态分配的结构. 需要特殊处理进行初始化, 驱动程序不能自己动态分配该结构.必须调用
+
+```c
+struct gendisk *alloc_disk(int minors);
+//minors: 是该磁盘使用的此设备号的数目.
+
+//卸载磁盘
+void del_gendisk(struct gendisk *gd);
+```
+
+gendisk是一个引用计数结构.所有卸载时并不是直接删除该结构,只有等计数为0时,卸载才会删除.
+
+分配一个gendisk结构并不能使磁盘对系统可用. 必须初始化结构并调用add_disk();
+
+```c
+void add_disk(struct gendisk *gd);
+```
+
+
+
+##　sbull中的初始化
+
+
+
+## 请求处理
+
+内核需要驱动程序处理读取、写入、其他对设备的操作时，就会调用请求处理函数。
+
+它只是启动对请求的响应。
+
+每个设备都有一个请求队列。 内核会安排在适当的时刻（把相邻磁盘扇区的请求放在一组）然后传输。
+
+
+
+
+
+#### request结构
+
+```c
+//request结构
+```
+
+一个request结构代表一个块设备的I/O请求。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

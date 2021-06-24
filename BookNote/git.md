@@ -193,7 +193,11 @@ git checkout -b dev
 git checkout tag_name
 ```
 
+切到某个commit
 
+```
+git reset --hard ${commit_id}
+```
 
 
 
