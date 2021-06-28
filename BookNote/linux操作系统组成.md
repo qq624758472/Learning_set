@@ -55,6 +55,8 @@ init进程启动后，根据/etc/inittab文件从不同的运行级别启动相�
 ```sh
 respawn：当process终止后马上启动一个新的
 
+askfirst : 这个类似于上面的respawn，但是在运行process之前，它会打印"Please press Enter to activate this console."，然后等待用户按下Enter来启动该process。通常askfirst是用于启动终端设备的，如果不想看到这个提示，就像我那样使用respawn，而非askfirst.
+
 wait：当进入指定的runlevels后process才会启动一次，并且到离开这个runlevels终止
 
 initdefault：设定默认的运行级别，即我们开机之后默认进入的运行级别，不能是0,6，你懂的
