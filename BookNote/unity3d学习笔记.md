@@ -465,6 +465,59 @@ https://www.jianshu.com/p/38f8e3f74e67
 
 
 
+# EasyTouch5学习
+
+## 一、脚本的使用
+
+```c#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using HedgehogTeam.EasyTouch;
+
+public class operation : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Gesture currentGesture = EasyTouch.current;
+        if(currentGesture != null && EasyTouch.EvtType.On_TouchStart == currentGesture.type)
+        {
+            OnTouchStart(currentGesture);
+        }
+        if(currentGesture != null && EasyTouch.EvtType.On_TouchUp == currentGesture.type)
+        {
+            OnTouchEnd(currentGesture);
+        }
+        if(currentGesture != null && EasyTouch.EvtType.On_Swipe == currentGesture.type)
+        {
+            OnSwipe(currentGesture);
+        }
+    }
+
+    void OnTouchStart(Gesture gesture)
+    {
+        Debug.LogWarning("OnTouchStart");
+    }
+
+    void OnTouchEnd(Gesture gesture)
+    {
+        Debug.LogWarning("OnTouchEnd");
+    }
+
+    void OnSwipe(Gesture gesture)
+    {
+        Debug.LogWarning("OnSwipe");
+    }
+}
+
+```
 
 
 
@@ -472,11 +525,65 @@ https://www.jianshu.com/p/38f8e3f74e67
 
 
 
+# 在debain系linux下unity3d开发
+
+## 1.使用MonoDevelop调试
+
+参考博客：
+
+环境包：https://www.cnblogs.com/chendeqiang/p/12861518.html
+
+unity3d for linux: https://forum.unity.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
+
+从unity3d for linux官网下载想要的版本.
+
+安装2017版本会带有[MonoDevelop]编辑调试工具。
+
+在linux下调试不好弄，这个工具是目前发现最好用的单步调试工具。
+
+调试时注意自己的unity3d的进程号。
+
+```shell
+#环境包安装命令
+sudo apt-get -y install gtk-sharp2
+sudo apt-get -y install mono-runtime
+sudo apt-get -y install mono-complete
+sudo apt-get -y install monodevelop
+sudo apt install apt-transport-https dirmngr
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
+sudo apt update
+```
 
 
 
+## 2.使用vscode调试
 
+1.先下载.net核心包。
 
+https://dotnet.microsoft.com/download
 
+按照官方提示在进行安装。
 
+2.安装vscode。
+
+注意深度系统，uos系统，不能从商店直接下载进行安装，需要从官方网站上下载1.52版本。
+
+使用uos提供的1.56+新版本，调试时会报错。
+
+3.安装vscode插件。
+
+```shell
+Auto-Using for C#    自动添加引用
+C#
+C# XML Documentation Comments
+Chinese    汉化
+Debugger for Unity    调试unity
+Unity Code Snippets    代码补全
+Unity Tools   Unity工具
+```
+
+4.按f5出现调试，添加配置，选择unity Debugger.之后会出现一个launch.json的文件，那个是配置文件，详细解释 https://www.baidu.com 。之后我们点击开始调试按钮，在代码中打断点，点击unity3d运行。
+
+![](./unity3d/20.png)
 

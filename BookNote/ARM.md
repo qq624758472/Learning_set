@@ -120,6 +120,53 @@ Thumb指令集没有协处理器指令、信号量指令以及访问CPSR或SPSR�
 
 # ARM汇编指令
 
+## 0.“.”开头的指令
+
+```assembly
+.global
+@ .global关键字用来让一个符号对链接器可见，可以供其他链接对象模块使用。
+@ .global _start 让_start符号成为可见的标示符，这样链接器就知道跳转到程序中的什么地方并开始执行。linux寻找这个 _start标签作为程序的默认进入点。
+
+
+.extern XXXX 
+@ XXXX，调用的时候可以遍访所有文件找到该函数并且使用它
+
+
+.macro
+.endm
+@ 类似宏定义，将一组命令放在这两个命令中间组成一个命令集合。
+.macro STACK_MAGIC_SET param0, param1, param2
+    ldr     r0, =\param0
+    mov     r1, \param1
+    ldr     r2, =\param2
+    bl      excstack_magic
+.endm
+
+
+.code 32
+@ 表示后面的指令全部用arm指令集
+
+.code 16
+@ 表示下面的汇编代码都使用thumb指令集
+
+
+.section .text        
+#定义文本段（代码段）
+
+.section .data        
+#定义数据段
+
+.section .bss          
+#定义 bss 段
+
+.section ".vectors", "ax"       
+#指定以下代码段必须存放在.vectors段里， “ax”表示该段可执行并且可分配
+```
+
+
+
+
+
 ## 1.相对跳转指令：
 
 b、bl:
@@ -269,7 +316,48 @@ adrl			@中等范围的地址读取伪指令
 ldr				@大范围地址读取伪指令
 
 nop				@空操作伪指令
+
+SPACE和DCD的区别在于：
+SPACE和DCD的功能类似，SPACE申请一片内存空间，DCD申请一个字(32bit)的内存空间。
+SPACE和DCD的区别在于，SPACE申请空间但不赋初值，DCD申请一个字的空间，并赋初值。
+
 ```
+
+```assembly
+MCR
+@ 指令将ARM处理器的寄存器中的数据传送到协处理器的寄存器中。如果协处理器不能成功地执行该操作，将产生未定义的指令异常中断。
+MCR{<cond>} p15, 0, <Rd>, <CRn>, <CRm>{,<opcode_2>}
+
+MCR2 p15, 0, <Rd>, <CRn>, <CRm>{,<opcode_2>}
+
+mrc 
+@ 从协处理器移动到寄存器
+
+and 
+@ 按位与操作
+
+
+bne
+@ 数据跳转指令，标志寄存器中Z标志位不等于零时, 跳转到BNE后标签处。
+
+
+.irp <param> {,<val_1>} {,<val_2>} …
+@ 循环执行.endr前的代码段，param依次取后面给出的值。
+@ 在循环执行的代码段中必须以“/<param> ”表示参数。
+
+.endr 
+@结束循环(与armasm中的WEND相似).
+
+
+LDRD 和 STRD 双字数据传送必须是八字节对齐的。如果要用 LDRD 或 STRD 访问
+数据，则在内存分配指令（如 DCQ）之前使用 ALIGN 8（请参阅第7-17 页的数
+据定义指令）。
+
+strd: 将double word存储到指定内存地址
+
+```
+
+
 
 ## 9.汇编指令的执行条件
 
