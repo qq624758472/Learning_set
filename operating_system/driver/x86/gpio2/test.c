@@ -250,6 +250,6 @@ module_init(gpio_init);
 module_exit(gpio_exit);
 
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_AUTHOR("zhuguojun, ZhiYuan Electronics Co, Ltd.");
+MODULE_AUTHOR("lsh");
 MODULE_DESCRIPTION("GPIO DRIVER FOR MAGICARM270.");
 

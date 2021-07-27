@@ -21,9 +21,12 @@ static int chrdev_release(struct inode *inode, struct file *file) {
     printk(KERN_ALERT "chrdev release!\n");  
     return 0;  
 }  
-  
-static int chrdev_ioctl(struct inode *inode, struct file *file,  
-    unsigned int cmd, unsigned long arg) {  
+
+//新旧版本的两种ioctl
+static long chrdev_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+//static long chrdev_ioctl(struct inode *inode, struct file *file, unsigned int cmd, unsigned long arg) 
+{  
+    
     printk(KERN_ALERT "chrdev release!\n");  
     return 0;  
 }  
@@ -31,7 +34,8 @@ static int chrdev_ioctl(struct inode *inode, struct file *file,
 // Kernel interface   
 static struct file_operations chrdev_fops = {  
     .owner      =   THIS_MODULE,  
-    .ioctl      =   chrdev_ioctl,  
+    //.ioctl      =   chrdev_ioctl,  
+    .unlocked_ioctl      =   chrdev_ioctl,  
     .open       =   chrdev_open,  
     .release    =   chrdev_release,  
 };  
