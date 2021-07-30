@@ -16,6 +16,8 @@
 
 示例代码：
 
+https://github.com/qwe624758472/Learning_set/tree/master/Language/c%2B%2B/c
+
 ```c
 static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
 {                                                                           \
@@ -27,3 +29,6 @@ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
 
 ​	若函数被设定为destructor属性，则该函数会在main（）函数执行之后或者exit（）被调用后被自动的执行。
 
+解析：
+
+​	1.从
