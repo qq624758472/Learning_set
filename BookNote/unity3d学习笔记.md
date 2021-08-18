@@ -595,5 +595,23 @@ Unity Tools   Unity工具
 
 # 一些心得集合
 
-Unity3D中如何制作天空盒 :https://blog.csdn.net/weixin_38498942/article/details/90479835
+1.Unity3D中如何制作天空盒 :https://blog.csdn.net/weixin_38498942/article/details/90479835
+
+
+
+**2.UnityEngine.Rendering.PostProcessing 不存在:**
+
+这是因为插件没有安装引起的:      在包管理器中安装Post Processing 和Cinemachine 即可。
+
+windows->Package Manager ->All packages(或者所注册的)
+
+
+
+C#脚本 [System.Serializable]的作用:
+
+​	前几天在做自己的塔防游戏的时候，建造了一个turrentData类，却无法显示在inspector上，百度别人对此问题的解决办法后，得到了用序列化存储的解决办法，在类前写上 [System.Serializable]就解决了问题，下面介绍一下 序列化的作用。
+
+https://blog.csdn.net/qq_36946274/article/details/82054023
+
+
 

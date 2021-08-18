@@ -1,5 +1,94 @@
-
 # 深入linux内核架构
+
+## Linux c基础
+
+### glibc
+
+glibc是linux下面c标准库的实现，即GNU C Library。
+
+glibc本身是GNU旗下的C标准库，后来逐渐成为了Linux的标准c库，而Linux下原来的标准c库Linux libc逐渐不再被维护。
+
+Linux下面的标准c库不仅有这一个，如uclibc、klibc，以及上面被提到的Linux libc，但是glibc无疑是用得最多的。
+
+glibc在/lib目录下的.so文件为libc.so.6。
+
+功能实现主要的如下：
+
+（1）string，字符串处理
+
+（2）signal，信号处理
+
+（3）dlfcn，管理共享库的动态加载
+
+（4）direct，[文件目录](https://baike.baidu.com/item/文件目录)操作
+
+（5）elf，共享库的动态加载器，也即interpreter
+
+（6）iconv，不同[字符集](https://baike.baidu.com/item/字符集)的编码转换
+
+（7）inet，socket接口的实现
+
+（8）intl，国际化，也即gettext的实现
+
+（9）io
+
+（10）[linux](https://baike.baidu.com/item/linux)threads
+
+（11）locale，本地化
+
+（12）login，[虚拟终端](https://baike.baidu.com/item/虚拟终端)设备的管理，及系统的安全访问
+
+（13）malloc，动态内存的分配与管理
+
+（14）nis
+
+（15）stdlib，其它基本功能
+
+### libc
+
+libc 是 Linux 下的 ANSI C 函数库.
+
+ANSI C 函数库是基本的 C 语言函数库，包含了 C 语言最基本的库函数。
+
+这个库可以根据头文件划分为 15 个部分，其中包括：
+
+1. <ctype.h>：包含用来测试某个特征字符的函数的函数原型，以及用来转换大小写字母的函数原型；
+2. <errno.h>：定义用来报告错误条件的宏；
+3. <float.h>：包含系统的浮点数大小限制；
+4. <math.h>：包含数学库函数的函数原型；
+5. <stddef.h>：包含执行某些计算 C 所用的常见的函数定义；
+6. <stdio.h>：包含标准输入输出库函数的函数原型，以及他们所用的信息；
+7. <stdlib.h>：包含数字转换到文本，以及文本转换到数字的函数原型，还有内存分配、随机数字以及其他实用函数的函数原型；
+8. <string.h>：包含字符串处理函数的函数原型；
+9. <time.h>：包含时间和日期操作的函数原型和类型；
+10. <stdarg.h>：包含函数原型和宏，用于处理未知数值和类型的函数的参数列表；
+11. <signal.h>：包含函数原型和宏，用于处理程序执行期间可能出现的各种条件；
+12. <setjmp.h>：包含可以绕过一般函数调用并返回序列的函数的原型，即非局部跳转；
+13. <locale.h>：包含函数原型和其他信息，使程序可以针对所运行的地区进行修改。
+14. 地区的表示方法可以使计算机系统处理不同的数据表达约定，如全世界的日期、时间、美元数和大数字；
+15. <assert.h>：包含宏和信息，用于进行诊断，帮助程序调试。
+
+
+
+###   glib
+
+glib 是 Gtk+ 库和 Gnome 的基础。
+
+glib 可以在多个平台下使用，比如 Linux、Unix、Windows 等。glib 为许多标准的、常用的 C 语言结构提供了相应的替代物 .
+
+glib是GTK+的基础库，它由基础类型、对核心应用的支持、实用功能、数据类型和对象系统五个部分组成.
+
+可以在[http://www.gtk.orggtk网站]下载其源代码。是一个综合用途的实用的轻量级的C程序库，它提供C语言的常用的数据结构的定义、相关的处理函数，有趣而实用的宏，可移植的封装和一些运行时机能，如事件循环、线程、动态调用、对象系统等的API。
+
+GTK+是可移植的，当然glib也是可移植的，你可以在linux下，也可以在windows下使用它。使用gLib2.0（glib的2.0版本）编写的应用程序，在编译时应该在编译命令中加入pkg-config --cflags --libs glib-2.0，如：
+
+```
+gcc pkg-config --cflags --libs glib-2.0 hello.c -o hello
+```
+
+使用glib最有名的就是GNOME了。
+
+
 
 ## Linux进程管理子系统
 
@@ -826,6 +915,15 @@ block:块设备，他们独立于所链接的总线。
 
 
 
+## 涉及的命令
+
+```shell
+cat /proc/vmstat | egrep 'dirty|writeback'
+#输出的：nr_dirty 就代表多少脏页
+
+df -i   #查看硬盘inode信息
+```
+
 
 
 
@@ -863,7 +961,6 @@ if (!try_to_run_init_process("/sbin/init") ||
 ```
 
 kthreadd功能： 不断从全局链表kthread_create_list中获取一个节点，然后执行节点中的函数，这样就可以做到管理调度其它内核线程的功能 
-
 
 
 
