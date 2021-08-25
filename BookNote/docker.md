@@ -742,6 +742,18 @@ RUN?=docker run --rm \
 
 
 
+
+
+### 自定义docker功能
+
+1.修改docker-ce/components/packaging/deb/Makefile文件, 将在创建docker时加入挂载本地组件代码，而不是创建docker后在docker内从github上下载代码:
+
+*这部分内容涉及公司工作内容，拒绝提供。*
+
+
+
+
+
 ## 9.Docker源码分析
 
 ### 1.Docker整体架构分析
