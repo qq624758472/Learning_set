@@ -7,7 +7,7 @@ static struct kobject *testKobj = NULL;
 static struct kobject *testKobj2 = NULL;
 static int __init sysfs_test_init(void)
 {
-    testKobj = kobject_create_and_add("test", NULL);
+    testKobj = kobject_create_and_add("lshtest", NULL);
     if (!testKobj)
     {
         printk(KERN_INFO "create test kbject failed\n");
@@ -26,7 +26,6 @@ static int __init sysfs_test_init(void)
 static void __exit sysfs_test_exit(void)
 {
     kobject_put(testKobj);
-    kobject_put(testKobj2);
     kobject_put(testKobj2);
 }
 

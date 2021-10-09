@@ -27,3 +27,12 @@ int p_hanshu()
     p(5);
 	return 0;
 }
+
+
+
+int change(char *p)
+{
+    p[0] = '1';
+    p[1] = '2';
+    printf("%s\n",p);
+}

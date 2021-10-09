@@ -269,7 +269,10 @@ error:
 #endif
 
 #ifdef DEBUG
-
+    char tmp[100] = {0};
+    memset(tmp,0,sizeof(tmp));
+    change(tmp);
+    cout << tmp <<endl;
 #endif
 
 
