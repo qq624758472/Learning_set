@@ -1,16 +1,13 @@
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: wangmiao
+ * @Date: 2021-07-27 18:13:47
+ * @LastEditors: lsh
+ * @LastEditTime: 2021-10-18 13:24:03
+ */
 
 
 #include "test_c.h"
 
 
-static void arm_cpu_register_types(void)
-{
-    printf("%s,%d\n",__FUNCTION__,__LINE__);
-}
-
-type_init(arm_cpu_register_types);
-
-int main()
-{
-    
-}
