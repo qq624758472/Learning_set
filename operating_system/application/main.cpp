@@ -1,5 +1,17 @@
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: lsh
+ * @Date: 2021-04-26 11:18:59
+ * @LastEditors: lsh
+ * @LastEditTime: 2021-10-20 16:50:16
+ */
 #include "common.h"
 #include "pipe.h"
+#include "thread.h"
+#include <iostream>
+
+using namespace std;
 
 #define DEBUG
 
@@ -27,7 +39,7 @@ int main(int argc,char *argv[])
 #endif
 
 
-#ifdef DEBUG
+#ifdef DEBUG3
     //管道使用加密数据传输。
     if(strncmp(argv[1],"server",6) ==0)
     {
@@ -42,6 +54,12 @@ int main(int argc,char *argv[])
     {
         cout << "ERROR" << endl;
     }
+#endif
+
+
+#ifdef DEBUG
+    JiShi lll;
+    pause();
 #endif
     return 0;
 }
