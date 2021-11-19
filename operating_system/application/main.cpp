@@ -4,11 +4,12 @@
  * @Autor: lsh
  * @Date: 2021-04-26 11:18:59
  * @LastEditors: lsh
- * @LastEditTime: 2021-10-20 16:50:16
+ * @LastEditTime: 2021-11-14 17:05:13
  */
 #include "common.h"
 #include "pipe.h"
 #include "thread.h"
+#include "format_minix.h"
 #include <iostream>
 
 using namespace std;
@@ -57,9 +58,15 @@ int main(int argc,char *argv[])
 #endif
 
 
-#ifdef DEBUG
+#ifdef DEBUG4
     JiShi lll;
     pause();
+#endif
+
+#ifdef DEBUG
+    char *filePath = argv[1];
+    std::cout << filePath<< std::endl;
+    format_minix(filePath);
 #endif
     return 0;
 }

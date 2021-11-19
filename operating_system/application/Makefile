@@ -1,7 +1,7 @@
 CC=g++
 prom = main
 deps = process_schedule.h pipe.h
-obj = main.o process_schedule.o pipe.o thread.o
+obj = main.o process_schedule.o pipe.o thread.o format_minix.o
 ARG += -g -lpthread
 
 $(prom): $(obj)

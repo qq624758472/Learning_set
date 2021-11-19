@@ -73,10 +73,10 @@ int main(void)
         printf("open /dev/xxx fail\n");
         return -1; 
     }   
- 
+
     /* 该文件中写入5个字节,写入的内容是buf中的前五个字节 */
     write(fd, buf, 5); 
-    
+
     return 0;
 }
 ```
@@ -86,58 +86,3 @@ int main(void)
 测试效果需要使用sudo dmesg来查看. 如下图所示:![](../tools_Lib/all_picture/LINUX设备驱动程序/1.png)
 
 ## 2.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
