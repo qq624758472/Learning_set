@@ -177,8 +177,6 @@ shim 是实现无 daemon 的容器（用于将运行中的容器与 daemon 解�
 
 不过，daemon 的主要功能包括镜像管理、镜像构建、REST API、身份验证、安全、核心网络以及编排。
 
-
-
 ## 1.moby,docker-ce和docker-ee的区别
 
 moby、docker-ce与docker-ee
@@ -234,13 +232,11 @@ docker以每月发布一个版本的节奏进行开发。命名规则为：年�
 /etc/yum.repos.d/docker-ce.repo
 ```
 
-
 然后用yum安装:
 
 ```sh
 yum install -y docker-ce
 ```
-
 
 yum源文件和rpm包都在网页download.docker.com中，可以自己下载安装:
 
@@ -249,7 +245,6 @@ wget https://download.docker.com/linux/centos/docker-ce.repo
 mv docker-ce.repo /etc/yum.repos.d
 yum install -y docker-ce
 ```
-
 
 或者直接下载rpm安装:
 
@@ -263,8 +258,6 @@ yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
 统信官方给的安装教程:
 
 https://blog.csdn.net/weixin_43855876/article/details/107227120
-
-
 
 ```sh
 #容器
@@ -340,6 +333,13 @@ docker inspect -f ‘{{.NetworkSettings.MacAddress}}’ 597b8cd3ca55
 docker inspect -f ‘{{.NetworkSettings.IPAddress}}’ 597b8cd3ca55
 172.17.0.2
 
+#启动新容器并挂载
+docker run -it -p 8070:8080 -v /root/software:/software --privileged=true docker.io/centos /bin/bash
+-it 创建一个交互式的容器
+-p 映射端口8070 本机的端口 映射的容器的端口
+-v 挂载目录/root/software 本地目录 /software容器目录，在创建前容器是没有software目录的，docker 容器会自己创建
+--privileged=true 关闭安全权限，否则你容器操作文件夹没有权限
+
 #实验-修改镜像内容
 docker load -i nginx.tar
 docker run -it nginx:latest bash
@@ -372,6 +372,11 @@ firefox 172.17.0.2
 
 #挂载文件夹命令
 docker run -it -v /home/dock/Downloads:/usr/Downloads:ro ubuntu64 /bin/bash
+
+
+
+
+#打包自己的docker镜像，并放到其他机器上使用该镜像
 ```
 
 **docker拉镜像特别慢，解决方法，配置加速**
@@ -390,7 +395,6 @@ docker run -it -v /home/dock/Downloads:/usr/Downloads:ro ubuntu64 /bin/bash
 "max-concurrent-uploads": 10,
 "registry-mirrors": ["https://rce4gd7j.mirror.aliyuncs.com"]
 }
-
 ```
 
 修改完后，重启docker
@@ -487,8 +491,6 @@ wget https://github.com/containerd/containerd/archive/v1.4.1.zip
 https://github.com/containerd/containerd/tree/v1.4.1
 ```
 
-
-
 ## 7.修改的目录
 
 ```sh
@@ -508,8 +510,6 @@ https://github.com/containerd/containerd/tree/v1.4.1
 ```
 
 最后直接编译二进制文件进行替换的.
-
-
 
 ## 8.Docker编译流程分析
 
@@ -590,8 +590,6 @@ make  VERSION=18.01.0-ce-dev ENGINE_DIR=/root/docker-ce/components/engine CLI_DI
 
 ![](../tools_Lib/all_picture/内核笔记/48.jpg)
 
-
-
 ### Docker-cli编译教程
 
 下载docker-ce代码:
@@ -618,8 +616,6 @@ docker-ce/components/cli/build/docker-linux-amd64
 
 可以使用docker version查看docker版本.
 
-
-
 ### Docker-ce编译流程分析
 
 从主目录Makefile分析得, 编译deb包,会跳转到/components/packaging/下执行make deb
@@ -628,7 +624,7 @@ docker-ce/components/cli/build/docker-linux-amd64
 PACKAGING_DIR:=$(CURDIR)/components/packaging
 .PHONY: deb
 deb: #### build deb packages
-	$(MAKE) VERSION=$(VERSION) CLI_DIR=$(CLI_DIR) ENGINE_DIR=$(ENGINE_DIR) -C $(PACKAGING_DIR) deb
+    $(MAKE) VERSION=$(VERSION) CLI_DIR=$(CLI_DIR) ENGINE_DIR=$(ENGINE_DIR) -C $(PACKAGING_DIR) deb
 ```
 
 进入到components/packaging/下,查看Makefile, 发现检测cli和engine代码,同步分支.
@@ -643,28 +639,25 @@ deb: #### build deb packages
 
 修改Dockerfile中github.com网站地址到gitee时,需要删除src/github.com/docker/文件夹下的docker.   和packaging/deb/sources/engine.tgz后,重新生成. 
 
-
-
 ```sh
 ##编译脚本流程梳理:
 components/packaging/deb/
-	Makefile    
-		运行ubuntu-xenial/Dockerfile  构建docker给环境.
-		运行docker run 启动镜像并挂载组件代码.
-		运行同目录下 build-deb脚本.
-		
-		components/packaging/deb/common/rules:  override_dh_auto_build: 
-			./hack/make.sh dynbinary
-			ack/dockerfile/install/install.sh tini
-			hack/dockerfile/install/install.sh proxy dynamic
-			hack/dockerfile/install/install.sh rootlesskit dynamic
-			运行engine下 ./hack/make.sh dynbinary
-				运行engine/hack/install.sh 下的所有*.installer文件,安装组件.
-		编译二进制并打包
+    Makefile    
+        运行ubuntu-xenial/Dockerfile  构建docker给环境.
+        运行docker run 启动镜像并挂载组件代码.
+        运行同目录下 build-deb脚本.
 
+        components/packaging/deb/common/rules:  override_dh_auto_build: 
+            ./hack/make.sh dynbinary
+            ack/dockerfile/install/install.sh tini
+            hack/dockerfile/install/install.sh proxy dynamic
+            hack/dockerfile/install/install.sh rootlesskit dynamic
+            运行engine下 ./hack/make.sh dynbinary
+                运行engine/hack/install.sh 下的所有*.installer文件,安装组件.
+        编译二进制并打包
 ```
 
-​				
+​                
 
 ### 修改记录
 
@@ -689,26 +682,26 @@ UOS_vndr=$(UOS_base)vndr
 ## Additional flags may be necessary at some point
 RUN_FLAGS=
 RUN?=docker run --rm \
-	-e PLATFORM \
-	-e EPOCH='$(EPOCH)' \
-	-e DEB_VERSION=$(word 1, $(GEN_DEB_VER)) \
-	-e VERSION=$(word 2, $(GEN_DEB_VER)) \
-	-e CLI_GITCOMMIT=$(CLI_GITCOMMIT) \
-	-e ENGINE_GITCOMMIT=$(ENGINE_GITCOMMIT) \
-	-v $(CURDIR)/debbuild/$@:/build \
-	-v $(UOS_tini):/UOS_Tini \
-	-v $(UOS_containerd):/UOS_containerd \
-	-v $(UOS_app):/UOS_app \
-	-v $(UOS_buildx):/UOS_buildx \
-	-v $(UOS_libnetwork):/UOS_libnetwork \
-	-v $(UOS_rootlesskit):/UOS_rootlesskit \
-	-v $(UOS_tine):/UOS_tine \
-	-v $(UOS_runc):/UOS_runc \
-	-v $(UOS_sh):/UOS_sh \
-	-v $(UOS_toml):/UOS_toml \
-	-v $(UOS_vndr):/UOS_vndr \
-	$(RUN_FLAGS) \
-	debbuild-$@/$(ARCH)
+    -e PLATFORM \
+    -e EPOCH='$(EPOCH)' \
+    -e DEB_VERSION=$(word 1, $(GEN_DEB_VER)) \
+    -e VERSION=$(word 2, $(GEN_DEB_VER)) \
+    -e CLI_GITCOMMIT=$(CLI_GITCOMMIT) \
+    -e ENGINE_GITCOMMIT=$(ENGINE_GITCOMMIT) \
+    -v $(CURDIR)/debbuild/$@:/build \
+    -v $(UOS_tini):/UOS_Tini \
+    -v $(UOS_containerd):/UOS_containerd \
+    -v $(UOS_app):/UOS_app \
+    -v $(UOS_buildx):/UOS_buildx \
+    -v $(UOS_libnetwork):/UOS_libnetwork \
+    -v $(UOS_rootlesskit):/UOS_rootlesskit \
+    -v $(UOS_tine):/UOS_tine \
+    -v $(UOS_runc):/UOS_runc \
+    -v $(UOS_sh):/UOS_sh \
+    -v $(UOS_toml):/UOS_toml \
+    -v $(UOS_vndr):/UOS_vndr \
+    $(RUN_FLAGS) \
+    debbuild-$@/$(ARCH)
 ```
 
 2.修改engine/hack/docker/install/目录下的:
@@ -742,19 +735,9 @@ RUN?=docker run --rm \
 
 ![](../tools_Lib/all_picture/内核笔记/50.jpg)
 
-
-
-
-
 ### 自定义docker功能
 
-
-
 *这部分内容涉及公司工作内容，拒绝提供。*
-
-
-
-
 
 ## 9.Docker源码分析
 
@@ -766,40 +749,40 @@ RUN?=docker run --rm \
 
 **DockerClient:** 
 
-​	发起docker的管理请求,命令执行后,发送请求到Dokcer Daemon,然后接受返回的请求响应并做出简单处理,为一次完整的生命周期.
+​    发起docker的管理请求,命令执行后,发送请求到Dokcer Daemon,然后接受返回的请求响应并做出简单处理,为一次完整的生命周期.
 
 **DockerDaemon:**
 
-​	1.Docker Server:监听和接收client发来的请求,然后解析请求,匹配相应的路由项,调用对应的Handler来处理,然后回复client响应.
+​    1.Docker Server:监听和接收client发来的请求,然后解析请求,匹配相应的路由项,调用对应的Handler来处理,然后回复client响应.
 
-​	2.Engine:管理大部分Job的执行,通过handler配置相应的job.
+​    2.Engine:管理大部分Job的执行,通过handler配置相应的job.
 
-​	3.Job:类似内核中的进程,一个任务的抽象.
+​    3.Job:类似内核中的进程,一个任务的抽象.
 
 **Docker Registry:**
 
-​	分为共有registry和私有registry, docker hub就是最大的共有registry.
+​    分为共有registry和私有registry, docker hub就是最大的共有registry.
 
-​	docker运行过程中有3中情况可能与docker registry通信,分别为搜索镜像,下载镜像,上传镜像.对应的3个job名称分别为:search,pull和push. 
+​    docker运行过程中有3中情况可能与docker registry通信,分别为搜索镜像,下载镜像,上传镜像.对应的3个job名称分别为:search,pull和push. 
 
 **Graph:**
 
-​	统一管理docker镜像,支持多种不同的镜像存储方式,同一种类型的镜像被称为一个repository.
+​    统一管理docker镜像,支持多种不同的镜像存储方式,同一种类型的镜像被称为一个repository.
 
 **Driver:**
 
-​	1.graphdriver:主要完成容器镜像的管理.
+​    1.graphdriver:主要完成容器镜像的管理.
 
-​	2.networkdriver:主要的作用完成docker容器网络环境的配置.
+​    2.networkdriver:主要的作用完成docker容器网络环境的配置.
 
-​	3.execdricer:docker的执行驱动,负责创建容器运行时的命名空间,负责容器资源使用的统计与限制,负责容器内部进程的真正运行等.	
+​    3.execdricer:docker的执行驱动,负责创建容器运行时的命名空间,负责容器资源使用的统计与限制,负责容器内部进程的真正运行等.    
 
 **libcontainer:**
 
-​	提供一套接口来满足上层对容器管理的需求.   可以不依靠任何依赖,直接访问内核中与容器相关的系统调用. 
+​    提供一套接口来满足上层对容器管理的需求.   可以不依靠任何依赖,直接访问内核中与容器相关的系统调用. 
 
-​	docker可以直接调用libcontainer,而最终操作容器的namespaces,cgroups,apparmor,网络设备以及防火墙规则等.
+​    docker可以直接调用libcontainer,而最终操作容器的namespaces,cgroups,apparmor,网络设备以及防火墙规则等.
 
 **Docker Container:**
 
-​	docker服务交付的最终体验形式.
+​    docker服务交付的最终体验形式.

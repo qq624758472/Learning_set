@@ -106,16 +106,16 @@ HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
 
 ```go
 package main
- 
+
 import (
     "fmt"
     "net/http"
 )
- 
+
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, "hello world")
 }
- 
+
 func main() {
     http.HandleFunc("/", IndexHandler)
     http.ListenAndServe("127.0.0.0:8000", nil)
@@ -167,7 +167,7 @@ login.html: 登录页面
     <span>{{.}}</span>
     username:<input type="text" name="username"/><br/>
     password:<input type="password" name="password"/><br/>
-    <input type="submit" value="登录"/>&nbsp;&nbsp;
+    <input type="submit" value="登录"/>  
     <input type="reset" value="重置"/>
 </form>
 </body>
@@ -209,305 +209,302 @@ _ "github.com/go-sql-driver/mysql"
 var Db *sql.DB
 
 func init() { //初始化db实例
-	var err error
-	dsn := "root:000000@tcp(127.0.0.1:3306)/test"
-	Db, err = sql.Open("mysql", dsn)
-	if err != nil {
-		fmt.Printf("init db instance falied:%v\n", err)
-		return
-	}
+    var err error
+    dsn := "root:000000@tcp(127.0.0.1:3306)/test"
+    Db, err = sql.Open("mysql", dsn)
+    if err != nil {
+        fmt.Printf("init db instance falied:%v\n", err)
+        return
+    }
 }
 
 type User struct {
-	Id       int    `db:"id",json:"id"`
-	Username string `db:"username",json:"username"` //sql.NullString
-	Password string `db:"password",json:"password"` //sql.NullString
-	Age      int    `db:"age",json:"age"`           //sql.NullInt64
-	Sex      string `db:"sex",json:"sex"`           //sql.NullString
-	Phone    string `db:"phone",json:"phone"`       //sql.NullString
+    Id       int    `db:"id",json:"id"`
+    Username string `db:"username",json:"username"` //sql.NullString
+    Password string `db:"password",json:"password"` //sql.NullString
+    Age      int    `db:"age",json:"age"`           //sql.NullInt64
+    Sex      string `db:"sex",json:"sex"`           //sql.NullString
+    Phone    string `db:"phone",json:"phone"`       //sql.NullString
 }
 
 /**
  *添加用户
  */
 func addUser(user *User) int64 {
-	sqlStr := "INSERT INTO user_tb(username,password,age,sex,phone) VALUES(?,?,?,?,?)"
-	stmt, err := Db.Prepare(sqlStr)
-	if err != nil {
-		fmt.Printf("Prepare insert sql failed:%v\n", err)
-		return -1
-	}
-	defer closeStmt(stmt)
-	result, err := stmt.Exec(user.Username, user.Password, user.Age, user.Sex, user.Phone)
-	if err != nil {
-		fmt.Printf("exec sql failed:%v\n", err)
-		return -1
-	}
-	lastId, err := result.LastInsertId()
-	if err != nil {
-		fmt.Printf("get lastId failed:%v\n", err)
-		return -1
-	}
-	return lastId
+    sqlStr := "INSERT INTO user_tb(username,password,age,sex,phone) VALUES(?,?,?,?,?)"
+    stmt, err := Db.Prepare(sqlStr)
+    if err != nil {
+        fmt.Printf("Prepare insert sql failed:%v\n", err)
+        return -1
+    }
+    defer closeStmt(stmt)
+    result, err := stmt.Exec(user.Username, user.Password, user.Age, user.Sex, user.Phone)
+    if err != nil {
+        fmt.Printf("exec sql failed:%v\n", err)
+        return -1
+    }
+    lastId, err := result.LastInsertId()
+    if err != nil {
+        fmt.Printf("get lastId failed:%v\n", err)
+        return -1
+    }
+    return lastId
 }
 
 //更新用户
 func updateUser(u User) int64 {
-	updateSql := "UPDATE user_tb SET username=?,password=?,age=?,sex=?,phone=? where id=?"
-	stmt, err := Db.Prepare(updateSql)
-	if err != nil {
-		fmt.Printf("Prepare update sql failed:%v\n", err)
-		return -1
-	}
-	defer closeStmt(stmt)
-	result, err := stmt.Exec(u.Username, u.Password, u.Age, u.Sex, u.Phone, u.Id)
-	if err != nil {
-		fmt.Printf("exec sql failed:%v\n", err)
-		return -1
-	}
-	affectedId, err := result.RowsAffected()
-	if err != nil {
-		fmt.Printf("get affected id failed:%v\n", err)
-		return -1
-	}
-	return affectedId
+    updateSql := "UPDATE user_tb SET username=?,password=?,age=?,sex=?,phone=? where id=?"
+    stmt, err := Db.Prepare(updateSql)
+    if err != nil {
+        fmt.Printf("Prepare update sql failed:%v\n", err)
+        return -1
+    }
+    defer closeStmt(stmt)
+    result, err := stmt.Exec(u.Username, u.Password, u.Age, u.Sex, u.Phone, u.Id)
+    if err != nil {
+        fmt.Printf("exec sql failed:%v\n", err)
+        return -1
+    }
+    affectedId, err := result.RowsAffected()
+    if err != nil {
+        fmt.Printf("get affected id failed:%v\n", err)
+        return -1
+    }
+    return affectedId
 }
 
 //根据id删除用户对象
 func delUser(id int) int64 {
-	delSql := "DELETE FROM user_tb WHERE id=?"
-	result, err := Db.Exec(delSql, id)
-	if err != nil {
-		fmt.Printf("exec del failed:%v\n", err)
-		return -1
-	}
-	affectedId, err := result.RowsAffected()
-	if err != nil {
-		fmt.Printf("get affected id failed:%v\n", err)
-		return -1
-	}
-	return affectedId
+    delSql := "DELETE FROM user_tb WHERE id=?"
+    result, err := Db.Exec(delSql, id)
+    if err != nil {
+        fmt.Printf("exec del failed:%v\n", err)
+        return -1
+    }
+    affectedId, err := result.RowsAffected()
+    if err != nil {
+        fmt.Printf("get affected id failed:%v\n", err)
+        return -1
+    }
+    return affectedId
 }
 
 //根据用户名查询用户对象
 func findUserByUsername(username string) (err error, user User) {
-	sqlStr := "SELECT * FROM user_tb WHERE username=?"
-	row := Db.QueryRow(sqlStr, username)
-	err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
-	if err != nil {
-		return
-	}
-	return
+    sqlStr := "SELECT * FROM user_tb WHERE username=?"
+    row := Db.QueryRow(sqlStr, username)
+    err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
+    if err != nil {
+        return
+    }
+    return
 }
 
 //根据ID查询用户对象
 func findUserById(id int) (err error, user User) {
-	sqlStr := "SELECT * FROM user_tb WHERE id=?"
-	stmt, err := Db.Prepare(sqlStr)
-	defer closeStmt(stmt)
-	row := stmt.QueryRow(id)
-	err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
-	if err != nil {
-		return
-	}
-	return
+    sqlStr := "SELECT * FROM user_tb WHERE id=?"
+    stmt, err := Db.Prepare(sqlStr)
+    defer closeStmt(stmt)
+    row := stmt.QueryRow(id)
+    err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
+    if err != nil {
+        return
+    }
+    return
 }
 
 //根据用户名和密码查询用户对象
 func findUserByUsernameAndPassword(username string, password string) (err error, user User) {
-	sqlStr := "SELECT * FROM user_tb WHERE username=? AND password=?"
-	row := Db.QueryRow(sqlStr, username, password)
-	err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
-	if err != nil {
-		return
-	}
-	return
+    sqlStr := "SELECT * FROM user_tb WHERE username=? AND password=?"
+    row := Db.QueryRow(sqlStr, username, password)
+    err = row.Scan(&user.Id, &user.Username, &user.Password, &user.Age, &user.Sex, &user.Phone)
+    if err != nil {
+        return
+    }
+    return
 }
 
 //获取所有用户对象集
 func findAllUsers() (err error, users []*User) {
-	sqlStr := "SELECT * FROM user_tb"
-	rows, err := Db.Query(sqlStr)
-	if err != nil {
-		fmt.Print("mysql is nul!\n")
-		return
-	}
-	defer closeRow(rows)  //延迟调用
-	for rows.Next() {
-		var u User
-		err = rows.Scan(&u.Id, &u.Username, &u.Password, &u.Age, &u.Sex, &u.Phone)
-		fmt.Println(u.Id)
-		fmt.Println(u.Username)
-		//err = rows.Scan(&u.Id, &u.Username, &u.Password)
-		if err != nil {
-			fmt.Printf("err is nil\n")
-			return
-		}
-		users = append(users, &u)
-	}
-	return
+    sqlStr := "SELECT * FROM user_tb"
+    rows, err := Db.Query(sqlStr)
+    if err != nil {
+        fmt.Print("mysql is nul!\n")
+        return
+    }
+    defer closeRow(rows)  //延迟调用
+    for rows.Next() {
+        var u User
+        err = rows.Scan(&u.Id, &u.Username, &u.Password, &u.Age, &u.Sex, &u.Phone)
+        fmt.Println(u.Id)
+        fmt.Println(u.Username)
+        //err = rows.Scan(&u.Id, &u.Username, &u.Password)
+        if err != nil {
+            fmt.Printf("err is nil\n")
+            return
+        }
+        users = append(users, &u)
+    }
+    return
 }
 
 //关闭stmt连接
 func closeStmt(stmt *sql.Stmt) {
-	if stmt != nil {
-		fmt.Printf("close stmt connection\n")
-		stmt.Close()
-	}
+    if stmt != nil {
+        fmt.Printf("close stmt connection\n")
+        stmt.Close()
+    }
 }
 
 //关闭row连接
 func closeRow(rows *sql.Rows) {
-	if rows != nil {
-		fmt.Printf("close rows connection\n")
-		rows.Close()
-	}
+    if rows != nil {
+        fmt.Printf("close rows connection\n")
+        rows.Close()
+    }
 }
 
 //处理http请求方法
 var contentPath = "./static/"
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(contentPath + "index.html")
-	if err != nil {
-		fmt.Fprintf(w, "load index.html failed:%v\n", err)
-		return
-	}
-	t.Execute(w, nil)
+    t, err := template.ParseFiles(contentPath + "index.html")
+    if err != nil {
+        fmt.Fprintf(w, "load index.html failed:%v\n", err)
+        return
+    }
+    t.Execute(w, nil)
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles(contentPath + "login.html")
-	if err != nil {
-		fmt.Fprintf(w, "load login.html failed:%v\n", err)
-		return
-	}
-	t.Execute(w, nil)
+    t, err := template.ParseFiles(contentPath + "login.html")
+    if err != nil {
+        fmt.Fprintf(w, "load login.html failed:%v\n", err)
+        return
+    }
+    t.Execute(w, nil)
 }
 //处理登录请求
 func loginForm(w http.ResponseWriter, r *http.Request) {
-	method := r.Method
-	if method == "POST" {
-		r.ParseForm()
-		//获取表单的中数据
-		usernmae := r.FormValue("username")
-		password := r.FormValue("password")
-		err, user := findUserByUsernameAndPassword(usernmae, password)
-		if err != nil {
-			fmt.Printf("find user failed:%v\n", err)
-			t, err := template.ParseFiles(contentPath + "login.html")
-			if err != nil {
-				fmt.Fprintf(w, "load login.html failed:%v", err)
-				return
-			}
-			t.Execute(w, "用户名或密码不正确,请确认")
-			return
-		}
-		t, err := template.ParseFiles(contentPath + "success.html")
-		if err != nil {
-			fmt.Fprintf(w, "load success.html failed:%v", err)
-			return
-		}
-		t.Execute(w, user)
+    method := r.Method
+    if method == "POST" {
+        r.ParseForm()
+        //获取表单的中数据
+        usernmae := r.FormValue("username")
+        password := r.FormValue("password")
+        err, user := findUserByUsernameAndPassword(usernmae, password)
+        if err != nil {
+            fmt.Printf("find user failed:%v\n", err)
+            t, err := template.ParseFiles(contentPath + "login.html")
+            if err != nil {
+                fmt.Fprintf(w, "load login.html failed:%v", err)
+                return
+            }
+            t.Execute(w, "用户名或密码不正确,请确认")
+            return
+        }
+        t, err := template.ParseFiles(contentPath + "success.html")
+        if err != nil {
+            fmt.Fprintf(w, "load success.html failed:%v", err)
+            return
+        }
+        t.Execute(w, user)
 
-	}
+    }
 }
 
 //处理更新请求
 func update(w http.ResponseWriter, r *http.Request) {
-	r.Header.Add("Content-Type", "application/json")
-	boday, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		fmt.Fprintf(w, "read body failed:%v", err)
-		return
-	}
-	var user User
-	err = json.Unmarshal(boday,&user)
-	if err != nil {
-		fmt.Fprintf(w,"{\"error\":\"%v\"}",err)
-		return
-	}
-	fmt.Printf("%#v\n", user)
-	rowId := updateUser(user)
-	fmt.Fprintf(w, "{\"status\":\"ok\",\"affectedId\":\"%d\"}",rowId)
+    r.Header.Add("Content-Type", "application/json")
+    boday, err := ioutil.ReadAll(r.Body)
+    if err != nil {
+        fmt.Fprintf(w, "read body failed:%v", err)
+        return
+    }
+    var user User
+    err = json.Unmarshal(boday,&user)
+    if err != nil {
+        fmt.Fprintf(w,"{\"error\":\"%v\"}",err)
+        return
+    }
+    fmt.Printf("%#v\n", user)
+    rowId := updateUser(user)
+    fmt.Fprintf(w, "{\"status\":\"ok\",\"affectedId\":\"%d\"}",rowId)
 }
 
 //处理添加用户请求
 func add(w http.ResponseWriter, r *http.Request) {
-	r.Header.Add("Content-Type", "application/json")
-	boday, err := ioutil.ReadAll(r.Body) //读取body消息体
-	if err != nil {
-		fmt.Fprintf(w, "read body failed:%v", err)
-		return
-	}
-	var user User
-	err = json.Unmarshal(boday,&user) //反序列化成user对象
-	if err != nil {
-		fmt.Fprintf(w,"{\"error\":\"%v\"}",err)
-		return
-	}
-	fmt.Printf("%#v\n", user)
-	rowId := addUser(&user)
-	fmt.Fprintf(w, "{\"status\":\"ok\",\"rowId\":\"%d\"}",rowId)
+    r.Header.Add("Content-Type", "application/json")
+    boday, err := ioutil.ReadAll(r.Body) //读取body消息体
+    if err != nil {
+        fmt.Fprintf(w, "read body failed:%v", err)
+        return
+    }
+    var user User
+    err = json.Unmarshal(boday,&user) //反序列化成user对象
+    if err != nil {
+        fmt.Fprintf(w,"{\"error\":\"%v\"}",err)
+        return
+    }
+    fmt.Printf("%#v\n", user)
+    rowId := addUser(&user)
+    fmt.Fprintf(w, "{\"status\":\"ok\",\"rowId\":\"%d\"}",rowId)
 }
 
 //处理查询请求
 func findById(w http.ResponseWriter, r *http.Request){
 
-	idStr  := r.URL.Query().Get("id")
-	id,err := strconv.Atoi(idStr)
-	if err != nil {
-		fmt.Fprintf(w,"parse id string to int failed:%v",err)
-		return
-	}
-	err,user := findUserById(id)
-	if err != nil {
-		fmt.Fprintf(w,"get user by %d failed:%v",id,err)
-		return
-	}
+    idStr  := r.URL.Query().Get("id")
+    id,err := strconv.Atoi(idStr)
+    if err != nil {
+        fmt.Fprintf(w,"parse id string to int failed:%v",err)
+        return
+    }
+    err,user := findUserById(id)
+    if err != nil {
+        fmt.Fprintf(w,"get user by %d failed:%v",id,err)
+        return
+    }
 
-	data,err := json.Marshal(&user) //将user struct序列化成字节数组
-	if err != nil {
-		fmt.Fprintf(w,"parse user data struct failed:%v",err)
-		return
-	}
-	fmt.Fprintf(w,string(data))
+    data,err := json.Marshal(&user) //将user struct序列化成字节数组
+    if err != nil {
+        fmt.Fprintf(w,"parse user data struct failed:%v",err)
+        return
+    }
+    fmt.Fprintf(w,string(data))
 }
 
 //处理查询请求
 func findAll(w http.ResponseWriter, r *http.Request){
 
-	err,user := findAllUsers()
-	if err != nil {
-		fmt.Fprintf(w,"get user failed:%v",err)
-		return
-	}
-	data,err := json.Marshal(&user) //将user struct序列化成字节数组
-	if err != nil {
-		fmt.Fprintf(w,"parse user data struct failed:%v",err)
-		return
-	}
-	fmt.Fprintf(w,string(data))
+    err,user := findAllUsers()
+    if err != nil {
+        fmt.Fprintf(w,"get user failed:%v",err)
+        return
+    }
+    data,err := json.Marshal(&user) //将user struct序列化成字节数组
+    if err != nil {
+        fmt.Fprintf(w,"parse user data struct failed:%v",err)
+        return
+    }
+    fmt.Fprintf(w,string(data))
 }
 
 func main() {
-	//添加路由
-	http.HandleFunc("/", indexPage)
-	http.HandleFunc("/index", indexPage)
-	http.HandleFunc("/login", login)
-	http.HandleFunc("/loginForm", loginForm)
-	http.HandleFunc("/add", add)
-	http.HandleFunc("/update", update)
-	http.HandleFunc("/findById",findById)
-	http.HandleFunc("/findAll",findAll)
-	//启动服务端口监听
-	err := http.ListenAndServe(":9090", nil)
-	if err != nil {
-		fmt.Printf("Listen 9090 port failed:%v\n", err)
-		return
-	}
+    //添加路由
+    http.HandleFunc("/", indexPage)
+    http.HandleFunc("/index", indexPage)
+    http.HandleFunc("/login", login)
+    http.HandleFunc("/loginForm", loginForm)
+    http.HandleFunc("/add", add)
+    http.HandleFunc("/update", update)
+    http.HandleFunc("/findById",findById)
+    http.HandleFunc("/findAll",findAll)
+    //启动服务端口监听
+    err := http.ListenAndServe(":9090", nil)
+    if err != nil {
+        fmt.Printf("Listen 9090 port failed:%v\n", err)
+        return
+    }
 }
 ```
-
-
-

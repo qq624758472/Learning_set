@@ -16,7 +16,6 @@ Intel 8086 在16位实模式下可以访问 1MB 的内存空间，地址范围�
 
 3.0xF0000-0xFFFFF: ROM(只读存储器),占据内存顶端的64k空间. 固化了开机时要执行的指令
 
-
 0xB8000～0xBFFFF : 分给显卡的.
 
 8086加电或复位时,cs=0xffff,ip=0x0000,位于rom处,开始执行bios程序. 
@@ -24,10 +23,6 @@ Intel 8086 在16位实模式下可以访问 1MB 的内存空间，地址范围�
 物理地址为0xFFFF0, 到最后结束也只有16个字节.所以一般为一个jmp指令.
 
 处理器取指令执行的自然顺序是从内存的低地址向高地址推进.
-
-
-
-
 
 ## 1.linux0.11启动流程分析
 
@@ -51,16 +46,16 @@ Intel 8086 在16位实模式下可以访问 1MB 的内存空间，地址范围�
 ; 根文件系统设备号(ROOT_DEV)
 entry start
 start:
-	mov	ax,#BOOTSEG
-	mov	ds,ax
-	mov	ax,#INITSEG
-	mov	es,ax
-	mov	cx,#256
-	sub	si,si
-	sub	di,di
-	rep
-	movw				
-	; 从start到这行, bootsect将自身从内存0x7c00处拷贝到0x9000处.
+    mov    ax,#BOOTSEG
+    mov    ds,ax
+    mov    ax,#INITSEG
+    mov    es,ax
+    mov    cx,#256
+    sub    si,si
+    sub    di,di
+    rep
+    movw                
+    ; 从start到这行, bootsect将自身从内存0x7c00处拷贝到0x9000处.
 ```
 
 5.初始化栈寄存器，就可使用push和pop操作， 压栈方向从高地址到低地址。
@@ -69,33 +64,33 @@ start:
 ;  刘十三:
 ;  2.对DS(数据段寄存器) ES(附加段寄存器) SS(栈基址寄存器) 设置成0x9000, 并将sp(栈顶指针)指向0xff00处.
 ;  对这几个寄存器的设置,就可以在后边使用push和pop操作。
-go:	mov	ax,cs
-	mov	ds,ax
-	mov	es,ax
+go:    mov    ax,cs
+    mov    ds,ax
+    mov    es,ax
 ;  put stack at 0x9ff00.
-	mov	ss,ax
-	mov	sp,#0xFF00		;  arbitrary value >>512
+    mov    ss,ax
+    mov    sp,#0xFF00        ;  arbitrary value >>512
 ```
 
 6.调用0x13中断，将软盘从第2扇区开始的4个扇区（2~5扇区），既setup.s对应的程序加载到0x90200处，紧挨着启动扇区。
 
 ```assembly
 load_setup:
-	mov	dx,#0x0000		;  drive 0, head 0
-	mov	cx,#0x0002		;  sector 2, track 0
-	mov	bx,#0x0200		;  address = 512, in INITSEG
-	mov	ax,#0x0200+SETUPLEN	;  service 2, nr of sectors
-	int	0x13			;  read it
-	jnc	ok_load_setup		;  ok - continue
-	mov	dx,#0x0000
-	mov	ax,#0x0000		;  reset the diskette
-	int	0x13
-	j	load_setup
+    mov    dx,#0x0000        ;  drive 0, head 0
+    mov    cx,#0x0002        ;  sector 2, track 0
+    mov    bx,#0x0200        ;  address = 512, in INITSEG
+    mov    ax,#0x0200+SETUPLEN    ;  service 2, nr of sectors
+    int    0x13            ;  read it
+    jnc    ok_load_setup        ;  ok - continue
+    mov    dx,#0x0000
+    mov    ax,#0x0000        ;  reset the diskette
+    int    0x13
+    j    load_setup
 ```
 
 7.调用0x13中断，将system模块加载到内存。
 
-​	system模块有240个扇区，然后跳转到0x90200处执行。
+​    system模块有240个扇区，然后跳转到0x90200处执行。
 
 8.setup.s开始运行，提取内核运行需要的机器系统数据。
 
@@ -103,15 +98,9 @@ load_setup:
 
 9.
 
-
-
 未完待续，汇编太多，看不下去了。
 
-
-
 ### 1.2 从main到怠速状态
-
-
 
 ### 系统调用
 
