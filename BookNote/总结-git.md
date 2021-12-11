@@ -12,8 +12,6 @@ ssh-keygen -t rsa -C "your_email@youremail.com"
 
 3.添加sshkey到gitlab上，然后才能下载代码。
 
-
-
 ## git命令
 
 ### 1.命令集合
@@ -54,8 +52,6 @@ $ git am --resolved
 git reset --hard HEAD^ 回退到上个版本
 git reset --hard HEAD~3 回退到前3次提交之前，以此类推，回退到n次提交之前
 git reset --hard commit_id 退到/进到，指定commit的哈希码（这次提交之前或之后的提交都会回滚）
-
-
 ```
 
 ### 2、下载代码
@@ -91,10 +87,6 @@ git checkout 分支名
 ```
 
 ### 4、更新、修改与提交代码
-
-
-
-
 
 ### 5、fork别人的仓库，并创建自己分支
 
@@ -175,7 +167,7 @@ git blame -L 56,59 ./uosdeviceb/uoshwID.c
 
 ```sh
 文件权限变更git也会检测到并提交。
-git config core.filemode false  		# 当前版本库
+git config core.filemode false          # 当前版本库
 git config --global core.fileMode false # 所有版本库
 ```
 
@@ -184,8 +176,6 @@ git config --global core.fileMode false # 所有版本库
 ```sh
 git checkout -b dev
 ```
-
-
 
 ### 6.切换到某个tag
 
@@ -199,12 +189,10 @@ git checkout tag_name
 git reset --hard ${commit_id}
 ```
 
-
-
 ## CVE内核patch检查更新方法
 
 1. 再这个网站输入patch号，可以查找patch信息。 
-
+   
    ```sh
    https://access.redhat.com/security/security-updates/#/cve?q=CVE-2019-12380&p=1&sort=cve_publicDate%20desc&rows=10&documentKind=Cve
    ```
@@ -216,14 +204,12 @@ git reset --hard ${commit_id}
 4. 再patch或者discussion中找出不同，然后修改本地对应文件。如下图：![](../tools_Lib/all_picture/gitlab使用仓库管理/6.png)
 
 5. 上传基代码到github上任意账号下， 或者直接git init都可以。  然后在原来的基础上修改代码后使用
-
+   
    ```sh
    git format-patch HEAD^
    ```
-
+   
    生成一个patch文件。
-
-
 
 ## git patch使用教程
 
@@ -287,12 +273,10 @@ git fetch origin master 更新远程仓库的master分支到本地，在这之�
 
 git merge origin/master 与远程仓库比较
 
-
-
 ## CVE内核patch检查更新方法
 
 1. 再这个网站输入patch号，可以查找patch信息。 
-
+   
    ```sh
    https://access.redhat.com/security/security-updates/#/cve?q=CVE-2019-12380&p=1&sort=cve_publicDate%20desc&rows=10&documentKind=Cve
    ```
@@ -304,16 +288,12 @@ git merge origin/master 与远程仓库比较
 4. 再patch或者discussion中找出不同，然后修改本地对应文件。如下图：![](../tools_Lib/all_picture/gitlab使用仓库管理/6.png)
 
 5. 上传基代码到github上任意账号下， 或者直接git init都可以。  然后在原来的基础上修改代码后使用
-
+   
    ```sh
    git format-patch HEAD^
    ```
-
+   
    生成一个patch文件。
-
-
-
-
 
 ## 参考博客：
 
