@@ -248,7 +248,7 @@ char * http_get_header(char * buf, char * key);
 char * http_get_from_body(char* buf, char *key);
 
 /**
- * \ingroup BetapigInterface
+ * ingroup BetapigInterface
  *  从接收到的buff中获取url的值。
  * 
  *  返回url的值。
