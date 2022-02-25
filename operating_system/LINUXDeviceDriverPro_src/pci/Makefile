@@ -1,6 +1,6 @@
 obj-m	:= pci_skel.o
 
-KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+KERNELDIR ?= /home/hao/work_my/kernel_source/x86_64/linux-4.19.90/
 PWD       := $(shell pwd)
 
 all:

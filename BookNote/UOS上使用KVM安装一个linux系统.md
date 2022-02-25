@@ -37,6 +37,7 @@ sudo apt -y install libvirt0 libvirt-daemon qemu virt-manager bridge-utils libvi
 * 隔离的虚拟网络->Host Only：
 
 * 转发到物理网络：
+  
   * 目的：默认即可，通过本主机网卡转发
   * 模式：NAT、路由、Open
 
@@ -45,7 +46,5 @@ sudo apt -y install libvirt0 libvirt-daemon qemu virt-manager bridge-utils libvi
 ### 四、安装虚拟机
 
 新建->加载iso镜像文件->分配资源。 等，和vm差不多，不过多介绍。
-
-
 
 # 

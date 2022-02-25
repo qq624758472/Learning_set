@@ -1,14 +1,24 @@
-#include <linux/config.h>
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: lsh
+ * @Date: 2022-02-22 16:17:16
+ * @LastEditors: lsh
+ * @LastEditTime: 2022-02-22 16:21:26
+ */
+//#include <linux/config.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/pci.h>
 #include <linux/init.h>
 
-
 static struct pci_device_id ids[] = {
-	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82801AA_3), },
-	{ 0, }
-};
+	{
+		PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82801AA_3),
+	},
+	{
+		0,
+	}};
 MODULE_DEVICE_TABLE(pci, ids);
 
 static unsigned char skel_get_revision(struct pci_dev *dev)
@@ -21,14 +31,13 @@ static unsigned char skel_get_revision(struct pci_dev *dev)
 
 static int probe(struct pci_dev *dev, const struct pci_device_id *id)
 {
-	/* Do probing type stuff here.  
+	/* Do probing type stuff here.
 	 * Like calling request_region();
 	 */
 	pci_enable_device(dev);
-	
+
 	if (skel_get_revision(dev) == 0x42)
 		return -ENODEV;
-
 
 	return 0;
 }
