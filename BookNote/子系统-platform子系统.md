@@ -8,8 +8,6 @@ platform总线是一种虚拟、抽象出来的总线，实际中并不存在这
 
 因为对于usb设备、i2c设备、pci设备、spi设备等等，他们与cpu的通信都是直接挂在相应的总线下面与我们的cpu进行数据交互的，但是在我们的嵌入式系统当中，并不是所有的设备都能够归属于这些常见的总线，在嵌入式系统里面，SoC系统中集成的独立的外设控制器、挂接在SoC内存空间的外设却不依附与此类总线。所以Linux驱动模型为了保持完整性，将这些设备挂在一条虚拟的总线上（platform总线），而不至于使得有些设备挂在总线上，另一些设备没有挂在总线上。
 
-
-
 ## platform device
 
 平台设备是通常在系统中显示为实体的设备.
@@ -24,7 +22,7 @@ platform总线是一种虚拟、抽象出来的总线，实际中并不存在这
 struct platform_device {
       const char      *name;// 平台总线下设备的名字
       u32             id;
-      struct device   dev;	// 所有设备通用的属性部分
+      struct device   dev;    // 所有设备通用的属性部分
       u32             num_resources; // 设备使用到的resource的个数
       struct resource *resource;// 设备使用到的资源数组的首地址
 };
@@ -39,17 +37,13 @@ struct resource {
 };
 ```
 
-
-
-
-
 ## platform driver
 
-​	平台驱动程序遵循标准驱动程序模型约定。
+​    平台驱动程序遵循标准驱动程序模型约定。
 
-​	我们只需要关注总线，设备和驱动这三个实体，总线将设备和驱动绑定。
+​    我们只需要关注总线，设备和驱动这三个实体，总线将设备和驱动绑定。
 
-​	系统每注册一个设备的时候，会寻找与之匹配的驱动；相反，系统每注册一个驱动的时候，会寻找与之匹配的设备，而匹配则由总线完成。
+​    系统每注册一个设备的时候，会寻找与之匹配的驱动；相反，系统每注册一个驱动的时候，会寻找与之匹配的设备，而匹配则由总线完成。
 
 ```c
 struct platform_driver {
@@ -66,16 +60,12 @@ struct platform_driver {
 
 一般来说，probe（）应该验证指定的设备硬件是否实际存在。
 
-
-
 ## driver和device的匹配过程
 
 第一步：系统启动时在bus系统中注册platform
 第二步：提供platform_device
 第三步：提供platform_driver
 第四步：platform的match函数发现driver和device匹配后，调用driver的probe函数来完成驱动的初始化和安装，然后设备就工作起来了
-
-
 
 ## 常用接口
 
@@ -86,7 +76,7 @@ int platform_driver_register(struct platform_driver *drv);
 //在已知设备不可热插拔的常见情况下，probe（）例程可以存在于init部分中，以减少驱动程序的运行时内存占用
 int platform_driver_probe(struct platform_driver *drv,
                   int (*probe)(struct platform_device *));
-    
+
 //内核模块可以由多个平台驱动程序组成。平台核心提供了用于注册和注销一组驱动程序的接口
 //如果其中一个driver未能注册，则在此之前注册的所有driver将以相反的顺序取消注册。
 int __platform_register_drivers(struct platform_driver * const *drivers,
@@ -100,10 +90,6 @@ int platform_device_register(struct platform_device *pdev);
 
 int platform_add_devices(struct platform_device **pdevs, int ndev);
 ```
-
-
-
-
 
 ## 驱动架构
 
@@ -137,11 +123,6 @@ static int hello_init(void)
 static void hello_exit(void)
 {
     platform_driver_unregister(&pdrv);
-   
+
 }
 ```
-
-
-
-
-
