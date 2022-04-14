@@ -1,0 +1,334 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Fri Mar  4 19:42:52 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = deepin
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/hao/.Xauthority
+# environment
+GDMSESSION = deepin
+# environment
+XMODIFIERS = @im=fcitx
+# makefile
+CURDIR := /home/hao/work_my/Learning_set
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1150e25556c30c6d26d4dcff9517a156.zh-cn","_translationsConfigFile":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/tcf.json","_cacheRoot":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn","_resolvedLanguagePackCoreLocation":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/b5205cc8eb4fbaa726835538cd82372cc0222d43","_corruptedFile":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# environment
+QT_DEBUG_PLUGINS = 1
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+QT_LOGGING_RULES = *.debug=false
+# environment
+CLUTTER_IM_MODULE = fcitx
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-037de791-8084-4cf5-8eae-c3f8e4c6423a.sock
+# environment
+VSCODE_CWD = /home/hao
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/home/hao/work_pro/sqlitestudio-3.3.3/SQLiteStudio:/home/hao/work_pro/node-v16.13.0-linux-x64/bin/:/home/hao/work_pro/:/home/hao/work_pro/blender-2.93.6-linux-x64/blender-2.93.6-linux-x64/:/home/hao/work_pro/arm-linux/arm-linux-gcc-4.4.3/bin:/home/hao/work_my/across_build/gcc-aarch64/bin:/home/hao/work_my/across_build/gcc-loongson-mips/bin
+# environment
+auto_proxy = https://it.uniontech.com/proxy/proxy.pac
+# environment
+GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm/data/hao
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = deepin
+# environment
+SSH_AUTH_SOCK = /home/hao/.cache/keyring-CCSMI1/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 11251
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# makefile (from 'Makefile', line 13)
+define make_subdir
+	#for 循环的用法。
+	for subdir in $(SUBDIRS) ; do ( cd $$subdir && make $1) done;
+endef
+# environment
+GTK_IM_MODULE = fcitx
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/hao/work_my/Learning_set
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = Deepin
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/hao
+# environment
+XDG_CACHE_HOME = /home/hao/.cache
+# environment
+VSCODE_CODE_CACHE_PATH = /home/hao/.config/Code/CachedData/b5205cc8eb4fbaa726835538cd82372cc0222d43
+# environment
+LOGNAME = hao
+# environment
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+MAKE_VERSION := 4.2.1
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 1
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+QT_IM_MODULE = fcitx
+# environment
+SHLVL = 0
+# environment
+XDG_SESSION_ID = 2
+# environment
+USER = hao
+# makefile
+.DEFAULT_GOAL := all
+# environment
+XDG_CURRENT_DESKTOP = Deepin
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = zh_CN
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-6db3328a-1.65.0-main.sock
+# environment
+GNOME_KEYRING_CONTROL = /home/hao/.cache/keyring-CCSMI1
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+QT_DBL_CLICK_DIST = 15
+# makefile (from 'Makefile', line 21)
+target = 	(cd $(DIR) && make)
+# environment
+QT_ACCESSIBILITY = 1
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+XDG_CONFIG_HOME = /home/hao/.config
+# environment
+LC_ALL = C
+# environment
+SBX_CHROME_API_RQ = 1
+# environment
+QT4_IM_MODULE = fcitx
+# automatic
+^F = $(notdir $^)
+# environment
+XDG_DATA_HOME = /home/hao/.local/share
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# makefile (from 'Makefile', line 4)
+SUBDIRS = Language/c++ operating_system server_model/c++/1 tools_Lib/makefile
+# environment
+LANG = C
+# environment
+VSCODE_PID = 11251
+# variable set hash-table stats:
+# Load=103/1024=10%, Rehash=0, Collisions=7/135=5%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2049, inode 48537681): 22 files, no impossibilities.
+
+# 22 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+all:
+#  Command line target.
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := all
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=3/15=20%
+#  recipe to execute (from 'Makefile', line 26):
+	$(call make_subdir )
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-04-26 17:27:42
+#  File has been updated.
+#  Successfully updated.
+
+debug:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 30):
+	$(call make_subdir , debug)
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 32):
+	$(call make_subdir , clean) #后边是参数，传到命令包的参数。
+
+target:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+	$(call target)
+	
+
+install:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+#  recipe to execute (from 'Makefile', line 28):
+	$(call make_subdir , install)
+
+# files hash-table stats:
+# Load=8/1024=1%, Rehash=0, Collisions=0/20=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 31 / storage = 293 B / avg = 9 B
+# current buf: size = 8162 B / used = 293 B / count = 31 / avg = 9 B
+
+# strcache performance: lookups = 42 / hit rate = 26%
+# hash-table stats:
+# Load=31/8192=0%, Rehash=0, Collisions=1/42=2%
+# Finished Make data base on Fri Mar  4 19:42:52 2022
+
+ 

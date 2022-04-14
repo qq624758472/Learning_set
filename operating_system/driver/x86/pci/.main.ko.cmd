@@ -1,0 +1,1 @@
+cmd_/mnt/hgfs/learing/operating_system/driver/x86/pci/main.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /mnt/hgfs/learing/operating_system/driver/x86/pci/main.ko /mnt/hgfs/learing/operating_system/driver/x86/pci/main.o /mnt/hgfs/learing/operating_system/driver/x86/pci/main.mod.o
