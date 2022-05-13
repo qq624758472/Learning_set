@@ -265,8 +265,12 @@ error:
 #ifdef DEBUG_EXAM
     cout << "error exit" << endl;
 #endif
+
+
     return status;
 #endif
+
+
 
 #ifdef DEBUG
     char tmp[100] = {0};

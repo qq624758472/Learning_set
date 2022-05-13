@@ -12,25 +12,25 @@ sudo apt -y install libvirt0 libvirt-daemon qemu virt-manager bridge-utils libvi
 
 ### 二、打开
 
-![](../tools_Lib/all_picture/UOS上KVM的使用/1.png)
+![](./all_picture/UOS上KVM的使用/1.png)
 
 ### 三、网络设置
 
 编辑->连接详情->虚拟网络
 
-![](../tools_Lib/all_picture/UOS上KVM的使用/2.png)default 是KVM安装时默认创建的虚拟网络
+![](./all_picture/UOS上KVM的使用/2.png)default 是KVM安装时默认创建的虚拟网络
 
-![](../tools_Lib/all_picture/UOS上KVM的使用/3.png)
+![](./all_picture/UOS上KVM的使用/3.png)
 
-![4](../tools_Lib/all_picture/UOS上KVM的使用/4.png)
+![4](./all_picture/UOS上KVM的使用/4.png)
 
-![5](../tools_Lib/all_picture/UOS上KVM的使用/5.png)
+![5](./all_picture/UOS上KVM的使用/5.png)
 
-![6](../tools_Lib/all_picture/UOS上KVM的使用/6.png)
+![6](./all_picture/UOS上KVM的使用/6.png)
 
-![7](../tools_Lib/all_picture/UOS上KVM的使用/7.png)
+![7](./all_picture/UOS上KVM的使用/7.png)
 
-![8](../tools_Lib/all_picture/UOS上KVM的使用/8.png)
+![8](./all_picture/UOS上KVM的使用/8.png)
 
 在步骤4中的网络模式：
 
