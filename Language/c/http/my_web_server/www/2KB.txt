@@ -1,0 +1,66 @@
+
+Code examples for 
+"A Complete Guide to DB2 Universal Database"
+by Don Chamberlin
+
+CHAPTER 5 INSTRUCTIONS
+
+This chapter provides the following examples:
+1. chap5: A series of SQL statements that can be run with the
+   Command Line Processor.
+2. salesfun: An example of a table function and some queries
+   that use it.
+
+Before executing any of these examples, you must start the DB2
+server, using the DB2START command.
+
+The detailed instructions are as follows:
+
+1. CHAP5:
+
+   Files:
+      chap5.sql               (Example statements)
+      chap5.ans               (Expected results)
+
+   Procedure:
+
+      Erase any existing file named chap5.out.  Then execute the
+      following command which runs the test file.  The test may take
+      several minutes, and the result is saved in a file named chap5.out.
+
+      db2 -tf chap5.sql
+
+      The output file chap5.out should match the expected output
+      file chap5.ans, except that your output will contain a 
+      list of 20 random numbers that is different from the
+      20 random numbers in the expected output file.
+
+
+2. SALESFUN:
+
+   Files:
+      salesfun.c        (source code for a table function)
+      salesfun.def      (needed to compile and link on Windows or OS/2)
+      salesfun.exp      (needed to compile and link on UNIX platforms)
+      salesfun.sql      (SQL to install and test the table function)
+      salesfun.ans      (expected results)
+
+   Procedure:
+
+      a. Compile and link the file salesfun.c.  The required commands
+         are platform-dependent and are described in Chapter 6.
+
+      b. Copy the executable UDF file to the database function library.
+         For example:
+            Under AIX: copy salesfun to sqllib/function.
+            Under Windows or OS/2: copy salesfun.dll to sqllib\function.
+
+      c. Erase any existing file named salesfun.out.  Then execute the
+         following command.  The file salesfun.sql installs and tests
+         the UDF, and saves its output in a file named salesfun.out.
+
+            db2 -tf salesfun.sql
+
+         The content of salesfun.out should match the expected output in
+         the file salesfun.ans.
+

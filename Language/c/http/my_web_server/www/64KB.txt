@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta http-equiv="Content-Style-Type" content="text/css" /><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" /><meta name="DC.Creator" content="Thomas Jefferson" /><meta name="DC.Title" content="The Declaration of Independence of The United States of America" /><meta name="DC.Date" content="October 12, 2005" /><meta name="DC.Language" content="English" /><meta name="DC.Publisher" content="Project Gutenberg" /><meta name="DC.Identifier" content="http://www.gutenberg.org/etext/16780" /><meta name="DC.Rights" content="This text is in the public domain." /><title>The Project Gutenberg EBook of The Declaration of Independence of The United States of America by Thomas Jefferson</title><style type="text/css">/* 
+The Gnutenberg Press - default CSS2 stylesheet
+
+Any generated element will have a class "tei" and a class "tei-elem"
+where elem is the element name in TEI. 
+The order of statements is important !!! 
+*/
+
+.tei                            { margin: 0; padding: 0; 
+                                  font-size: 100%; font-weight: normal; font-style: normal }
+
+.block                          { display: block; }
+.inline                         { display: inline; }
+.floatleft                      { float: left;  margin: 1em 2em 1em 0; }
+.floatright                     { float: right; margin: 1em 0 1em 2em; }
+.shaded                         { margin-top: 1em; margin-bottom: 1em; 
+                                  padding: 1em; background-color: #eee; }
+.boxed                          { margin-top: 1em; margin-bottom: 1em; 
+                                  padding: 1em; border: 1px solid black; }
+
+body.tei		        { margin: 4ex 10%; text-align: justify }
+div.tei              	        { margin: 2em 0em }
+p.tei              	        { margin: 0em 0em 1em 0em; text-indent: 0em; }
+blockquote.tei	     	        { margin: 2em 4em }
+
+div.tei-lg                      { margin: 1em 0em; }
+div.tei-l		        { margin: 0em; text-align: left; }
+div.tei-tb                      { text-align: center; }
+div.tei-epigraph     	        { margin: 0em 0em 1em 10em; }
+div.tei-dateline	        { margin: 1ex 0em; text-align: right }
+div.tei-salute                  { margin: 1ex 0em; }
+div.tei-signed                  { margin: 1ex 0em; text-align: right }
+div.tei-byline                  { margin: 1ex 0em; }
+
+                                /* calculate from size of body = 80% */
+div.tei-marginnote		{ margin: 0em 0em 0em -12%; width: 11%; float: left; }
+
+div.tei-sp                      { margin: 1em 0em 1em  2em }
+div.tei-speaker	                { margin: 0em 0em 1em -2em;
+                        	  font-weight: bold; text-indent: 0em }
+div.tei-stage                   { margin: 1em 0em; font-weight: normal; font-style: italic }
+span.tei-stage	     	        { font-weight: normal; font-style: italic }
+
+div.tei-eg             	        { padding: 1em; 
+                     	          color: black; background-color: #eee }
+
+hr.doublepage	     	        { margin: 4em 0em; height: 5px; }
+hr.page            	        { margin: 4em 0em; height: 2px; }
+
+ul.tei-index                    { list-style-type: none }
+
+dl.tei                          { margin: 1em 0em }
+
+dt.tei-notelabel                { font-weight: normal; text-align: right; 
+                     	          float: left; width: 3em }
+dd.tei-notetext                 { margin: 0em 0em 1ex 4em }
+
+span.tei-pb                     { position: absolute; left: 1%; width: 8%;
+                                  font-style: normal; }
+
+span.code          	        { font-family: monospace; font-size: 110%; }
+
+ul.tei-castlist 		{ margin: 0em; list-style-type: none }
+li.tei-castitem		        { margin: 0em; }
+table.tei-castgroup     	{ margin: 0em; }
+ul.tei-castgroup		{ margin: 0em; list-style-type: none; 
+				  padding-right: 2em; border-right: solid black 2px; }
+caption.tei-castgroup-head	{ caption-side: right; width: 50%; text-align: left; 
+				  vertical-align: middle; padding-left: 2em; }
+*.tei-roledesc  		{ font-style: italic }
+*.tei-set			{ font-style: italic }
+
+table.rules                     { border-collapse: collapse; }
+table.rules caption,
+table.rules th,
+table.rules td                  { border: 1px solid black; }
+
+table.tei                       { border-collapse: collapse; }
+table.tei-list                  { width: 100% }
+
+th.tei-head-table	        { padding: 0.5ex 1em }
+
+th.tei-cell		        { padding: 0em 1em }
+td.tei-cell		        { padding: 0em 1em }
+
+td.tei-item		        { padding: 0; font-weight: normal; 
+                                  vertical-align: top; text-align: left; }
+th.tei-label,
+td.tei-label                    { width: 3em; padding: 0; font-weight: normal; 
+                                  vertical-align: top; text-align: right; }
+
+th.tei-label-gloss,
+td.tei-label-gloss              { text-align: left }
+
+td.tei-item-gloss,
+th.tei-headItem-gloss           { padding-left: 4em; }       
+
+img.tei-formula                 { vertical-align: middle; }
+
+</style></head><body class="tei">
+
+
+<div class="tei tei-text" style="margin-bottom: 2.00em; margin-top: 2.00em">
+<div class="tei tei-front" style="margin-bottom: 6.00em; margin-top: 2.00em">
+
+<hr class="page" /><div class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<div id="pgheader" class="tei tei-div" style="margin-bottom: 4.00em; margin-top: 4.00em"><div class="tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em"><p class="tei tei-p" style="margin-bottom: 2.00em">The Project Gutenberg EBook of The Declaration of Independence of The United States of America by Thomas Jefferson</p></div><div class="tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em"><p class="tei tei-p" style="margin-bottom: 1.00em">This eBook is for the use of anyone anywhere at no cost
+          and with almost no restrictions whatsoever. You may copy it,
+          give it away or re-use it under the terms of the Project
+          Gutenberg License <a href="#pglicense" class="tei tei-ref">included with this
+          eBook</a> or online at <a href="http://www.gutenberg.org/license" class="tei tei-xref">http://www.gutenberg.org/license</a></p></div><pre class="pre tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em">Title: The Declaration of Independence of The United States of America
+
+Author: Thomas Jefferson
+
+Release Date: October 12, 2005 [Ebook #16780]
+
+Language: English
+
+Character set encoding: UTF-8
+
+
+***START OF THE PROJECT GUTENBERG EBOOK THE DECLARATION OF INDEPENDENCE OF THE UNITED STATES OF AMERICA***
+</pre></div>
+</div>
+
+<hr class="doublepage" /><div class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+another, and to assume, among the Powers of the earth, the separate and
+equal station to which the Laws of Nature and of Nature's God entitle
+them, a decent respect to the opinions of mankind requires that they
+should declare the causes which impel them to the separation.</p>
+
+<p class="tei tei-p" style="margin-bottom: 1.00em">We hold these truths to be self-evident, that all men are created
+equal, that they are endowed by their Creator with certain unalienable
+Rights, that among these are Life, Liberty, and the pursuit of
+Happiness.—That to secure these rights, Governments are instituted among
+Men, deriving their just powers from the consent of the governed,—That
+whenever any Form of Government becomes destructive of these ends, it is
+the Right of the People to alter or to abolish it, and to institute new
+Government, laying its foundation on such principles and organizing its
+powers in such form, as to them shall seem most likely to effect their
+Safety and Happiness. Prudence, indeed, will dictate that Governments
+long established should not be changed for light and transient causes;
+and accordingly all experience hath shown, that mankind are more
+disposed to suffer, while evils are sufferable, than to right themselves
+by abolishing the forms to which they are accustomed. But when a long
+train of abuses and usurpations, pursuing invariably the same Object
+evinces a design to reduce them under absolute Despotism, it is their
+right, it is their duty, to throw off such Government, and to provide
+new Guards for their future security.—Such has been the patient
+sufferance of these Colonies; and such is now the necessity which
+constrains them to alter their former Systems of Government. The history
+of the present King of Great Britain is a history of repeated injuries
+and usurpations, all having in direct object the establishment of an
+absolute Tyranny over these States. To prove this, let Facts be
+submitted to a candid world.</p>
+
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has refused his Assent to Laws, the most wholesome and necessary
+for the public good.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has forbidden his Governors to pass Laws of immediate and pressing
+importance, unless suspended in their operation till his Assent should
+be obtained; and when so suspended, he has utterly neglected to attend
+to them.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has refused to pass other Laws for the accommodation of large
+districts of people, unless those people would relinquish the right of
+Representation in the Legislature, a right inestimable to them and
+formidable to tyrants only.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has called together legislative bodies at places unusual,
+uncomfortable, and distant from the depository of their Public Records,
+for the sole purpose of fatiguing them into compliance with his
+measures.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has dissolved Representative Houses repeatedly, for opposing with
+manly firmness his invasions on the rights of the people.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has refused for a long time, after such dissolutions, to cause
+others to be elected; whereby the Legislative Powers, incapable of
+Annihilation, have returned to the People at large for their exercise;
+the State remaining in the mean time exposed to all the dangers of
+invasion from without, and convulsions within.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has endeavoured to prevent the population of these States; for
+that purpose obstructing the Laws of Naturalization of Foreigners;
+refusing to pass others to encourage their migration hither, and raising
+the conditions of new Appropriations of Lands.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has obstructed the Administration of Justice, by refusing his
+Assent to Laws for establishing Judiciary Powers.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has made judges dependent on his Will alone, for the tenure of
+their offices, and the amount and payment of their salaries.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has erected a multitude of New Offices, and sent hither swarms of
+Officers to harass our People, and eat out their substance.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has kept among us, in times of peace, Standing Armies without the
+Consent of our legislatures.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has affected to render the Military independent of and superior to
+the Civil Power.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has combined with others to subject us to a jurisdiction foreign
+to our constitution, and unacknowledged by our laws; giving his Assent
+to their Acts of pretended legislation:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For quartering large bodies of armed troops among us:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For protecting them, by a mock Trial, from Punishment for any Murders
+which they should commit on the Inhabitants of these States:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For cutting off our Trade with all parts of the world:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For imposing taxes on us without our Consent:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For depriving us, in many cases, of the benefits of Trial by
+Jury:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For transporting us beyond Seas to be tried for pretended
+offences:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For abolishing the free System of English Laws in a neighbouring
+Province, establishing therein an Arbitrary government, and enlarging
+its Boundaries so as to render it at once an example and fit instrument
+for introducing the same absolute rule into these Colonies:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For taking away our Charters, abolishing our most valuable Laws, and
+altering fundamentally the Forms of our Governments:</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">For suspending our own Legislatures, and declaring themselves
+invested with Power to legislate for us in all cases whatsoever.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has abdicated Government here, by declaring us out of his
+Protection and waging War against us.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has plundered our seas, ravaged our Coasts, burnt our towns, and
+destroyed the lives of our people.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He is at this time transporting large armies of foreign mercenaries
+to compleat the works of death, desolation and tyranny, already begun
+with circumstances of Cruelty &amp; perfidy scarcely paralleled in the most
+barbarous ages, and totally unworthy of the Head of a civilized
+nation.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has constrained our fellow Citizens taken Captive on the high Seas
+to bear Arms against their Country, to become the executioners of their
+friends and Brethren, or to fall themselves by their Hands.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">He has excited domestic insurrections amongst us, and has endeavoured
+to bring on the inhabitants of our frontiers, the merciless Indian
+Savages, whose known rule of warfare, is an undistinguished destruction
+of all ages, sexes and conditions.</td></tr></tbody></table>
+
+<p class="tei tei-p" style="margin-bottom: 1.00em">In every stage of these Oppressions We have Petitioned for Redress in
+the most humble terms: Our repeated Petitions have been answered only by
+repeated injury. A Prince, whose character is thus marked by every act
+which may define a Tyrant, is unfit to be the ruler of a free
+People.</p>
+
+<p class="tei tei-p" style="margin-bottom: 1.00em">Nor have We been wanting in attention to our Brittish brethren. We
+have warned them from time to time of attempts by their legislature to
+extend an unwarrantable jurisdiction over us. We have reminded them of
+the circumstances of our emigration and settlement here. We have
+appealed to their native justice and magnanimity, and we have conjured
+them by the ties of our common kindred to disavow these usurpations,
+which would inevitably interrupt our connections and correspondence.
+They too have been deaf to the voice of justice and of consanguinity. We
+must, therefore, acquiesce in the necessity, which denounces our
+Separation, and hold them, as we hold the rest of mankind, Enemies in
+War, in Peace Friends.</p>
+
+<p class="tei tei-p" style="margin-bottom: 1.00em">We, therefore, the Representatives of the United States of America,
+in General Congress, Assembled, appealing to the Supreme Judge of the
+world for the rectitude of our intentions, do, in the Name, and by the
+Authority of the good People of these Colonies, solemnly publish and
+declare, That these United Colonies are, and of Right ought to be Free
+and Independent States; that they are Absolved from all Allegiance to
+the British Crown, and that all political connection between them and
+the State of Great Britain, is and ought to be totally dissolved; and
+that as Free and Independent States, they have full Power to levy War,
+conclude Peace, contract Alliances, establish Commerce, and to do all
+other Acts and Things which Independent States may of right do. And for
+the support of this Declaration, with a firm reliance on the Protection
+of Divine Providence, we mutually pledge to each other our Lives, our
+Fortunes and our sacred Honor.</p>
+</div>
+
+<div id="Georgia" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Button Gwinnett</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Lyman Hall</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Walton</td></tr></tbody></table>
+</div>
+
+<div id="North_Carolina" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Hooper</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Joseph Hewes</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Penn</td></tr></tbody></table>
+</div>
+
+<div id="South_Carolina" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Edward Rutledge</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas Heyward, Jr.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas Lunch, Jr.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Arthur Middleton</td></tr></tbody></table>
+</div>
+
+<div id="Massachusetts" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Hancock</td></tr></tbody></table>
+</div>
+
+<div id="Maryland" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Samuel Chase</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Paca</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas Stone</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Charles Carroll of Carrollton</td></tr></tbody></table>
+</div>
+
+<div id="Virginia" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Wythe</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Richard Henry Lee</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas Jefferson</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Benjamin Harrison</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas Nelson, Jr.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Francis Lightfoot Lee</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Carter Braxton</td></tr></tbody></table>
+</div>
+
+<div id="Pennsylvania" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Robert Morris</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Benjamin Rush</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Benjamin Franklin</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Morton</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Clymer</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">James Smith</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Taylor</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">James Wilson</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Ross</td></tr></tbody></table>
+</div>
+
+<div id="Delaware" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Caesar Rodney</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">George Read</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Thomas McKean</td></tr></tbody></table>
+</div>
+
+<div id="New_York" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Floyd</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Philip Livingston</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Francis Lewis</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Lewis Morris</td></tr></tbody></table>
+</div>
+
+<div id="New_Jersey" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Richard Stockton</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Witherspoon</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Francis Hopkinson</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Hart</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Abraham Clark</td></tr></tbody></table>
+</div>
+
+<div id="New_Hampshire_2" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Josiah Bartlett</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Whipple</td></tr></tbody></table>
+</div>
+
+<div id="Massachusetts_2" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Samuel Adams</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">John Adams</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Robert Treat Paine</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Elbridge Gerry</td></tr></tbody></table>
+</div>
+
+<div id="Rhode_Island" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Stephen Hopkins</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Ellery</td></tr></tbody></table>
+</div>
+
+<div id="Connecticut" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Roger Sherman</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Samuel Huntington</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">William Williams</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Oliver Wolcott</td></tr></tbody></table>
+</div>
+
+<div id="New_Hampshire" class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+<table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Matthew Thornton</td></tr></tbody></table>
+</div>
+
+</div>
+
+<div class="tei tei-back" style="margin-bottom: 2.00em; margin-top: 6.00em">
+
+<hr class="doublepage" /><div class="tei tei-div" style="margin-bottom: 5.00em; margin-top: 5.00em">
+  <div id="pgfooter" class="tei tei-div" style="margin-bottom: 4.00em; margin-top: 4.00em"><pre class="pre tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em">***END OF THE PROJECT GUTENBERG EBOOK THE DECLARATION OF INDEPENDENCE OF THE UNITED STATES OF AMERICA***
+</pre><hr class="doublepage" /><div class="tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em"><a name="rightpageheader3" id="rightpageheader3"></a><a name="pgtoc4" id="pgtoc4"></a><a name="pdf5" id="pdf5"></a><h1 class="tei tei-head" style="text-align: left; margin-bottom: 3.46em; margin-top: 3.46em"><span style="font-size: 173%">Credits</span></h1><table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr><th class="tei tei-label tei-label-gloss">October 12, 2005  </th></tr><tr><td class="tei tei-item tei-item-gloss"><table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Created document.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item"><span class="tei tei-respStmt">
+        <span class="tei tei-name">Joshua Hutchinson</span>
+      </span></td></tr></tbody></table></td></tr></tbody></table><table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr><th class="tei tei-label tei-label-gloss">June 2006  </th></tr><tr><td class="tei tei-item tei-item-gloss"><table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item">Added PGHeader/PGFooter.</td></tr><tr class="tei tei-labelitem"><th class="tei tei-label"></th><td class="tei tei-item"><span class="tei tei-respStmt">
+        <span class="tei tei-name">Joshua Hutchinson</span>
+      </span></td></tr></tbody></table></td></tr></tbody></table></div><hr class="doublepage" /><div class="tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em"><a name="rightpageheader6" id="rightpageheader6"></a><a name="pgtoc7" id="pgtoc7"></a><a name="pdf8" id="pdf8"></a><h1 class="tei tei-head" style="text-align: left; margin-bottom: 3.46em; margin-top: 3.46em"><span style="font-size: 173%">A Word from Project Gutenberg</span></h1><p class="tei tei-p" style="margin-bottom: 1.00em">This file should be named 
+          16780-h.html or 
+          16780-h.zip.</p><p class="tei tei-p" style="margin-bottom: 1.00em">This and all associated files of various formats will be found
+          in: 
+
+            <a href="http://www.gutenberg.org/dirs/1/6/7/8/16780/" class="block tei tei-xref" style="margin-bottom: 1.80em; margin-left: 3.60em; margin-top: 1.80em; margin-right: 3.60em"><span style="font-size: 90%">http://www.gutenberg.org</span><span style="font-size: 90%">/dirs/1/6/7/8/16780/</span></a></p><p class="tei tei-p" style="margin-bottom: 1.00em">Updated editions will replace the previous one — the old
+          editions will be renamed.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Creating the works from public domain print editions means that
+          no one owns a United States copyright in these works, so the
+          Foundation (and you!) can copy and distribute it in the United
+          States without permission and without paying copyright royalties.
+          Special rules, set forth in the General Terms of Use part of this
+          license, apply to copying and distributing Project Gutenberg™ electronic works
+          to protect the Project Gutenberg™ concept and trademark. Project Gutenberg is a registered
+          trademark, and may not be used if you charge for the eBooks,
+          unless you receive specific permission. If you do not charge
+          anything for copies of this eBook, complying with the rules is
+          very easy. You may use this eBook for nearly any purpose such as
+          creation of derivative works, reports, performances and research.
+          They may be modified and printed and given away — you may do
+          practically <em class="tei tei-emph"><span style="font-style: italic">anything</span></em> with public domain eBooks.
+          Redistribution is subject to the trademark license, especially
+          commercial redistribution.</p></div><hr class="page" /><div id="pglicense" class="tei tei-div" style="margin-bottom: 3.00em; margin-top: 3.00em"><a name="rightpageheader9" id="rightpageheader9"></a><a name="pgtoc10" id="pgtoc10"></a><a name="pdf11" id="pdf11"></a><h1 class="tei tei-head" style="text-align: left; margin-bottom: 3.46em; margin-top: 3.46em"><span style="font-size: 173%">The Full Project Gutenberg License</span></h1><p class="tei tei-p" style="margin-bottom: 1.00em"><em class="tei tei-emph"><span style="font-style: italic">Please read this before you distribute or use this
+          work.</span></em></p><p class="tei tei-p" style="margin-bottom: 1.00em">To protect the Project Gutenberg™ mission of promoting the free
+          distribution of electronic works, by using or distributing
+          this work (or any other work associated in any way with the
+          phrase <span class="tei tei-q">“Project Gutenberg”</span>), you agree to comply with all the terms
+          of the Full Project Gutenberg™ License (<a href="#pglicense" class="tei tei-ref">available with this file</a> or online
+          at <a href="http://www.gutenberg.org/license" class="tei tei-xref">http://www.gutenberg.org/license</a>).</p><div id="pglicense1" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h2 class="tei tei-head" style="text-align: left; margin-bottom: 2.88em; margin-top: 2.88em"><span style="font-size: 144%">Section 1.</span></h2><h2 class="tei tei-head" style="text-align: center; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">General Terms of Use &amp; Redistributing Project Gutenberg™
+            electronic works</span></h2><div id="pglicense1A" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.A.</span></h3><p class="tei tei-p" style="margin-bottom: 1.00em">By reading or using any part of this Project Gutenberg™ electronic
+              work, you indicate that you have read, understand, agree to
+              and accept all the terms of this license and intellectual
+              property (trademark/copyright) agreement. If you do not agree
+              to abide by all the terms of this agreement, you must cease
+              using and return or destroy all copies of Project Gutenberg™ electronic
+              works in your possession. If you paid a fee for obtaining a
+              copy of or access to a Project Gutenberg™ electronic work and you do not
+              agree to be bound by the terms of this agreement, you may
+              obtain a refund from the person or entity to whom you paid the
+              fee as set forth in paragraph <a href="#pglicense1E8" class="tei tei-ref">1.E.8.</a></p></div><div id="pglicense1B" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.B.</span></h3><p class="tei tei-p" style="margin-bottom: 1.00em"><span class="tei tei-q">“Project Gutenberg”</span> is a registered trademark. It may only be used on or
+              associated in any way with an electronic work by people who agree to be
+              bound by the terms of this agreement. There are a few things that you
+              can do with most Project Gutenberg™ electronic works even without complying with the
+              full terms of this agreement. See paragraph <a href="#pglicense1C" class="tei tei-ref">1.C</a> below. There are a lot of things you can
+              do with Project Gutenberg™ electronic works if you follow the terms of this
+              agreement and help preserve free future access to Project Gutenberg™ electronic
+              works. See paragraph <a href="#pglicense1E" class="tei tei-ref">1.E</a> below.</p></div><div id="pglicense1C" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.C.</span></h3><p class="tei tei-p" style="margin-bottom: 1.00em">The Project Gutenberg Literary Archive Foundation (<span class="tei tei-q">“the Foundation”</span> or PGLAF), owns a compilation
+              copyright in the collection of Project Gutenberg™ electronic works. Nearly all the
+              individual works in the collection are in the public domain in the
+              United States. If an individual work is in the public domain in the
+              United States and you are located in the United States, we do not claim
+              a right to prevent you from copying, distributing, performing,
+              displaying or creating derivative works based on the work as long as all
+              references to Project Gutenberg are removed. Of course, we hope that you will support
+              the Project Gutenberg™ mission of promoting free access to electronic works by
+              freely sharing Project Gutenberg™ works in compliance with the terms of this
+              agreement for keeping the Project Gutenberg™ name associated with the work. You can
+              easily comply with the terms of this agreement by keeping this work in
+              the same format with its attached full Project Gutenberg™ License when you share it
+              without charge with others.</p></div><div id="pglicense1D" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.D.</span></h3><p class="tei tei-p" style="margin-bottom: 1.00em">The copyright laws of the place where you are located also govern
+              what you can do with this work. Copyright laws in most countries are in
+              a constant state of change. If you are outside the United States, check
+              the laws of your country in addition to the terms of this agreement
+              before downloading, copying, displaying, performing, distributing or
+              creating derivative works based on this work or any other Project Gutenberg™ work.
+              The Foundation makes no representations concerning the copyright status
+              of any work in any country outside the United States.</p></div><div id="pglicense1E" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.E.</span></h3><p class="tei tei-p" style="margin-bottom: 1.00em">Unless you have removed all references to Project Gutenberg:</p><div id="pglicense1E1" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.1.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">The following sentence, with active links to, or other immediate
+                access to, the full Project Gutenberg™ License must appear prominently whenever any
+                copy of a Project Gutenberg™ work (any work on which the phrase <span class="tei tei-q">“Project Gutenberg”</span>
+                appears, or with which the phrase <span class="tei tei-q">“Project Gutenberg”</span> is associated) is
+                accessed, displayed, performed, viewed, copied or distributed:
+
+                    </p><div class="block tei tei-q" style="margin-bottom: 1.80em; margin-left: 3.60em; margin-top: 1.80em; margin-right: 3.60em"><p class="tei tei-p" style="margin-bottom: 0.90em"><span style="font-size: 90%">This eBook is for the use of
+                    anyone anywhere at no cost and with almost no
+                    restrictions whatsoever. You may copy it, give it
+                    away or re-use it under the terms of the Project
+                    Gutenberg License included with this eBook or
+                    online at </span><a href="http://www.gutenberg.org" class="tei tei-xref"><span style="font-size: 90%">http://www.gutenberg.org</span></a></p></div></div><div id="pglicense1E2" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.2.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">If an individual Project Gutenberg™ electronic work is derived from the public
+                domain (does not contain a notice indicating that it is posted with
+                permission of the copyright holder), the work can be copied and
+                distributed to anyone in the United States without paying any fees or
+                charges. If you are redistributing or providing access to a work with
+                the phrase <span class="tei tei-q">“Project Gutenberg”</span> associated with or appearing on the work, you
+                must comply either with the requirements of paragraphs <a href="#pglicense1E1" class="tei tei-ref">1.E.1</a> through 1.E.7 or obtain permission for
+                the use of the work and the Project Gutenberg™ trademark as set forth in paragraphs
+                <a href="#pglicense1E8" class="tei tei-ref">1.E.8</a> or 1.E.9.</p></div><div id="pglicense1E3" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.3.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">If an individual Project Gutenberg™ electronic work is posted with the permission
+                of the copyright holder, your use and distribution must comply with both
+                paragraphs <a href="#pglicense1E1" class="tei tei-ref">1.E.1</a> through 1.E.7 and any
+                additional terms imposed by the copyright holder. Additional terms will
+                be linked to the Project Gutenberg™ License for all works posted with the permission
+                of the copyright holder found at the beginning of this work.</p></div><div id="pglicense1E4" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.4.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Do not unlink or detach or remove the full Project Gutenberg™ License terms from
+                this work, or any files containing a part of this work or any other work
+                associated with Project Gutenberg™.</p></div><div id="pglicense1E5" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.5.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Do not copy, display, perform, distribute or redistribute this
+                electronic work, or any part of this electronic work, without
+                prominently displaying the sentence set forth in paragraph <a href="#pglicense1E1" class="tei tei-ref">1.E.1</a> with active links or immediate access
+                to the full terms of the Project Gutenberg™ License.</p></div><div id="pglicense1E6" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.6.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">You may convert to and distribute this work in any binary,
+                compressed, marked up, nonproprietary or proprietary form, including
+                any word processing or hypertext form. However, if you provide access
+                to or distribute copies of a Project Gutenberg™ work in a format other than
+                <span class="tei tei-q">“Plain Vanilla ASCII”</span> or other format used in the official
+                version posted on the official Project Gutenberg™ web site (http://www.gutenberg.org), you must, at
+                no additional cost, fee or expense to the user, provide a copy, a
+                means of exporting a copy, or a means of obtaining a copy upon
+                request, of the work in its original <span class="tei tei-q">“Plain Vanilla ASCII”</span> or
+                other form. Any alternate format must include the full Project Gutenberg™ License
+                as specified in paragraph <a href="#pglicense1E1" class="tei tei-ref">1.E.1.</a></p></div><div id="pglicense1E7" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.7.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Do not charge a fee for access to, viewing, displaying, performing,
+                copying or distributing any Project Gutenberg™ works unless you comply with
+                paragraph <a href="#pglicense1E8" class="tei tei-ref">1.E.8</a> or 1.E.9.</p></div><div id="pglicense1E8" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.8.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">You may charge a reasonable fee for copies of or providing access to
+                or distributing Project Gutenberg™ electronic works provided that</p><table summary="This is a list." class="tei tei-list" style="margin-bottom: 1.00em; margin-top: 1.00em"><tbody><tr class="tei tei-labelitem"><th class="tei tei-label">•  </th><td class="tei tei-item"><p class="tei tei-p" style="margin-bottom: 1.00em">You pay a royalty fee of 20% of the gross profits you derive from
+                  the use of Project Gutenberg™ works calculated using the method you already use to
+                  calculate your applicable taxes. The fee is owed to the owner of the
+                  Project Gutenberg™ trademark, but he has agreed to donate royalties under this
+                  paragraph to the Project Gutenberg Literary Archive Foundation. Royalty payments must be paid within 60 days
+                  following each date on which you prepare (or are legally required to
+                  prepare) your periodic tax returns. Royalty payments should be clearly
+                  marked as such and sent to the Project Gutenberg Literary Archive Foundation at the address specified in <a href="#pglicense4" class="tei tei-ref">Section 4, <span class="tei tei-q">“Information about donations to the
+                  Project Gutenberg Literary Archive Foundation.”</span></a></p></td></tr><tr class="tei tei-labelitem"><th class="tei tei-label">•  </th><td class="tei tei-item"><p class="tei tei-p" style="margin-bottom: 1.00em">You provide a full refund of any money paid by a user who notifies
+                  you in writing (or by e-mail) within 30 days of receipt that s/he does
+                  not agree to the terms of the full Project Gutenberg™ License. You must require such
+                  a user to return or destroy all copies of the works possessed in a
+                  physical medium and discontinue all use of and all access to other
+                  copies of Project Gutenberg™ works.</p></td></tr><tr class="tei tei-labelitem"><th class="tei tei-label">•  </th><td class="tei tei-item"><p class="tei tei-p" style="margin-bottom: 1.00em">You provide, in accordance with paragraph <a href="#pglicense1F3" class="tei tei-ref">1.F.3</a>, a full refund of any money paid for a
+                  work or a replacement copy, if a defect in the electronic work is
+                  discovered and reported to you within 90 days of receipt of the
+                  work.</p></td></tr><tr class="tei tei-labelitem"><th class="tei tei-label">•  </th><td class="tei tei-item"><p class="tei tei-p" style="margin-bottom: 1.00em">You comply with all other terms of this agreement for free
+                  distribution of Project Gutenberg™ works.</p></td></tr></tbody></table></div><div id="pglicense1E9" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.E.9.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">If you wish to charge a fee or distribute a Project Gutenberg™ electronic work or
+                group of works on different terms than are set forth in this agreement,
+                you must obtain permission in writing from both the Project Gutenberg Literary Archive Foundation and Michael
+                Hart, the owner of the Project Gutenberg™ trademark. Contact the Foundation as set
+                forth in <a href="#pglicense3" class="tei tei-ref">Section 3</a> below.</p></div></div><div id="pglicense1F" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h3 class="tei tei-head" style="text-align: left; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">1.F.</span></h3><div id="pglicense1F1" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.1.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Project Gutenberg volunteers and employees expend considerable effort to identify,
+                do copyright research on, transcribe and proofread public domain works
+                in creating the Project Gutenberg™ collection. Despite these efforts, Project Gutenberg™
+                electronic works, and the medium on which they may be stored, may
+                contain <span class="tei tei-q">“Defects,”</span> such as, but not limited to, incomplete,
+                inaccurate or corrupt data, transcription errors, a copyright or other
+                intellectual property infringement, a defective or damaged disk or other
+                medium, a computer virus, or computer codes that damage or cannot be
+                read by your equipment.</p></div><div id="pglicense1F2" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.2.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">LIMITED WARRANTY, DISCLAIMER OF DAMAGES — Except for the <span class="tei tei-q">“Right of
+                Replacement or Refund”</span> described in <a href="#pglicense1F3" class="tei tei-ref">paragraph
+                1.F.3</a>, the Project Gutenberg Literary Archive Foundation, the owner of the Project Gutenberg™ trademark, and any
+                other party distributing a Project Gutenberg™ electronic work under this agreement,
+                disclaim all liability to you for damages, costs and expenses, including
+                legal fees. YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
+                LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
+                PROVIDED IN PARAGRAPH F3. YOU AGREE THAT THE FOUNDATION, THE TRADEMARK
+                OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE LIABLE TO
+                YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR INCIDENTAL
+                DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH DAMAGE.</p></div><div id="pglicense1F3" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.3.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">LIMITED RIGHT OF REPLACEMENT OR REFUND — If you discover a defect in
+                this electronic work within 90 days of receiving it, you can receive a
+                refund of the money (if any) you paid for it by sending a written
+                explanation to the person you received the work from. If you received
+                the work on a physical medium, you must return the medium with your
+                written explanation. The person or entity that provided you with the
+                defective work may elect to provide a replacement copy in lieu of a
+                refund. If you received the work electronically, the person or entity
+                providing it to you may choose to give you a second opportunity to
+                receive the work electronically in lieu of a refund. If the second copy
+                is also defective, you may demand a refund in writing without further
+                opportunities to fix the problem.</p></div><div id="pglicense1F4" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.4.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Except for the limited right of replacement or refund set forth in
+                <a href="#pglicense1F3" class="tei tei-ref">paragraph 1.F.3</a>, this work is provided
+                to you 'AS-IS,' WITH NO OTHER WARRANTIES OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTIBILITY OR
+                FITNESS FOR ANY PURPOSE.</p></div><div id="pglicense1F5" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.5.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">Some states do not allow disclaimers of certain implied warranties or
+                the exclusion or limitation of certain types of damages. If any
+                disclaimer or limitation set forth in this agreement violates the law of
+                the state applicable to this agreement, the agreement shall be
+                interpreted to make the maximum disclaimer or limitation permitted by
+                the applicable state law. The invalidity or unenforceability of any
+                provision of this agreement shall not void the remaining provisions.</p></div><div id="pglicense1F6" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h4 class="tei tei-head" style="text-align: left; margin-bottom: 2.00em; margin-top: 2.00em">1.F.6.</h4><p class="tei tei-p" style="margin-bottom: 1.00em">INDEMNITY — You agree to indemnify and hold the Foundation, the
+                trademark owner, any agent or employee of the Foundation, anyone
+                providing copies of Project Gutenberg™ electronic works in accordance with this
+                agreement, and any volunteers associated with the production, promotion
+                and distribution of Project Gutenberg™ electronic works, harmless from all
+                liability, costs and expenses, including legal fees, that arise directly
+                or indirectly from any of the following which you do or cause to occur:
+                (a) distribution of this or any Project Gutenberg™ work, (b) alteration,
+                modification, or additions or deletions to any Project Gutenberg™ work, and (c) any
+                Defect you cause.</p></div></div></div><div id="pglicense2" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h2 class="tei tei-head" style="text-align: left; margin-bottom: 2.88em; margin-top: 2.88em"><span style="font-size: 144%">Section  2.</span></h2><h2 class="tei tei-head" style="text-align: center; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">Information about the Mission of Project Gutenberg™</span></h2><p class="tei tei-p" style="margin-bottom: 1.00em">Project Gutenberg™ is synonymous with the free distribution of electronic works
+            in formats readable by the widest variety of computers including
+            obsolete, old, middle-aged and new computers. It exists because of the
+            efforts of hundreds of volunteers and donations from people in all walks
+            of life.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Volunteers and financial support to provide volunteers with the
+            assistance they need, is critical to reaching Project Gutenberg™'s goals and
+            ensuring that the Project Gutenberg™ collection will remain freely available for
+            generations to come. In 2001, the Project Gutenberg Literary Archive Foundation was created to provide a
+            secure and permanent future for Project Gutenberg™ and future generations. To learn
+            more about the Project Gutenberg Literary Archive Foundation and how your efforts and donations can help, see
+            Sections <a href="#pglicense3" class="tei tei-ref">3</a> and <a href="#pglicense4" class="tei tei-ref">4</a> and the Foundation web page at <a href="http://www.pglaf.org" class="tei tei-xref">http://www.pglaf.org</a>.</p></div><div id="pglicense3" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h2 class="tei tei-head" style="text-align: left; margin-bottom: 2.88em; margin-top: 2.88em"><span style="font-size: 144%">Section 3.</span></h2><h2 class="tei tei-head" style="text-align: center; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">Information about the Project Gutenberg Literary Archive Foundation</span></h2><p class="tei tei-p" style="margin-bottom: 1.00em">The Project Gutenberg Literary Archive Foundation is a non profit 501(c)(3) educational corporation
+            organized under the laws of the state of Mississippi and granted tax
+            exempt status by the Internal Revenue Service. The Foundation's EIN or
+            federal tax identification number is 64-6221541. Its 501(c)(3) letter
+            is posted at <a href="http://www.gutenberg.org/fundraising/pglaf" class="tei tei-xref">http://www.gutenberg.org/fundraising/pglaf</a>. Contributions
+            to the Project Gutenberg Literary Archive Foundation are tax deductible to the full extent permitted by U.S.
+            federal laws and your state's laws.</p><p class="tei tei-p" style="margin-bottom: 1.00em">The Foundation's principal office is located at 4557 Melan Dr.
+            S. Fairbanks, AK, 99712., but its volunteers and employees are
+            scattered throughout numerous locations. Its business office is
+            located at 809 North 1500 West, Salt Lake City, UT 84116, (801)
+            596-1887, email business@pglaf.org. Email contact links and up to date
+            contact information can be found at the Foundation's web site and
+            official page at <a href="http://www.pglaf.org" class="tei tei-xref">http://www.pglaf.org</a></p><p class="tei tei-p" style="margin-bottom: 1.00em">For additional contact information:
+
+              </p><div class="block tei tei-address" style="margin-bottom: 1.80em; margin-left: 3.60em; margin-top: 1.80em; margin-right: 3.60em"><span class="tei tei-addrLine"><span style="font-size: 90%">Dr. Gregory B. Newby</span></span><br /><span class="tei tei-addrLine"><span style="font-size: 90%">Chief Executive and Director</span></span><br /><span class="tei tei-addrLine"><span style="font-size: 90%">gbnewby@pglaf.org</span></span><br /></div></div><div id="pglicense4" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h2 class="tei tei-head" style="text-align: left; margin-bottom: 2.88em; margin-top: 2.88em"><span style="font-size: 144%">Section 4.</span></h2><h2 class="tei tei-head" style="text-align: center; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">Information about Donations to the Project Gutenberg Literary Archive Foundation</span></h2><p class="tei tei-p" style="margin-bottom: 1.00em">Project Gutenberg™ depends upon and cannot survive without wide spread public
+            support and donations to carry out its mission of increasing the number
+            of public domain and licensed works that can be freely distributed in
+            machine readable form accessible by the widest array of equipment
+            including outdated equipment. Many small donations ($1 to $5,000) are
+            particularly important to maintaining tax exempt status with the
+            IRS.</p><p class="tei tei-p" style="margin-bottom: 1.00em">The Foundation is committed to complying with the laws regulating
+            charities and charitable donations in all 50 states of the United
+            States. Compliance requirements are not uniform and it takes a
+            considerable effort, much paperwork and many fees to meet and keep up
+            with these requirements. We do not solicit donations in locations where
+            we have not received written confirmation of compliance. To SEND
+            DONATIONS or determine the status of compliance for any particular state
+            visit <a href="http://www.gutenberg.org/fundraising/donate" class="tei tei-xref">http://www.gutenberg.org/fundraising/donate</a></p><p class="tei tei-p" style="margin-bottom: 1.00em">While we cannot and do not solicit contributions from states where we
+            have not met the solicitation requirements, we know of no prohibition
+            against accepting unsolicited donations from donors in such states who
+            approach us with offers to donate.</p><p class="tei tei-p" style="margin-bottom: 1.00em">International donations are gratefully accepted, but we cannot make
+            any statements concerning tax treatment of donations received from
+            outside the United States. U.S. laws alone swamp our small staff.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Please check the Project Gutenberg Web pages for current donation methods and
+            addresses. Donations are accepted in a number of other ways including
+            checks, online payments and credit card donations. To donate, please
+            visit: <a href="http://www.gutenberg.org/fundraising/donate" class="tei tei-xref">http://www.gutenberg.org/fundraising/donate</a></p></div><div id="pglicense5" class="tei tei-div" style="margin-bottom: 2.00em; margin-top: 2.00em"><h2 class="tei tei-head" style="text-align: left; margin-bottom: 2.88em; margin-top: 2.88em"><span style="font-size: 144%">Section 5.</span></h2><h2 class="tei tei-head" style="text-align: center; margin-bottom: 2.40em; margin-top: 2.40em"><span style="font-size: 120%">General Information About Project Gutenberg™ electronic
+            works.</span></h2><p class="tei tei-p" style="margin-bottom: 1.00em"><span class="tei tei-name">Professor Michael S. Hart</span> is the
+            originator of the Project Gutenberg™ concept of a library of electronic works that
+            could be freely shared with anyone. For thirty years, he produced and
+            distributed Project Gutenberg™ eBooks with only a loose network of volunteer
+            support.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Project Gutenberg™ eBooks are often created from several printed editions, all of
+            which are confirmed as Public Domain in the U.S. unless a copyright
+            notice is included. Thus, we do not necessarily keep eBooks in
+            compliance with any particular paper edition.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Each eBook is in a subdirectory of the same number as the eBook's
+            eBook number, often in several formats including plain vanilla ASCII,
+            compressed (zipped), HTML and others.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Corrected <em class="tei tei-emph"><span style="font-style: italic">editions</span></em> of our eBooks replace the old file
+            and take over the old filename and etext number. The replaced older file
+            is renamed. <em class="tei tei-emph"><span style="font-style: italic">Versions</span></em> based on separate sources are treated
+            as new eBooks receiving new filenames and etext numbers.</p><p class="tei tei-p" style="margin-bottom: 1.00em">Most people start at our Web site which has the main PG search
+            facility: 
+            
+              <a href="http://www.gutenberg.org" class="block tei tei-xref" style="margin-bottom: 1.80em; margin-left: 3.60em; margin-top: 1.80em; margin-right: 3.60em"><span style="font-size: 90%">http://www.gutenberg.org</span></a></p><p class="tei tei-p" style="margin-bottom: 1.00em">This Web site includes information about Project Gutenberg™, including how to
+            make donations to the Project Gutenberg Literary Archive Foundation, how to help produce our new eBooks, and
+            how to subscribe to our email newsletter to hear about new eBooks.</p></div></div></div>
+</div>
+
+</div>
+
+</div>
+</body></html>
