@@ -1,0 +1,21 @@
+Source: student
+Section: non-free/misc
+Priority: optional
+Maintainer: ruog__ <ruog__@qq.com>
+Build-Depends: debhelper (>= 11),
+ pkg-config
+Standards-Version: 4.1.3
+
+Package: student
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: test.
+ System test.
+
+Package: student-dev
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: test.
+ System test.

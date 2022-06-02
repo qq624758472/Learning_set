@@ -1,0 +1,14 @@
+<!--
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: ruog__
+ * @Date: 2022-06-02 15:56:28
+ * @LastEditors: ruog__
+ * @LastEditTime: 2022-06-02 15:57:39
+-->
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: student
+Source: http://baidu.com
+
+Files: *
+Copyright: 2021 baidu
