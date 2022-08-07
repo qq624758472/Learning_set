@@ -4,7 +4,7 @@
 
 Base System => X Protocol => Windows Manager => Application
 
-如下图所示：![](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/1.png)
+如下图所示：![](./all_picture/内核笔记/1.png)
 
 ## **1. Base System**
 
