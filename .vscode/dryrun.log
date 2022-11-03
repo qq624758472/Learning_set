@@ -1,6 +1,6 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/hao/work_my/Learning_set'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/media/hao/_dde_data/hao/work_my/Learning_set'
 #for 循环的用法。
 for subdir in Language/c++ operating_system server_model/c++/1 tools_Lib/makefile ; do ( cd $subdir && make ) done;
-make: Leaving directory '/home/hao/work_my/Learning_set'
+make: Leaving directory '/media/hao/_dde_data/hao/work_my/Learning_set'
  

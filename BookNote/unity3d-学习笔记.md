@@ -20,8 +20,6 @@
 
 ![](./unity3d/3.PNG)
 
-
-
 坐标系:
 
 ### 2.游戏对象：
@@ -42,12 +40,12 @@
 
 渲染模式总共有四种：
 
-| 渲染模式    | 意思   | 适用对象举例 | 说明                                                         |
-| ----------- | ------ | ------------ | ------------------------------------------------------------ |
-| Opaque      | 不透明 | 石头         | 适用于所有的不透明的物体                                     |
-| Cutout      | 镂空   | 破布         | *透明度不是\*0%\*就是\*100%\*，不存在半透明的区域。*****     |
-| Fade        | 隐现   | 物体隐去     | *与\*Transparent\*的区别为高光反射会随着透明度而消失。***    |
-| Transparent | 透明   | 玻璃         | 适用于像彩色玻璃一样的半透明物体，高光反射不会随透明而消失。 |
+| 渲染模式        | 意思  | 适用对象举例 | 说明                                     |
+| ----------- | --- | ------ | -------------------------------------- |
+| Opaque      | 不透明 | 石头     | 适用于所有的不透明的物体                           |
+| Cutout      | 镂空  | 破布     | *透明度不是\*0%\*就是\*100%\*，不存在半透明的区域。***** |
+| Fade        | 隐现  | 物体隐去   | *与\*Transparent\*的区别为高光反射会随着透明度而消失。*** |
+| Transparent | 透明  | 玻璃     | 适用于像彩色玻璃一样的半透明物体，高光反射不会随透明而消失。         |
 
 材质的属性：
 
@@ -61,27 +59,13 @@ Texture纹理：附加到物体表面的贴图。
 
 ![](./unity3d/8.PNG)
 
-
-
 Shader定义了该材质可以设置什么功能，Material定义了给Shader的功能设置具体的值。
-
-
-
-
-
-
-
-
-
-
 
 ## 物理着色器:
 
 基于光学物理公式创建的着色器.
 
 ![](./unity3d/1.jpg)
-
-
 
 ## 摄像机:
 
@@ -97,45 +81,41 @@ clear flags: 处理屏幕的空白部分,(没物体的都叫空白部分).
 
 种类:    1.6sided : 6张图片拼成的天空盒.
 
-​			2.procedural: 
+​            2.procedural: 
 
 2.Culling Mask(选择遮罩):
 
-​	每一个游戏物体都有一个Layer层,和Tags标签.
+​    每一个游戏物体都有一个Layer层,和Tags标签.
 
-​	而摄像机能选择看到哪些层的物体,或者标签的物体.
+​    而摄像机能选择看到哪些层的物体,或者标签的物体.
 
 3.projection(投射):
 
-​	正交模式:
+​    正交模式:
 
-​	perspective:  3d游戏一般的选择.
+​    perspective:  3d游戏一般的选择.
 
 4.fileld of view:视野远近.
 
-​	一般用来做狙击枪的镜.
+​    一般用来做狙击枪的镜.
 
 5.clipping planes:剪裁面
 
 最远能看多远,最近能看多近
 
-​	far:设置哪些距离内的物体需要渲染.
+​    far:设置哪些距离内的物体需要渲染.
 
-​	near:  保持默认值, 从多远开始看.
+​    near:  保持默认值, 从多远开始看.
 
 6.viewport rect():
 
-​	屏幕分屏, 可以用来做后视镜,小地图.
+​    屏幕分屏, 可以用来做后视镜,小地图.
 
 7.Depth(深度值):
 
-​	摄像机深度值决定了渲染的层数,深度值越高显示越上边.
-
-
+​    摄像机深度值决定了渲染的层数,深度值越高显示越上边.
 
 ctrl+shift+f: 将选中物体的transform值设置为目前所在位置的transform值.
-
-
 
 ## 基本概念
 
@@ -155,8 +135,6 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 
 ![](./unity3d/4.jpg)
 
-
-
 ## p22课:烘焙
 
 烘焙:将阴影编译成变成贴图贴到场景中,节省性能,但没有实时光照,移动影子还是会在地上. 只针对不动的物体.
@@ -166,8 +144,6 @@ draw call(batches): 越大越消耗资源. 每帧调用显卡渲染物体的次�
 烘焙的步骤:
 
 ![](./unity3d/5.jpg)
-
-
 
 ## p23课: 背景音乐,场景音效.
 
@@ -191,8 +167,6 @@ HideInInspector:在编译器中隐藏字段.
 
 Range(0,100):让某个变量在0~100之间.
 
-
-
 ## p115:脚本的生命周期
 
 ![](./unity3d/6.jpg)
@@ -209,8 +183,6 @@ Update():每次渲染帧时执行一次. 执行间隔不固定.
 
 ![](./unity3d/8.jpg)
 
-
-
 ## p120:常用API:Component
 
 Component(组件):
@@ -224,8 +196,6 @@ Object:
 Time:
 
 getComponent<name> 可以查找所有组件.
-
-
 
 ## p122: Transform
 
@@ -244,8 +214,6 @@ this.transform.RotateAround(Vector3.zero, Vector3.up,1);//绕0点y轴绕1度.
 //绕z轴:Vector3.forward
 ```
 
-
-
 ## p123:设置/获取父物体
 
 ```c#
@@ -254,11 +222,9 @@ Transform parentTF = this.transform.parent;
 
 //设置父父物体
 public Transform tf;
-this.transform.SetParent(tf);		//不写默认是true,视为世界坐标. 该物体位置不变
+this.transform.SetParent(tf);        //不写默认是true,视为世界坐标. 该物体位置不变
 this.transform.SetParent(tf,false); //当前物体的位置,视为localPosition,该物体位置改变.
 ```
-
-
 
 ## p124:查找/设置子物体
 
@@ -272,7 +238,7 @@ Transform childTF = this.transorm.Find("子物体名称/子物体名称");
 int count = this.transform.childCount;
 for(int i=0;i<count; i++)
 {
-	Transform childTF = this.transfrom.GetChild(i);    
+    Transform childTF = this.transfrom.GetChild(i);    
 }
 
 //所有对象解除父子关系
@@ -281,14 +247,9 @@ this.transform.DetachChildren();
 this.transform.SetParent(NULL);    
 
 //一般不清楚层级时,使用递归查找,
-
 ```
 
 Transform:查找(父,根,子(索引,名称))变换组件功能,改变位置,角度,大小功能.
-
-
-
-
 
 ## p125:gameObject、object
 
@@ -342,21 +303,21 @@ public void Update()
     //每渲染一帧,旋转1度. 
     //帧多, 1秒旋转速度快.  根据Update的渲染更新速率,旋转速度也不同.
     //帧少,           慢
-	this.transform.Totate(0,1,0);
+    this.transform.Totate(0,1,0);
 }
 
 speed = 100;
 public void Update()
 {
     //每渲染一帧,旋转1度.     
-	this.transform.Totate(0,speed * Time.deltaTime,0); 
+    this.transform.Totate(0,speed * Time.deltaTime,0); 
     //当 旋转速度 * 每帧消耗时间, 可以保证旋转速度不受机器性能 , 和渲染影响. 
 }
 
 //固定0.02秒执行一次,与渲染无关.
 public void FixedUpdate()
 {
-    
+
 }
 
 //游戏运行时间
@@ -370,11 +331,7 @@ Time.timeScale = 1;  //恢复游戏
 Time.unscaledDeltaTime = 0;  
 ```
 
-
-
 ## p129: canvas上计时器实例
-
-
 
 ## p133:预制体
 
@@ -386,10 +343,6 @@ Time.unscaledDeltaTime = 0;
 
 ![](./unity3d/17.jpg)
 
-
-
-
-
 ## p137:英雄无敌工程
 
 策划
@@ -400,70 +353,26 @@ Time.unscaledDeltaTime = 0;
 
 <img src="./unity3d/18.png" style="zoom:67%;" />
 
-
-
 ## p148: 英雄无敌工程
 
-
-
 ## p149-p185: 三维数学
-
-
 
 ## p153: 虚拟按键
 
 <img src="./unity3d/19.jpg"/>
 
-
-
-
-
-
-
-
-
 ## p149:Input()类
 
 ## p150: 摄像机的拉近和拉远
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## p186-227: 用户图形界面
-
-
-
-
-
-
-
-
 
 地形碰撞器和任务刚体+碰撞器  组合会将人物碰撞倾斜， 需要锁定Y轴旋转，可以防止人物倾斜。
 https://jingyan.baidu.com/article/b24f6c82e5a0f6c7bee5da5a.html
 
-
-
-
-
 unity3d射线详解
 
 https://www.jianshu.com/p/38f8e3f74e67
-
-
-
-
 
 # EasyTouch5学习
 
@@ -480,7 +389,7 @@ public class operation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -516,14 +425,7 @@ public class operation : MonoBehaviour
         Debug.LogWarning("OnSwipe");
     }
 }
-
 ```
-
-
-
-
-
-
 
 # 在debain系linux下unity3d开发
 
@@ -555,8 +457,6 @@ echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo t
 sudo apt update
 ```
 
-
-
 ## 2.使用vscode调试
 
 1.先下载.net核心包。
@@ -587,17 +487,9 @@ Unity Tools   Unity工具
 
 ![](./unity3d/20.png)
 
-
-
-
-
-
-
 # 一些心得集合
 
 1.Unity3D中如何制作天空盒 :https://blog.csdn.net/weixin_38498942/article/details/90479835
-
-
 
 **2.UnityEngine.Rendering.PostProcessing 不存在:**
 
@@ -605,13 +497,72 @@ Unity Tools   Unity工具
 
 windows->Package Manager ->All packages(或者所注册的)
 
-
-
 C#脚本 [System.Serializable]的作用:
 
-​	前几天在做自己的塔防游戏的时候，建造了一个turrentData类，却无法显示在inspector上，百度别人对此问题的解决办法后，得到了用序列化存储的解决办法，在类前写上 [System.Serializable]就解决了问题，下面介绍一下 序列化的作用。
+​    前几天在做自己的塔防游戏的时候，建造了一个turrentData类，却无法显示在inspector上，百度别人对此问题的解决办法后，得到了用序列化存储的解决办法，在类前写上 [System.Serializable]就解决了问题，下面介绍一下 序列化的作用。
 
 https://blog.csdn.net/qq_36946274/article/details/82054023
 
+
+
+
+
+# DarkTree学习
+
+## NPC.cs
+
+功能： NPC总控制脚本。
+
+### start:
+
+初始化拿到各种组件。
+
+lookPosition：眼睛朝向位置默认赋值为transform.forward，模型的前方。
+
+
+
+### update:
+
+
+
+
+
+### Shout():
+
+```cs
+public void Shout();
+```
+
+功能：队友互相发现功能，有其中一个发现目标，则同步给所有队友npc
+
+1.friendsList: 所有队友的list。
+
+2.遍历friendsList, 当自己的目标不为空 && 队友的目标为空时，将所有friendsList的攻击目标变成自己的目标。将所有的lookPosition赋值为目标位置。
+
+## NPCVision.cs
+
+功能：在这里我们寻找NPC周围的目标并计算最近的目标
+
+
+
+### start:
+
+npc：获取父物体及自身的NPC组件类。
+
+player: 获取玩家的位置。从组件名称"Player"查找到的。
+
+playerCollider： 获取主摄像机所在玩家的碰撞器。
+
+### update:
+
+
+
+
+
+## 常用组件介绍：
+
+### Rigidbody
+
+isKinematic:  如果启用了 isKinematic，则力、碰撞或关节将不再影响刚体。 刚体将由动画或脚本通过更改 transform.position 进行完全控制。
 
 

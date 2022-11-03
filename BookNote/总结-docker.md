@@ -225,7 +225,7 @@ docker以每月发布一个版本的节奏进行开发。命名规则为：年�
 
 ## 4.docker的安装和使用
 
-### **CentOS**
+### CentOS
 
 如果是centos，上面的安装命令会在系统上添加yum源:
 
@@ -260,7 +260,7 @@ yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
 
 2. docker images   //列出本地镜像。
 
-3. ``` 
+3. ```
    docker ps -a    //查看所有容器。运行和不运行的都显示。
    ```
 
@@ -273,7 +273,7 @@ yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
 7. docker tag ubuntu qq624758472/ubuntu                                           
 
 8. docker push qq624758472/ubuntu
-
+   
    这里要注意一个问题,给自己镜像命名的时候格式应该是: docker注册用户名/镜像名,比如我的docker用户名为 test123,那么我的镜像tag就为 test123/whalesay,不然是push不上去的
 
 9. docker run -it ubuntu /bin/bash     //启动镜像。    这个好像也是创建。
@@ -284,15 +284,13 @@ yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
 
 12. docker attach   进入正在后台运行的镜像中，exit会退出。 
 
-13. ```
-    docker exec -it 243c32535da7 /bin/bash   进入正在后台运行的镜像中，exit不会退出。
-    ```
+13. docker exec -it 243c32535da7 /bin/bash   进入正在后台运行的镜像中，exit不会退出。
 
 14. docker start ID   后台启动已经存在的容器。
 
 15. docker rm -f 1e560fca3906   删除容器。
 
-#### 登录上传docker 镜像。 
+#### 登录上传docker 镜像。
 
 1. 登录docker login
 
@@ -304,13 +302,9 @@ yum localinstall docker-ce-17.09.0.ce-1.el7.centos.x86_64.rpm
    docker rmi hello-world   删除名字为hello-world的镜像。
    ```
 
+### debian
 
-
-### debian系
-
-
-
-### **UOS**
+### UOS
 
 统信官方给的安装教程:
 

@@ -74,15 +74,15 @@ HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
 
 ### 4.HTTP请求格式
 
-![](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/57.jpg)
+![](./all_picture/内核笔记/57.jpg)
 
-![](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/58.png)
+![](./all_picture/内核笔记/58.png)
 
 ### 5.HTTP响应格式
 
-![](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/59.jpg)
+![](./all_picture/内核笔记/59.jpg)
 
-![60](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/60.png)
+![60](./all_picture/内核笔记/60.png)
 
 ### 6.HTTP路由转发
 
@@ -124,7 +124,7 @@ func main() {
 
  上述代码中分析请求格式如下图所示:
 
-![](/home/hao/work_my/Learning_set/tools_Lib/all_picture/内核笔记/61.jpg)
+![](./all_picture/内核笔记/61.jpg)
 
 可以看到上图,请求头,响应头,请求方法为GET, 响应状态码为200.
 

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Mar  4 19:42:52 2022
+# Make data base, printed on Thu Jun 16 10:40:25 2022
 
 # Variables
 
@@ -35,15 +35,13 @@ GDMSESSION = deepin
 # environment
 XMODIFIERS = @im=fcitx
 # makefile
-CURDIR := /home/hao/work_my/Learning_set
+CURDIR := /media/hao/_dde_data/hao/work_my/Learning_set
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"1150e25556c30c6d26d4dcff9517a156.zh-cn","_translationsConfigFile":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/tcf.json","_cacheRoot":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn","_resolvedLanguagePackCoreLocation":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/b5205cc8eb4fbaa726835538cd82372cc0222d43","_corruptedFile":"/home/hao/.config/Code/clp/1150e25556c30c6d26d4dcff9517a156.zh-cn/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_languagePackId":"bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_translationsConfigFile":"/home/hao/.config/Code/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/tcf.json","_cacheRoot":"/home/hao/.config/Code/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn","_resolvedLanguagePackCoreLocation":"/home/hao/.config/Code/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/4af164ea3a06f701fe3e89a2bcbb421d2026b68f","_corruptedFile":"/home/hao/.config/Code/clp/bbca1a7059cee8a1b93da8947fee1c4f.zh-cn/corrupted.info","_languagePackSupport":true}
 # environment
-_ = /usr/share/code/code
-# environment
-QT_DEBUG_PLUGINS = 1
+_ = /opt/apps/com.visualstudio.code/files/code/code
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # automatic
@@ -57,19 +55,23 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
+QT_SCREEN_SCALE_FACTORS = 1;1
+# environment
 QT_LOGGING_RULES = *.debug=false
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-037de791-8084-4cf5-8eae-c3f8e4c6423a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-f2d72dc1-f0bf-44c8-b8db-0da440ac78fa.sock
 # environment
 VSCODE_CWD = /home/hao
+# environment
+YOZO_HOME = /opt/apps/com.yozosoft.yozo-office.s1/files
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/home/hao/work_pro/sqlitestudio-3.3.3/SQLiteStudio:/home/hao/work_pro/node-v16.13.0-linux-x64/bin/:/home/hao/work_pro/:/home/hao/work_pro/blender-2.93.6-linux-x64/blender-2.93.6-linux-x64/:/home/hao/work_pro/arm-linux/arm-linux-gcc-4.4.3/bin:/home/hao/work_my/across_build/gcc-aarch64/bin:/home/hao/work_my/across_build/gcc-loongson-mips/bin
+PATH = /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/media/hao/_dde_data/hao/work_pro/across_build/arm-linux/arm-linux-gcc-4.4.3/bin
 # environment
 auto_proxy = https://it.uniontech.com/proxy/proxy.pac
 # environment
@@ -89,9 +91,9 @@ LS_COLORS =
 # environment
 XDG_SESSION_DESKTOP = deepin
 # environment
-SSH_AUTH_SOCK = /home/hao/.cache/keyring-CCSMI1/ssh
+SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 11251
+GIO_LAUNCHED_DESKTOP_FILE_PID = 15747
 # automatic
 %F = $(notdir $%)
 # environment
@@ -106,7 +108,7 @@ GTK_IM_MODULE = fcitx
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/hao/work_my/Learning_set
+PWD = /media/hao/_dde_data/hao/work_my/Learning_set
 # default
 .LOADED := 
 # environment
@@ -120,7 +122,7 @@ HOME = /home/hao
 # environment
 XDG_CACHE_HOME = /home/hao/.cache
 # environment
-VSCODE_CODE_CACHE_PATH = /home/hao/.config/Code/CachedData/b5205cc8eb4fbaa726835538cd82372cc0222d43
+VSCODE_CODE_CACHE_PATH = /home/hao/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
 # environment
 LOGNAME = hao
 # environment
@@ -148,6 +150,10 @@ QT_IM_MODULE = fcitx
 # environment
 SHLVL = 0
 # environment
+QT_QPA_PLATFORM = xcb
+# environment
+SDL_IM_MODULE = fcitx
+# environment
 XDG_SESSION_ID = 2
 # environment
 USER = hao
@@ -161,6 +167,8 @@ XDG_CURRENT_DESKTOP = Deepin
 MAKE_COMMAND := make
 # default
 .VARIABLES := 
+# environment
+INPUT_METHOD = fcitx
 # automatic
 *F = $(notdir $*)
 # environment
@@ -168,9 +176,7 @@ LANGUAGE = zh_CN
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-6db3328a-1.65.0-main.sock
-# environment
-GNOME_KEYRING_CONTROL = /home/hao/.cache/keyring-CCSMI1
+VSCODE_IPC_HOOK = /run/user/1000/vscode-6db3328a-1.68.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -183,6 +189,8 @@ MFLAGS = -pqrR
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
+# environment
+NO_AT_BRIDGE = 1
 # environment
 QT_DBL_CLICK_DIST = 15
 # makefile (from 'Makefile', line 21)
@@ -199,8 +207,6 @@ XDG_CONFIG_HOME = /home/hao/.config
 LC_ALL = C
 # environment
 SBX_CHROME_API_RQ = 1
-# environment
-QT4_IM_MODULE = fcitx
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -209,6 +215,8 @@ XDG_DATA_HOME = /home/hao/.local/share
 SUFFIXES := 
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
+# environment
+D_DXCB_FORCE_OVERRIDE_HIDPI = 1
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # default
@@ -218,9 +226,9 @@ SUBDIRS = Language/c++ operating_system server_model/c++/1 tools_Lib/makefile
 # environment
 LANG = C
 # environment
-VSCODE_PID = 11251
+VSCODE_PID = 15747
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=7/135=5%
+# Load=107/1024=10%, Rehash=0, Collisions=7/139=5%
 
 # Pattern-specific Variable Values
 
@@ -228,9 +236,9 @@ VSCODE_PID = 11251
 
 # Directories
 
-# . (device 2049, inode 48537681): 22 files, no impossibilities.
+# . (device 2049, inode 48537681): 13 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -275,6 +283,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2021-04-26 17:27:42
 #  File has been updated.
 #  Successfully updated.
@@ -311,7 +320,6 @@ install:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 28):
 	$(call make_subdir , install)
 
@@ -323,12 +331,12 @@ install:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 293 B / avg = 9 B
-# current buf: size = 8162 B / used = 293 B / count = 31 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 196 B / avg = 8 B
+# current buf: size = 8162 B / used = 196 B / count = 22 / avg = 8 B
 
-# strcache performance: lookups = 42 / hit rate = 26%
+# strcache performance: lookups = 33 / hit rate = 33%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/42=2%
-# Finished Make data base on Fri Mar  4 19:42:52 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/33=3%
+# Finished Make data base on Thu Jun 16 10:40:25 2022
 
  

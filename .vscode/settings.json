@@ -63,7 +63,10 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "test_c.h": "c"
+        "test_c.h": "c",
+        "ioctl.h": "c",
+        "fs.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "cmake.configureOnOpen": false

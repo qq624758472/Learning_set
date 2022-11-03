@@ -51,7 +51,7 @@ cc是Unix系统的C Compiler，而baigcc则是GNU Compiler Collection，GNU编�
 
 而linux下的cc就是gcc的软连接。
 
-![](../all_picture/内核笔记/71.png)
+![](./all_picture/内核笔记/71.png)
 
 ```makefile
 #例子：
@@ -653,7 +653,7 @@ gcc -MM main.c
 
 来自动生成依赖项。如下图所示：
 
-![](../all_picture/内核笔记/72.png)
+![](./all_picture/内核笔记/72.png)
 
 GNU组织建议把编译器为每一个源文件的自动生成的依赖关系放到一个文件中，为每一个“name.c”的文件都生成一个“name.d”的Makefile文件，[.d]文件中就存放对应[.c]文件的依赖关系。
 
@@ -1148,7 +1148,7 @@ foo = $(call reverse,a,b)
 
 此时的foo的值就是“b a”。
 
-![](../all_picture/内核笔记/73.png)
+![](./all_picture/内核笔记/73.png)
 
 #### 6.origin函数
 
@@ -1158,7 +1158,7 @@ origin函数不像其它的函数，他并不操作变量的值，他只是告�
 $(origin <variable> )
 ```
 
-![](../all_picture/内核笔记/74.png)
+![](./all_picture/内核笔记/74.png)
 
 ```makefile
 “undefined”

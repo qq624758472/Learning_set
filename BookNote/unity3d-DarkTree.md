@@ -14,19 +14,13 @@
 
 •教程和帮助
 
-
-
 感谢您购买DTFPS。此游戏模板允许您轻松制作生存游戏原型。
 
 在本手册中，我想对项目中使用的工具和方法以及一些
 
 入门教程
 
-
-
 该资产的主要目标是提供简单的设置体验和使射击游戏快速的能力
-
-
 
 但请记住，您的游戏需要的工作远不止资产商店中的现成模板。 它会
 不是自己为您制作游戏，而是会给您一个很好的起点。 有时你仍然需要工作
@@ -34,14 +28,8 @@
 C# 并且可以编写自己的脚本 很容易开始使用 DTFPS 设置，但是您仍然可以使用
 提供工具并根据需要自定义它而无需编写脚本
 
-
-
 我希望你会喜欢它，这一堆工具和脚本会让你的开发过程更简单
 并且更快。
-
-
-
-
 
 **组件概览**
 是时候从基础开始了。
@@ -53,16 +41,16 @@ GamePrefab
 让我们来看看 GamePrefab 扩展的层次结构。
 
 这里我们有 6 个游戏对象。 您可以通过他们调用的方式获得他们的功能。
-Player – 	是一个玩家控制器，可以行走、射击、收集物品和其他。 
+Player –     是一个玩家控制器，可以行走、射击、收集物品和其他。 
 
-库存画布 – 	是放置在一堆画布对象上的完整库存系统 
+库存画布 –     是放置在一堆画布对象上的完整库存系统 
 
-Canvas Main – 	主 UI 画布，包含玩家健康、十字线、武器等所有视觉界面 名称和弹药计数等。
+Canvas Main –     主 UI 画布，包含玩家健康、十字线、武器等所有视觉界面 名称和弹药计数等。
 
-WeaponManager&HitFXManager – 	空的实用游戏对象，仅存储系统所需的组件
+WeaponManager&HitFXManager –     空的实用游戏对象，仅存储系统所需的组件
 工作。
-移动输入画布 – 	是一个包含移动输入装备和其他移动设备的画布。
-EventSystem –	 处理 UI 事件所需的 Unity 标准对象。
+移动输入画布 –     是一个包含移动输入装备和其他移动设备的画布。
+EventSystem –     处理 UI 事件所需的 Unity 标准对象。
 
 此外，我们将重要组件存储在 GamePrefab 上。 看看下面的图片。
 
@@ -70,29 +58,25 @@ EventSystem –	 处理 UI 事件所需的 Unity 标准对象。
 
 我们将概述我们有时需要使用的组件。 不需要设置的实用程序对象将被忽略
 
-
-
 输入管理器 - 包含玩家操作键映射和移动输入工作切换的实用程序脚本
 
 声音管理器 - 为玩家事件存储一些音频效果
 
 Cover List 是 AI 演员的好帮手。 它存储场景中所有可用的封面，AI 从中获取封面。 无需在此处添加封面，因为它会自动工作
 
+## WeaponManager&HitFXManager
 
+**WeaponManager**：
 
-
-
-WeaponManager&HitFXManager
-
-WeaponManager：这是我们需要打开/关闭对象、隐藏/取消隐藏武器、装备/取消装备武器的组件。 不久，对于所有与武装武器状态共享的东西。
+    这是我们需要打开/关闭对象、隐藏/取消隐藏武器、装备/取消装备武器的组件。 不久，对于所有与武装武器状态共享的东西。
 
 ![image-20210818161919526](./pic/unity_2.png)
 
 在这里，我们有可以打开/关闭的武器列表和库存设备面板。 每个交互式设备面板都必须放在此列表中，以便提供有关装备武器的信息。
 
+**HitFXManager**  ：
 
-
-HitFXManager  ：是为近战和子弹击中事件存储不同效果的组件。
+    是为近战和子弹击中事件存储不同效果的组件。
 
 ![image-20210818162140081](./unity3d/21.png)
 
@@ -104,16 +88,12 @@ Ricochet sounds：弹跳声音在表面撞击上播放。
 
 这里的贴花也适用于不同类型的表面。 您可以在此处控制贴花池并为每种贴花类型设置池大小。
 
-
-
 Character
 注意：在以前的版本中，角色是用刚体和胶囊对撞机制作的，但从 1.4 版物理切换到 CharacterController 组件。角色是包含所有武器、动画、玩家统计数据（健康、口渴、饥饿）和其他控制器逻辑（如运动）的游戏对象， 游泳和爬梯。
 
 Player由不同的游戏对象组成，您可以在层次结构中找到它们
 
 ![image-20210818162501979](./unity3d/22.png)
-
-
 
 Player拥有 5 个组件，但我们对 FPS 控制器感兴趣和球员统计数据而已。 让我们来看看它们
 
@@ -147,15 +127,9 @@ Cam Holder – 是包含相机子项的对象
 
 平滑 - 鼠标轴的平滑系数
 
-
-
-
-
 Landing and air are settings for player air states
 
 着陆和空中是玩家空中状态的设置
-
-
 
  Soft Landing Sound – sound being played when player hit the ground after jump if air time is not bigger than ‘HardLandingTime’ 
 
@@ -165,8 +139,6 @@ Gravity – gravity value applied to the player down force
 
 Distance To Wall Raise weapon – distance to wall when player should play weapon raise animation.
 
-
-
 软着陆声音 - 如果飞行时间不大于“HardLandingTime”，则玩家跳跃后落地时播放的声音
 
 Hard Landing Sound – 如果“HardLandingTime”大于播放时间，则播放。
@@ -174,8 +146,6 @@ Hard Landing Sound – 如果“HardLandingTime”大于播放时间，则播放
 Gravity – 施加到玩家下压力的重力值
 
 Distance To Wall Raise Weapon – 当玩家应该播放武器抬起动画时与墙壁的距离。
-
-
 
 **Player stats**
 
@@ -185,19 +155,21 @@ The script has player life stats, linked settings and objects.
 
 该脚本具有玩家生命统计数据、链接设置和对象。
 
-
-
 - Is God – player immortal if true
+
 - Health – player health point (int)
+
 - Health UI Text – a text to draw hp on the screen
+
 - Health UI Slider – a slider to draw hp stripe
 
 - 是上帝 - 如果为真，玩家将不朽
+
 - 健康 - 玩家健康点（int）
+
 - Health UI Text - 用于在屏幕上绘制 hp 的文本
+
 - Health UI Slider - 用于绘制 hp 条纹的滑块
-
-
 
 (All the same for hunger and thirst)
 
@@ -223,12 +195,6 @@ The script has player life stats, linked settings and objects.
 - 饥饿/饱腹感伤害 - 如果统计为零，则减少玩家健康的伤害点和减法时间。
 - 疼痛剪辑 - 在玩家受伤时播放的音频剪辑（高度下降、子弹击中等）
 
-
-
-
-
-
-
 Weapons
 
 You can create any weapon with DTFPS. You can create rifle, pistol, sniper, rocket launcher, and any other firearmweapon with Weapon Wizard
@@ -247,25 +213,17 @@ After that you need to create weapon helpers and set them up to correct position
 
 之后，您需要创建武器助手并将它们设置到正确的位置。 枪口闪光变换必须在武器枪管的末端，炮弹变换必须在炮弹被弹出的地方。 还要用相机位置设置你的武器，并确保所有武器孩子都在“武器”层上。
 
-
-
 ![image-20210818164947323](./unity3d/28.png)
 
 Next step is to set up animations for your new weapon. When you go to Animator tab you’ll probably see thismessage…
 
 下一步是为您的新武器设置动画。 当您转到 Animator 选项卡时，您可能会看到此消息...
 
-
-
 ![image-20210818165040868](./unity3d/29.png)
 
 Often, unity generates animator component for each skinned meshes and now you have default animator on yourweapon object. Remove that.
 
 通常，unity 会为每个蒙皮网格生成动画组件，现在您的武器对象上有了默认的动画组件。 去掉那个。
-
-
-
-
 
 Now your Animator tab must look like the picture below.
 
@@ -297,8 +255,6 @@ After you done with animation clips setting press‘Create animator’ and go fo
 
 ![image-20210818165232656](./unity3d/30.png)
 
-
-
 Weapon setting tab will ask you to create new weapon scriptable object. You need to click that button and after that you will see new weapon settings list
 
 武器设置选项卡将要求您创建新的武器脚本对象。 您需要单击该按钮，然后您将看到新的武器设置列表
@@ -307,71 +263,71 @@ Weapon setting tab will ask you to create new weapon scriptable object. You need
 
 Weapon type :
 
-​	First field is weapon type.
+​    First field is weapon type.
 
 Shot or melee attack sound effect :
 
-​	Second is weapon attack sound (shot, melee attackswoosh etc.)
+​    Second is weapon attack sound (shot, melee attackswoosh etc.)
 
 Recoil Vector :
 
-​	Recoil will move camera to some value on x or y axison shot.
+​    Recoil will move camera to some value on x or y axison shot.
 
 Weapon damage:
 
-​	Weapon damage value has min and max damage.Final damage calculates with random range betweenthese two values.
+​    Weapon damage value has min and max damage.Final damage calculates with random range betweenthese two values.
 
 Aim camera FOV :
 
-​	Aim camera FOV changes main camera FOV on aim
+​    Aim camera FOV changes main camera FOV on aim
 
 Will use UI scope :
 
-​	Set will use UI scope if your weapon should useaiming with scope
+​    Set will use UI scope if your weapon should useaiming with scope
 
 Rigidbody hit force :
 
-​	Rigidbody hit force value applied to rigidbody objecton hit
+​    Rigidbody hit force value applied to rigidbody objecton hit
 
 Fire rate in shot per second :
 
-​	Fire rate in shot per seconds tells how fast yourweapon will shot bullets
+​    Fire rate in shot per seconds tells how fast yourweapon will shot bullets
 
 Spread default factor:
 
-​	Spread factor is value that applied to spread vectorfor bullet direction
+​    Spread factor is value that applied to spread vectorfor bullet direction
 
 Bullet initial velocity:
 
-​	Bullet initial velocity in meter per seconds. You canset realistic bullet speed.
+​    Bullet initial velocity in meter per seconds. You canset realistic bullet speed.
 
 Bullet air resistance factor :
 
-​	Air resistance factor influence on bullet speed andworks like air friction.
+​    Air resistance factor influence on bullet speed andworks like air friction.
 
 Bullet pool size/ Shell pool size:
 
-​	And here is pools for bullets and shells. They areshould have the same value as weapon ammo capacity
+​    And here is pools for bullets and shells. They areshould have the same value as weapon ammo capacity
 
 Shell ejecting force :
 
-​	Force will be applied to shell rigidbody on shot
+​    Force will be applied to shell rigidbody on shot
 
 Muzzle flash effect :
 
-​	Particle system to play muzzle flash effect on shot. Will be spawned on muzzle flash transform
+​    Particle system to play muzzle flash effect on shot. Will be spawned on muzzle flash transform
 
 Reloading sounds effect:
 
-​	Weapon empty sound effect Played if weapon has no ammo but player shooting
+​    Weapon empty sound effect Played if weapon has no ammo but player shooting
 
 Shell object prefab:
 
-​	Find in prefabs folder
+​    Find in prefabs folder
 
 Bullet prefab:
 
-​	Find in prefabs folder
+​    Find in prefabs folder
 
 武器类型：
 
@@ -419,7 +375,7 @@ Rigidbody hit force 施加到刚体对象上的击中力值
 
 子弹池大小/壳池大小：
 
-​	这里是子弹和炮弹池。 它们应该与武器弹药容量具有相同的价值
+​    这里是子弹和炮弹池。 它们应该与武器弹药容量具有相同的价值
 
 脱壳力：
 
@@ -441,12 +397,6 @@ Rigidbody hit force 施加到刚体对象上的击中力值
 
 在 prefabs 文件夹中查找
 
-
-
-
-
-
-
 After setting finish you need to turn off your weapon in inspector and create weapon item. You cant leave weaponsenabled due to inventory system limitations. All weapons must be associated with item objects and now we’ll createthis one.
 
 设置完成后，您需要在检查器中关闭武器并创建武器项目。 由于库存系统限制，您不能启用武器。 所有武器都必须与物品对象相关联，现在我们将创建这个。
@@ -467,15 +417,7 @@ Your new item will be instantiated at your scene. Complete itemfields and contin
 
 您的新项目将在您的场景中实例化。 完成项目字段并继续。 确保项目类型与您的设备面板允许的类型相同。 否则，物品将不会被装备和用于库存！ 要了解有关项目字段的更多信息，请查看 DTInventory 手册s
 
-
-
 ![image-20210818170846841](./unity3d/34.png)
-
-
-
-
-
-
 
 Controller animations
 
@@ -484,8 +426,6 @@ changing and some other. We need get to know the main components we use and anim
 
 您可能已经知道，我们使用动画制作武器行走摆动、相机摆动、武器动画
 改变和其他一些。 我们需要了解我们在系统中使用和制作动画的主要组件。
-
-
 
 ![image-20210818170945743](./unity3d/35.png)
 
@@ -499,13 +439,9 @@ Weapon holder is an animator of walking,running, crouching,jumping etc. Also the
 
 武器持有人是步行，跑步，蹲伏，跳跃等动画。还有一个动画显示/隐藏武器。 要编辑这些动画，您需要选择武器架并打开动画窗口。
 
-
-
 Sway gameobject allows your weapons to sway when camera is moving.And last one is the MainCamera – Recoil – HeadBob. Here we have animator that animate camera bobbing. You  can examine animations with opening animator. It is the same process as for weapon holder.
 
 摇摆游戏对象允许您的武器在相机移动时摇摆。最后一个是 MainCamera - Recoil - HeadBob。 在这里，我们有动画师可以为相机摆动设置动画。 您可以使用打开动画器检查动画。 这与武器持有人的过程相同。
-
-
 
 **Inventory and Items**
 
@@ -515,12 +451,6 @@ You can learn about inventory and items in DTInventory manual. You can find it i
 
 ![image-20210818171236925](./unity3d/37.png)
 
-
-
-
-
-
-
 **Building system**
 
 ![image-20210818171316315](./unity3d/38.png)
@@ -528,8 +458,6 @@ You can learn about inventory and items in DTInventory manual. You can find it i
 Building system allows you to create building using inventory items. For some people it looks complicated and hard but it’s very easy in fact.Let’s see how to create new building.We need to create new building scriptable object first. Right click in project view → create → building data.Let’s what we’ve got here…Building name will drawn in building select windowDescription is not used for now but will show buildingdescription in future.Building Game Object – it’s the next step. I will tell aboutit little bit later.Assign building iconAnd final building cost items. This array should containsingle items that we use for building. Cost Items array shouldcontain cost of each array item for building. Take a look at thepicture bellow.
 
 建筑系统允许您使用库存项目创建建筑。 对有些人来说，看起来复杂难，其实很简单 在项目视图中右键单击 → 创建 → 建筑数据。让我们在这里得到什么......建筑名称将在建筑选择窗口中绘制现在不使用描述，但将来会显示建筑描述。建筑游戏对象 - 这是下一步。 稍后我会讲到。分配建筑图标和最终的建筑成本项目。 这个数组应该包含我们用于构建的单个项目。 Cost Items 数组应该包含每个数组项目的构建成本。 看看下面的图片。
-
-
 
 ![image-20210818171347275](./unity3d/39.png)
 
@@ -557,12 +485,6 @@ Here we have Branch and Cloth items which arerequired for shelter building. Cost
 
 ![image-20210818171417881](./unity3d/40.png)
 
-
-
-
-
-
-
 Last thing we have to do. Is to attach our new scriptable object to building manager list. Find it in the hierarchy
 
 我们必须做的最后一件事。 是将我们新的可编写脚本的对象附加到建筑物管理器列表中。 在层次结构中找到它
@@ -577,27 +499,9 @@ buildings array. It’s all. Now you can build your own objects. Graphics data a
 
 ![image-20210818171548133](./unity3d/42.png)
 
-
-
-
-
 Tutorials and helpCheck out tutorials on YouTube chanel :https://www.youtube.com/channel/UCvn3YCMFoIj_nJ5hG4dGjfADiscord link :https://discord.gg/r6wRYA2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#  user guide
+# user guide
 
 内容
 
@@ -611,10 +515,6 @@ Tutorials and helpCheck out tutorials on YouTube chanel :https://www.youtube.com
 
 常见问题解答
 
-
-
-
-
 How it works
 
 First of all, thank you for purchasing my asset! I sincerely hope that my work will help you to develop your games and save a lot of time for you. 
@@ -625,9 +525,7 @@ Inventory always was a sort of magic for me. There is almost no tutorials about 
 
 首先感谢您购买我的资产！ 我真诚地希望我的工作能帮助您开发您的游戏并为您节省大量时间。 
 
-库存对我来说总是一种魔法。 几乎没有关于如何使用 Diablo/S.T.A.L.K.E.R. 制作库存的教程。 网格放置。 在本概述中，我想向您介绍此库存是如何工作的，以便您了解自己在做什么，并且没有什么神秘之处。库存是具有 X 和 Y 索引且具有空闲/占用布尔状态的网格单元的集合。 都是！ 当我们尝试将项目放置到网格时，我们会询问库存下一个问题。 我们有足够的空间来存放物品吗？ 我们可以在哪里放置具有指定宽度和高度的项目？
-
-
+库存(仓库的意思吧？)对我来说总是一种魔法。 几乎没有关于如何使用 Diablo/S.T.A.L.K.E.R. 制作库存的教程。 网格放置。 在本概述中，我想向您介绍此库存是如何工作的，以便您了解自己在做什么，并且没有什么神秘之处。库存是具有 X 和 Y 索引且具有空闲/占用布尔状态的网格单元的集合。 都是！ 当我们尝试将项目放置到网格时，我们会询问库存下一个问题。 我们有足够的空间来存放物品吗？ 我们可以在哪里放置具有指定宽度和高度的项目？
 
 ![image-20210818172311144](./unity3d/43.png)
 
@@ -647,15 +545,7 @@ essential knowledge give you vision of inventory construction. You can meet with
 
 ![image-20210818172408837](./unity3d/44.png)
 
-
-
-
-
-
-
 **Getting started with inventory wizard**
-
-
 
 1) Open the Inventory Wizard with the toolbar at the top and press ‘New Inventory’
 2) 使用顶部的工具栏打开库存向导，然后按“新建库存”
@@ -665,33 +555,23 @@ essential knowledge give you vision of inventory construction. You can meet with
 2) Set up fields of Wizard and press ‘Build Inventory’
 3) 设置向导的字段并按“构建库存”
 
-|                                       |                                                              |
-| ------------------------------------- | ------------------------------------------------------------ |
-| Inventory Horizontal size库存水平尺寸 | Number of grid cell onvertical/horizontal axis of the grid   |
-| Inventory Vertical size库存垂直尺寸   | Number of grid cell onvertical/horizontal axis of the grid   |
+|                                 |                                                                |
+| ------------------------------- | -------------------------------------------------------------- |
+| Inventory Horizontal size库存水平尺寸 | Number of grid cell onvertical/horizontal axis of the grid     |
+| Inventory Vertical size库存垂直尺寸   | Number of grid cell onvertical/horizontal axis of the grid     |
 | Normal cell color正常细胞颜色         | Set of colors to draw normal/hovered/blocked state of the cell |
-| Hovered cell color悬停单元格颜色      | Set of colors to draw normal/hovered/blocked state of the cell |
-| Blocked cell color被阻止的单元格颜色  | Set of colors to draw normal/hovered/blocked state of the cell |
-| Stack text font堆栈文本字体           | Font of stack text drawer                                    |
-| Stack text color堆栈文本颜色          | Color of stack text                                          |
-| Cell size                             | Size of grid cell in pixels                                  |
-| Cell image                            | Sprite image to draw cell                                    |
-| Background color                      | Color of background panel背景面板颜色                        |
-| Inventory background库存背景          | Sprite image for background panel背景面板的精灵图像          |
-
-
+| Hovered cell color悬停单元格颜色       | Set of colors to draw normal/hovered/blocked state of the cell |
+| Blocked cell color被阻止的单元格颜色     | Set of colors to draw normal/hovered/blocked state of the cell |
+| Stack text font堆栈文本字体           | Font of stack text drawer                                      |
+| Stack text color堆栈文本颜色          | Color of stack text                                            |
+| Cell size                       | Size of grid cell in pixels                                    |
+| Cell image                      | Sprite image to draw cell                                      |
+| Background color                | Color of background panel背景面板颜色                                |
+| Inventory background库存背景        | Sprite image for background panel背景面板的精灵图像                     |
 
 After you’ve created a new inventory you can also create a loot window and equipment slots. I’ll tell about their functionality little bit later. So lets go on!
 
 创建新库存后，您还可以创建战利品窗口和设备插槽。 稍后我将介绍它们的功能。 所以让我们继续吧！
-
-
-
-
-
-
-
-
 
 **Loot window**
 
@@ -700,17 +580,13 @@ After you’ve created a new inventory you can also create a loot window and equ
 
 ![image-20210818173108737](./unity3d/46.png)
 
-We made loot window but for a what? This window will be used as loot box/chest representation. It’s a 	special  grid that will contain items from chest and provide control on ‘em for us. 
+We made loot window but for a what? This window will be used as loot box/chest representation. It’s a     special  grid that will contain items from chest and provide control on ‘em for us. 
 
 Congratulations! You’ve made your own inventory from blank in a few minutes. Inventory is fully functional right now and it’s working but who would to use equipment slots? Your game has armor and weapons? If yes you probably will be glad to know that equipment panels creation as simple as the actions above.
 
 我们制作了战利品窗口，但为了什么？ 此窗口将用作战利品箱/箱子的表示。 这是一个特殊的网格，将包含来自胸部的物品并为我们提供对它们的控制。
 
 恭喜！ 您已经在几分钟内从空白处制作了自己的库存。 库存现在功能齐全并且正在运行，但谁会使用设备插槽？ 你的游戏有盔甲和武器吗？ 如果是，您可能会很高兴知道设备面板的创建与上述操作一样简单。
-
-
-
-
 
 **Equipment panels**
 
@@ -719,14 +595,12 @@ Congratulations! You’ve made your own inventory from blank in a few minutes. I
 
 ![image-20210818173211455](./unity3d/47.png)
 
-|                           |                                                              |
-| ------------------------- | ------------------------------------------------------------ |
-| Equipment panels count    | Number of equipment panels you want to create. You can setup panel for required item type要创建的设备面板的数量。 您可以为所需的项目类型设置面板 |
-| Equipment horizontal size | X grid size                                                  |
-| Equipment vertical size   | Y grid size                                                  |
+|                           |                                                                                                                                                                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Equipment panels count    | Number of equipment panels you want to create. You can setup panel for required item type要创建的设备面板的数量。 您可以为所需的项目类型设置面板                                                                                                          |
+| Equipment horizontal size | X grid size                                                                                                                                                                                                                    |
+| Equipment vertical size   | Y grid size                                                                                                                                                                                                                    |
 | Allowed item type         | Each Item has string field called ‘Type’. It’s like unique tag for different type of items. Here you can put allowed item type. Others are not will be equipped.每个项目都有名为“类型”的字符串字段。 这就像不同类型物品的唯一标签。 您可以在此处放置允许的项目类型。 其他的都不会装备。 |
-
-
 
 Do you see similar picture on your screen?
 
@@ -737,8 +611,6 @@ Do you see similar picture on your screen?
 If yes, we continue with items and interactions. If no, something went wrong. You can try again or contact me at email below. Also look for video tutorial on YouTube.
 
 如果是，我们继续项目和交互。 如果没有，就出问题了。 您可以再试一次或通过下面的电子邮件与我联系。 还可以在 YouTube 上查找视频教程。
-
-
 
 **Items**
 
@@ -777,16 +649,10 @@ Should we create rigidbody for an object?
 
 我们应该为对象创建刚体吗？
 
-
-
 3) After previous step you will have new instantiated item in your scene. Our object has “Item” tag, and Item component. Your items must have “Item” tag! Otherwise pickup will not work at all. Let’s take a look at the Item component
 4) 在上一步之后，您的场景中将有新的实例化项目。 我们的对象有“Item”标签和Item组件。 您的物品必须有“物品”标签！ 否则取件根本不起作用。 我们来看看Item组件
 
 ![image-20210818173749590](./unity3d/51.png)
-
-
-
-
 
 **Pickup system**
 
@@ -803,10 +669,6 @@ Raycast from camera/Trigger pickup/Pickup by click. You can set pickup key with 
 
 该组件应分配给您的播放器。 在这里您可以选择交互类型。 你可以在
 通过单击从相机/触发拾取/拾取进行光线投射。 您可以设置任何其他您想要的拾音键。 您还需要设置 Player Camera 字段。 Raycast Pickup distance 控制物品拾取的距离。 项目名称工具提示是 UI 文本字段，如果我们查看某个项目，我们需要显示项目标题。
-
-
-
-
 
 Now about interaction types more close.
 
@@ -831,8 +693,6 @@ And last one is Click to Pickup. In order to get this method work you need to as
 If you’ve done everything right you can pickup items with clicking ‘em with mouse or mobile input.
 
 如果你做的一切都正确，你可以通过鼠标或移动输入点击它们来拾取物品。
-
-
 
 **Save system**
 
@@ -868,10 +728,6 @@ P.S. For users of DTFPS 1.4. Inventory use own Assets Database script (see on Ga
 
 附言 对于 DTFPS 1.4 的用户。 库存使用自己的资产数据库脚本（参见 GamePrefab）
 
-
-
-
-
 **Persistence system**
 
 Now we can touch persistence system… For example we have 2 scenes in our project ‘Scene A’ and ‘Scene B’, and we want to keep all items that we have with their last state. We don’t want to lost our scene state when we go from ‘Scene B’ to ‘Scene A’ and want our data to be persistent.
@@ -894,13 +750,8 @@ Also we must have spawn points on the level. Create empty gameobject and attach 
 
 此外，我们必须在关卡上有重生点。创建空游戏对象并附加 LevelPoint 脚本。对第二个场景也这样做。如果您想在从一个级别转到另一个级别时将项目保留在同一位置，请设置在场景中加载持久项目开始。
 
-
-
 ![image-20210818174240840](./unity3d/57.png)
-
-
 
 After some test iterations you will see that we still keep persistence information from other last sessions. To remove that find inventory script and press clear persistence data. It will remove all scene persistence information you have.
 
 经过一些测试迭代后，您会看到我们仍然保留其他最后会话的持久性信息。 要删除该查找清单脚本并按清除持久性数据。 它将删除您拥有的所有场景持久性信息。
-
