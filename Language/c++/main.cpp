@@ -5,6 +5,8 @@
 #include "template.h"
 #include "cppYuFa.h"
 #include "exam.h"
+#include "DuoTai.h"
+#include "common.h"
 using namespace std;
 
 /*
@@ -93,7 +95,7 @@ int main(int argc,char *argv[])
 #endif
 
     //11.c艹语法
-#ifdef DEBUG11
+#ifdef DEBUG
     CppYuFa test;
     for (int i = 0; i < 161; i++)
     {
@@ -102,24 +104,24 @@ int main(int argc,char *argv[])
     cout << test.seqImages.size() << endl;
 #endif
 
-#ifdef DEBUG12
 //使用平台判断
-#ifdef WIN32
-    cout << "I'm windows" << endl;
-#endif
+#ifdef DEBUG12
+    #ifdef WIN32
+        cout << "I'm windows" << endl;
+    #endif
 
-#ifdef linux
-    cout << "I'm linux" << endl;
-#endif
+    #ifdef linux
+        cout << "I'm linux" << endl;
+    #endif
 
     //使用编译器判断
-#ifdef _MSC_VER
-    cout << "I'm windows" << endl;
-#endif
+    #ifdef _MSC_VER
+        cout << "I'm windows" << endl;
+    #endif
 
-#ifdef __GNUC__
-    cout << "I'm linux" << endl;
-#endif
+    #ifdef __GNUC__
+        cout << "I'm linux" << endl;
+    #endif
 #endif
 
 //实现一个desktop文件解析工具
@@ -272,14 +274,19 @@ error:
 
 
 
-#ifdef DEBUG
+#ifdef DEBUG14
     char tmp[100] = {0};
     memset(tmp,0,sizeof(tmp));
     change(tmp);
     cout << tmp <<endl;
 #endif
 
+#ifdef DEBUG15
+    //多态测试
+    duoTaiTest();
+#endif
 
-    getchar();
+
+    //getchar();
     return 0;
 }

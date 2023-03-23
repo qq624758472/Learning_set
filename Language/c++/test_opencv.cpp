@@ -1,8 +1,10 @@
 #include <stdio.h>
+
+#if 0
 #include <opencv2/opencv.hpp>
 #include <iostream>
 using namespace cv;
- 
+
 int main()
 {
     Mat image = imread("/home/hao/Pictures/Aurora.jpg", 1);
@@ -19,3 +21,4 @@ int main()
  
     return 0;
 }
+#endif
