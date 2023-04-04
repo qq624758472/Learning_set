@@ -11,8 +11,8 @@ void CppYuFa::putDeque(char* que)
 	}
 	else
 	{
-		char *tmp = seqImages.front();  //ÆðÊ¼ÔªËØ¡£
-		seqImages.pop_front();//É¾³ý¶ÓÁÐµÚÒ»¸öÔªËØ¡£
+		char *tmp = seqImages.front();  //èµ·å§‹å…ƒç´ ã€‚
+		seqImages.pop_front();//åˆ é™¤é˜Ÿåˆ—ç¬¬ä¸€ä¸ªå…ƒç´ ã€‚
 		assert(seqImages.size() < frameNumCache);
 		seqImages.push_back(que);
 	}
@@ -27,9 +27,9 @@ ConstTest::ConstTest()
 bool ConstTest::test()
 {
     ptr1 = buff;
-    //ptr1[0] = 'l';//±àÒë»á±¨´í£¬ÒòÎª²»ÔÊÐíÐÞ¸Ä¡£
+    //ptr1[0] = 'l';//ç¼–è¯‘ä¼šæŠ¥é”™ï¼Œå› ä¸ºä¸å…è®¸ä¿®æ”¹ã€‚
 //=================================================
-    //ptr3 = buff;//¸ÃÖ¸Õë²»¿ÉÐÞ¸Ä£¬¶¨ÒåÊ±±ØÐë¸³Öµ.
+    //ptr3 = buff;//è¯¥æŒ‡é’ˆä¸å¯ä¿®æ”¹ï¼Œå®šä¹‰æ—¶å¿…é¡»èµ‹å€¼.
     ptr3[0] = '1';
     
     return true;

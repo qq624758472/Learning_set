@@ -1,6 +1,6 @@
 CC=g++
 prom = main
-deps = common.h my_string.h sort.h stream.h template.h p_class.h DuoTai.h
+deps = common.h my_string.h sort.h stream.h template.h p_class.h DuoTai.h yinCang.h
 SRC += $(wildcard *.cpp)
 OBJ += $(SRC:.cpp=.o)
 

@@ -7,6 +7,7 @@
 #include "exam.h"
 #include "DuoTai.h"
 #include "common.h"
+#include "yinCang.h"
 using namespace std;
 
 /*
@@ -46,12 +47,20 @@ int main(int argc,char *argv[])
     }
 #endif
 
-    //3.两种宏定义
+    //3.宏定义
 #ifdef DEBUG3
     int xy = 100;
     cout << concat(x, y) << endl;
-
     cout << MKSTR(liu shi hao) << endl;
+
+    int a = 5;
+    int b = 0;
+    
+    b = SQUARE( a++ ); /* a = 7，即执行了两次增 1 */
+    cout << b << " " << a << endl;
+    a= 5;
+    b = ((a++) * (a++));//5 * 6
+    cout << b << endl;
 #endif
 
     //4.条件编译
@@ -73,10 +82,11 @@ int main(int argc,char *argv[])
     test_inline();
 #endif
 
-    //7.测试类的指针, 子类初始化父类。
-#ifdef DEBUG7
+    //7.测试类的指针
+#ifdef DEBUG
     //p_class();
     const_class();
+    yinCang::test();
 #endif
 
     //8.测试静态局部变量
@@ -95,7 +105,7 @@ int main(int argc,char *argv[])
 #endif
 
     //11.c艹语法
-#ifdef DEBUG
+#ifdef DEBUG11
     CppYuFa test;
     for (int i = 0; i < 161; i++)
     {
