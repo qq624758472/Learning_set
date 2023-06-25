@@ -1,5 +1,17 @@
 # 读书笔记-奔跑吧arm64体系结构编程与实践
 
+## 临时配置环境变量
+
+```shell
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+export PATH=/path/to/toolchain/bin/:$PATH
+```
+
+- `arm-linux-gnueabi` 是基于软浮点（soft-float）的交叉编译器，不支持硬件浮点运算（VFP/NEON），编译出的程序需要依赖软浮点库进行运算，因此比较慢。适用于 ARMv4t、ARMv5 和 ARMv6 架构的处理器，其中的 "gnueabi"表示 "GNU EABI"（GNU 嵌入式应用二进制接口）。
+
+- `arm-linux-gnueabihf` 是基于硬浮点（hard-float）的交叉编译器，可以利用浮点运算单元（VFP/NEON）完成浮点数运算，因此编译出的程序性能更高。适用于 ARMv7 架构及以上的处理器，其中的 "hf" 表示 "hard-float"。
+
 ## 模拟树莓派4
 
 1.查看本机都的qemu是否支持树莓派4。
@@ -57,7 +69,7 @@ qemu-system-aarch64 -machine raspi3 -nographic -kernel benos.bin
 
 * EL3用户运行安全世界的管理程序。
 
-## gdb命令
+
 
 查看寄存器值：
 
@@ -132,4 +144,4 @@ arm64处理器不支持完全的64位虚拟地址。目前最大宽度为48位�
 
 范围是[0xFFFF 0000 0000 0000，0xFFFF FFFF FFFF FFFF];
 
-![arm64_1.jpg](/media/hao/_dde_data/hao/work_my/Learning_set/BookNote/pic/arm64_1.jpg)
+![arm64_1.jpg](./pic/arm64_1.jpg)

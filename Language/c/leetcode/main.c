@@ -4,10 +4,10 @@
  * @Autor: ruog__
  * @Date: 2022-07-18 14:08:22
  * @LastEditors: ruog__
- * @LastEditTime: 2022-07-18 14:16:35
+ * @LastEditTime: 2023-06-25 09:56:07
  */
 #include <stdio.h>
-
+#include "1.h"
 
 int main()
 {
