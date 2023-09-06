@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
     struct sockaddr_ll sll; //原始套接字地址结构
     struct ifreq req;       //网络接口地址
 
-    strncpy(req.ifr_name, "eno1", IFNAMSIZ);          //指定网卡名称
+    strncpy(req.ifr_name, "eth0", IFNAMSIZ);          //指定网卡名称
     if (-1 == ioctl(sock_raw_fd, SIOCGIFINDEX, &req)) //获取网络接口
     {
         perror("ioctl");
