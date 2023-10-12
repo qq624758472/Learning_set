@@ -73,13 +73,14 @@ int ed_epoll_init(struct ed_epoll *epoll_obj, int maxfds)
     return 0;
 }
 
-void* work(void* arg)
+void *work(void *arg)
 {
-    ed_threadpool_task *p = (ed_threadpool_task*) arg;
-    //ed_client->callback(epoll_event, ed_client->data);
-    if(p->ed_client != NULL && p->ed_client->callback != NULL)  
+    ed_threadpool_task *p = (ed_threadpool_task *)arg;
+    // ed_client->callback(epoll_event, ed_client->data);
+    if (p->ed_client != NULL && p->ed_client->callback != NULL)
         p->ed_client->callback(p->epoll_event, p->ed_client->data);
-    if(arg) free(arg);
+    if (arg)
+        free(arg);
 }
 
 /**
@@ -111,17 +112,17 @@ int ed_epoll_dispatch_events(struct ed_epoll *epoll_obj, int timeout)
             err_printf("how come for event_fd: %d callback addr: %p\n", event_fd, &ed_client->callback);
         }
 
-        //lsh  需要修改的地方，加入多线程  + epoll
-        #if 0
+// lsh  需要修改的地方，加入多线程  + epoll
+#if 0
         /* call callback function for this fd */
         ed_threadpool_task *tmp = (ed_threadpool_task*)calloc(1,sizeof(ed_threadpool_task));
         tmp->ed_client = ed_client;
         tmp->epoll_event = epoll_event;
         threadpool_add_job(pool, work, tmp);
         sleep(2);
-        #else
+#else
         ed_client->callback(epoll_event, ed_client->data);
-        #endif
+#endif
     }
 
     return SUCCESS;

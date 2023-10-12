@@ -4,7 +4,7 @@
  * @Autor: ruog__
  * @Date: 2023-07-31 14:22:51
  * @LastEditors: ruog__
- * @LastEditTime: 2023-07-31 14:29:51
+ * @LastEditTime: 2023-10-07 13:36:15
  */
 #include <stdio.h>
 #include <stdio.h>
@@ -33,10 +33,10 @@ int main()  //这样是正确的
 
     addr = (intptr_t)&a; // 将常量a的地址赋给addr
     a = 99;
-    printf("*addr的值为：%d\n", *((int *)addr)); // 打印*addr的值
+    printf("*addr的值为:%d\n", *((int *)addr)); // 打印*addr的值
 
     a = 55;
-    printf("*addr的值为：%d\n", *((int *)addr)); // 打印*addr的值
+    printf("*addr的值为:%d\n", *((int *)addr)); // 打印*addr的值
 
     return 0;
 }
