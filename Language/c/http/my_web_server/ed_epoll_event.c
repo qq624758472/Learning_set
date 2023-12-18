@@ -112,7 +112,7 @@ int ed_epoll_dispatch_events(struct ed_epoll *epoll_obj, int timeout)
             err_printf("how come for event_fd: %d callback addr: %p\n", event_fd, &ed_client->callback);
         }
 
-// lsh  需要修改的地方，加入多线程  + epoll
+// lsh  需要修改的地方，加入�?�线�?  + epoll
 #if 0
         /* call callback function for this fd */
         ed_threadpool_task *tmp = (ed_threadpool_task*)calloc(1,sizeof(ed_threadpool_task));
@@ -156,6 +156,7 @@ int ed_epoll_add(struct ed_epoll *epoll_obj, int fd, event_callback_func_t callb
     epoll_obj->ed_clients[fd].fd = fd;
 
     dbg_printf("adding new fd %d\n", fd);
+
 
     return SUCCESS;
 }
