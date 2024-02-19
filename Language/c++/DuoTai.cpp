@@ -1,12 +1,12 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 2.0
  * @Autor: ruog__
  * @Date: 2023-03-22 09:41:44
  * @LastEditors: ruog__
- * @LastEditTime: 2023-03-22 09:41:44
+ * @LastEditTime: 2023-12-18 10:07:14
  */
-#include <iostream> 
+#include <iostream>
 #include "DuoTai.h"
 using namespace std;
 /**
@@ -17,23 +17,23 @@ using namespace std;
 
 int duoTaiTest()
 {
-   Base *shape;
-   Aclass rec(10,7);
-   Bclass  tri(10,5);
- 
-   // 存储矩形的地址
-   shape = &rec;
-   // 调用矩形的求面积函数 area
-   shape->area();
-   shape->area2();
-   shape->test();
+    Base *shape;
+    Aclass rec(10, 7);
+    Bclass tri(10, 5);
 
-   // 存储三角形的地址
-   shape = &tri;
-   // 调用三角形的求面积函数 area
-   shape->area();
-   shape->area2();
-   shape->test();
+    // 存储矩形的地址
+    shape = &rec;
+    // 调用矩形的求面积函数 area
+    shape->area();
+    shape->area2();
+    shape->test();
 
-   return 0;
+    // 存储三角形的地址
+    shape = &tri;
+    // 调用三角形的求面积函数 area
+    shape->area();
+    shape->area2();
+    shape->test();
+
+    return 0;
 }

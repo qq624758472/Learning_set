@@ -1,0 +1,14 @@
+
+{
+    ...
+
+    myplatform{
+        compatible = "hqyj,platform";
+        reg = <0x12345678 0x14>;
+        interrupt-parent = <&gpiof>;
+        interrupts = <9 0>;
+        myled1 = <&gpioe 10 0>;
+    }
+
+    ...
+};

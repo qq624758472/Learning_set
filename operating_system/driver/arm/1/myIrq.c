@@ -1,11 +1,19 @@
+/*
+ * @Description: 
+ * @Version: 2.0
+ * @Autor: ruog__
+ * @Date: 2023-03-21 09:46:49
+ * @LastEditors: ruog__
+ * @LastEditTime: 2024-02-19 11:09:38
+ */
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/interrupt.h>
 static int irq;
 static char *interface;
-//MODULE_PARM_DESC(interface,"A network interface");  2.4内核中该宏的用法
-molule_parm(interface,charp,0644); //2.6内核中的宏
-//MODULE_PARM_DESC(irq,"The IRQ of the network interface");
+// MODULE_PARM_DESC(interface,"A network interface");  2.4内核中该宏的用法
+molule_parm(interface, charp, 0644); // 2.6内核中的宏
+// MODULE_PARM_DESC(irq,"The IRQ of the network interface");
 module_param(irq, int, 0644);
 
 static irqreturn_t myinterrupt(int irq, void *dev_id, struct pt_regs *regs)
