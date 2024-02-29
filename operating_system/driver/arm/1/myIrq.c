@@ -4,7 +4,7 @@
  * @Autor: ruog__
  * @Date: 2023-03-21 09:46:49
  * @LastEditors: ruog__
- * @LastEditTime: 2024-02-19 11:09:38
+ * @LastEditTime: 2024-02-23 18:31:59
  */
 #include <linux/module.h>
 #include <linux/init.h>
@@ -16,7 +16,7 @@ molule_parm(interface, charp, 0644); // 2.6内核中的宏
 // MODULE_PARM_DESC(irq,"The IRQ of the network interface");
 module_param(irq, int, 0644);
 
-static irqreturn_t myinterrupt(int irq, void *dev_id, struct pt_regs *regs)
+static irqreturn_t myinterrupt(int irq, void *dev_id)
 {
     static int mycount = 0;
     if (mycount < 10)
